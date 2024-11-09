@@ -24,6 +24,6 @@ public class AppWindow extends JFrame {
         SignupLoginPage loginPage = new SignupLoginPage();
         add(loginPage);
         DiscoverPage discoverPage = new DiscoverPage();
-        //add(discoverPage);
+        add(discoverPage);
     }
 }
