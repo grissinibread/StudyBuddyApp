@@ -1,9 +1,14 @@
 package view;
 
+import controller.LoginController;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SignupLoginPage extends JPanel {
+    private LoginController Lcontrol;
     public SignupLoginPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
@@ -51,5 +56,25 @@ public class SignupLoginPage extends JPanel {
         frameConstraints.gridy = 5;
         add(loginButton, frameConstraints);
         /*TODO: CONNECT BACKEND WORK OF LOGIN*/
+        Lcontrol = new LoginController(); // to be able to run functions connected to controller
+
+        // Make the button do something
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                attemptLogin(emailTextBox.getText(), passwordTextBox.getText());
+            }
+        });
+    }
+
+    public void attemptLogin(String email, String password) {
+        boolean loginSuccess = Lcontrol.verifySignUp(email, password);
+        if (loginSuccess) {
+            /*TODO: NEXT PAGE CONTROL FUNCTION*/
+            System.out.println("Login successful");
+            //new DiscoverPage();
+        } /*else {
+            JOptionPane.showMessageDialog(null, "Sign Up Unsuccessful");
+        }*/
     }
 }

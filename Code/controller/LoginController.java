@@ -1,72 +1,89 @@
 package controller;
 
+import view.SignupLoginPage;
+
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+//import java.awt.event.*;
 
-public class LoginController extends JFrame /*implements ActionListener*/{
-    JButton loginbutton;
-    JPanel newPanel;
-    JLabel email, password;
 
-    LoginController(){ // constructor
-//        EMAIL LABELS
-        // setting label for email
-       email = new JLabel();
-       email.setText("School Email"); // set label for emailtext
+public class LoginController {
+    // VALID EMAIL
+    private boolean emailValid (String email){
+        //System.out.println("email: " + email); // email check: reading correctly
+        int length = email.length();
+        int atIndex = email.indexOf("@"); // finds @ in email
+        int dotIndex = email.indexOf("."); // finds . in email
+        String end = email.substring(atIndex+1); // string after @
+        //System.out.println("end: " + end);
 
-        // text field to get email from user
-        JTextField emailtext = new JTextField();
-//        END OF EMAIL LABELS
-
-//        PASSWORD LABELS
-        password = new JLabel();
-        password.setText("Password"); // set label for passwordtext
-        JTextField passwordtext = new JTextField();
-//        END OF PASSWORD LABELS
-
-        loginbutton = new JButton("LOGIN"); // label for button to submit information and login
-
-        // PANEL FOR ALL ELEMENTS
-        newPanel = new JPanel(new GridLayout(3,1));
-        newPanel.add(email); // email label in panel
-        newPanel.add(emailtext); // text to enter email in panel
-        newPanel.add(password); // password label in panel
-        newPanel.add(passwordtext); // text to enter pass in panel
-        newPanel.add(loginbutton); // login button in panel
-
-        // border for panel
-        add(newPanel, BorderLayout.CENTER);
-
-        // make button clickable
-        //loginbutton.addActionListener(this);
-        setTitle("Login");
-    }
-
-    // when button is clicked
-    public void clicking(ActionEvent e){
-        String emailVal = email.getText();  // get email entered by user
-        String passwordVal = password.getText(); // get pass entered by user
-    }
-
-    // checks validity of email
-    private boolean emailValid(String email){
-        int i = email.indexOf("@"); // finds @ in email
-        int j = email.indexOf("."); // finds . in email
-        // TO DO: MAKE SURE ALL OF THE CHARACTERS ARE LETTERS
-        String end = email.substring(i+1); // string after @
-        if (i == -1 || j == -1){ // missing @ or . means not valid
+        for (int i = 0; i < atIndex; i++) { // iterates through first half of email to ensure all characters are letters or numbers
+            //System.out.println("checking " + email.charAt(i));
+            if(!Character.isDigit(email.charAt(i)) && !Character.isLetter(email.charAt(i))){
+                JOptionPane.showMessageDialog(null, "Email: Character Invalid");
+                return false; // not valid if not
+            }
+        }
+        if (atIndex == -1 || dotIndex == -1){ // missing "@" or "." means not valid
+            JOptionPane.showMessageDialog(null, "Email: Format Invalid");
             return false;
         }
-        if (end != "csusm.edu"){ // not csusm email means not valid
+        if (!end.equals("csusm.edu")){ // not csusm email means not valid
+            JOptionPane.showMessageDialog(null, "Email: Not CSUSM Email");
             return false;
         }
         return true;
     }
 
-    // checks validity of password
+    // VALID PASSWORD
     private boolean passwordValid(String password){
+        // RULES: 8-12 CHAR, AT LEAST 1 LOWERCASE, UPPERCASE, NUMBER, AND SPECIAL CHAR
+        // SPECIAL CHAR: !, @, #, $, %, &, *, ?
+        // ONLY THESE CHARACTERS
+        //System.out.println("password: " + password);
+
+        // BETWEEN 8-12 CHAR
+        int length = password.length();
+        if (length < 8 || length > 12){
+            JOptionPane.showMessageDialog(null, "Password: Length Invalid");
+            return false;
+        }
+
+        int lowecaseCount = 0;
+        int uppercaseCount = 0;
+        int specialCharCount = 0;
+        int numCount = 0;
+
+        for (int i = 0; i < length; i++){
+            if (Character.isLetter(password.charAt(i))){ // checks if letter
+                // ACCOUNTS FOR LOWERCASE
+                if(password.charAt(i) > 96 && password.charAt(i) < 123){ lowecaseCount++;}
+                // ACCOUNTS FOR UPPERCASE
+                else if (password.charAt(i) >= 65 && password.charAt(i) < 90) { uppercaseCount++;}
+            }
+            // ACCOUNTS FOR NUMBER
+            else if (Character.isDigit(password.charAt(i))){
+                numCount++;
+            }
+            // ACCOUNTS FOR SPECIAL CHAR
+            else if (password.charAt(i)=='!' || password.charAt(i)=='#' || password.charAt(i)=='@' || password.charAt(i)=='$' || password.charAt(i)=='%' || password.charAt(i)=='&' || password.charAt(i)=='*' || password.charAt(i)=='+' || password.charAt(i)=='?'){
+                specialCharCount++;
+            }
+            // CHAR INVALID
+            else {
+                JOptionPane.showMessageDialog(null, "Password: Character Invalid");
+                return false;
+            }
+        }
+        if (lowecaseCount == 0 || uppercaseCount == 0 || specialCharCount == 0 || numCount == 0){
+            JOptionPane.showMessageDialog(null, "Password: Character Missing");
+            return false;
+        }
         return true;
+    }
+
+    public boolean verifySignUp(String email, String password){
+        return emailValid(email) && passwordValid(password);
     }
 
 }
