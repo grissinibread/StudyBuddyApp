@@ -1,6 +1,6 @@
 package view;
 
-import controller.LoginController;
+import controller.SignUpController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SignupLoginPage extends JPanel {
-    private LoginController Lcontrol;
+    private SignUpController Lcontrol;
     public SignupLoginPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
@@ -24,6 +24,10 @@ public class SignupLoginPage extends JPanel {
         add(titleLabel, frameConstraints);
 
         // Create and add text fields
+        /*TODO: FIRST AND LAST NAME FIELDS*/
+        /*TODO: AGE FIELD*/
+        /*TODO: MAJOR DROP DOWN*/
+        /*TODO: YEAR DROP DOWN*/
         // Email input
         JTextArea emailTextBox = new JTextArea();
         emailTextBox.setPreferredSize(new Dimension(200, 20));
@@ -55,8 +59,9 @@ public class SignupLoginPage extends JPanel {
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 5;
         add(loginButton, frameConstraints);
-        /*TODO: CONNECT BACKEND WORK OF LOGIN*/
-        Lcontrol = new LoginController(); // to be able to run functions connected to controller
+
+        // BACKEND CONNECTS: VERIFICATION OF EMAIL AND PASSWORD
+        Lcontrol = new SignUpController(); // to be able to run functions connected to controller
 
         // Make the button do something
         loginButton.addActionListener(new ActionListener() {

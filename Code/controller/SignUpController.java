@@ -1,27 +1,19 @@
 package controller;
 
-import view.SignupLoginPage;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-//import java.awt.event.*;
 
-
-public class LoginController {
+public class SignUpController {
     // VALID EMAIL
     private boolean emailValid (String email){
-        //System.out.println("email: " + email); // email check: reading correctly
         int length = email.length();
         int atIndex = email.indexOf("@"); // finds @ in email
         int dotIndex = email.indexOf("."); // finds . in email
         String end = email.substring(atIndex+1); // string after @
-        //System.out.println("end: " + end);
 
         for (int i = 0; i < atIndex; i++) { // iterates through first half of email to ensure all characters are letters or numbers
-            //System.out.println("checking " + email.charAt(i));
             if(!Character.isDigit(email.charAt(i)) && !Character.isLetter(email.charAt(i))){
                 JOptionPane.showMessageDialog(null, "Email: Character Invalid");
-                return false; // not valid if not
+                return false;
             }
         }
         if (atIndex == -1 || dotIndex == -1){ // missing "@" or "." means not valid
@@ -40,7 +32,6 @@ public class LoginController {
         // RULES: 8-12 CHAR, AT LEAST 1 LOWERCASE, UPPERCASE, NUMBER, AND SPECIAL CHAR
         // SPECIAL CHAR: !, @, #, $, %, &, *, ?
         // ONLY THESE CHARACTERS
-        //System.out.println("password: " + password);
 
         // BETWEEN 8-12 CHAR
         int length = password.length();
@@ -81,6 +72,46 @@ public class LoginController {
         }
         return true;
     }
+
+    // VALID NAME
+    private boolean nameValid (String firstName, String lastName){
+        // VALID FORMATS: Name Last, Name Name Last, Name Name Last-Last, Name Name Last Last, etc.
+        int firstlength = firstName.length();
+        int lastlength = lastName.length();
+        // first name verification
+        for (int i = 0; i < firstlength; i++){
+            if (!Character.isLetter(firstName.charAt(i))){ // verifies characters
+                // allows hyphenated names and spaces
+                if(firstName.charAt(i) != '-' && firstName.charAt(i) != ' '){
+                    JOptionPane.showMessageDialog(null, "First Name(s): Character Invalid");
+                    return false;
+                }
+            }
+        }
+        // last name verification
+        for (int j = 0; j < lastlength; j++){
+            if (!Character.isLetter(lastName.charAt(j))){ // verifies characters
+                // allows hyphenated names and spaces
+                if(lastName.charAt(j) != '-' && lastName.charAt(j) != ' '){
+                    JOptionPane.showMessageDialog(null, "Last Name(s): Character Invalid");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    //VALID AGE
+    private boolean ageValid (int age){
+        if (age < 16 || age > 100){
+            JOptionPane.showMessageDialog(null, "Age Invalid");
+            return false;
+        }
+        return true;
+    }
+
+    //TODO: MAJOR SELECT
+    //TODO: YEAR SELECT
 
     public boolean verifySignUp(String email, String password){
         return emailValid(email) && passwordValid(password);
