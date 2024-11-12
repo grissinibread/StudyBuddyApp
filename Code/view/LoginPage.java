@@ -7,9 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SignupLoginPage extends JPanel {
+public class LoginPage extends JPanel {
     private SignUpController Lcontrol;
-    public SignupLoginPage() {
+    public LoginPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
@@ -23,12 +23,6 @@ public class SignupLoginPage extends JPanel {
         // Add the label to the frame
         add(titleLabel, frameConstraints);
 
-        // Create and add text fields
-        /*TODO: FIRST AND LAST NAME FIELDS*/
-        /*TODO: AGE FIELD*/
-        /*TODO: MAJOR DROP DOWN*/
-        /*TODO: YEAR DROP DOWN*/
-        // Email input
         JTextArea emailTextBox = new JTextArea();
         emailTextBox.setPreferredSize(new Dimension(200, 20));
         JLabel emailLabel = new JLabel("Email");
@@ -60,6 +54,23 @@ public class SignupLoginPage extends JPanel {
         frameConstraints.gridy = 5;
         add(loginButton, frameConstraints);
 
+        // Password Retrieval
+        JButton forgotPasswordButton = new JButton("Forgot Password?");
+        frameConstraints.gridx = 0;
+        frameConstraints.gridy = 6;
+        add(forgotPasswordButton, frameConstraints);
+        /*TODO: CONNECT BACKEND WORK*/
+
+        // SignUp Option
+        JLabel signupLabel = new JLabel("Don't have an account?");
+        frameConstraints.gridx = 0;
+        frameConstraints.gridy = 7;
+        add(signupLabel, frameConstraints);
+        JButton signUprButton = new JButton("Sign Up");
+        frameConstraints.gridx = 0;
+        frameConstraints.gridy = 8;
+        add(signUprButton, frameConstraints);
+
         // BACKEND CONNECTS: VERIFICATION OF EMAIL AND PASSWORD
         Lcontrol = new SignUpController(); // to be able to run functions connected to controller
 
@@ -76,6 +87,7 @@ public class SignupLoginPage extends JPanel {
         boolean loginSuccess = Lcontrol.verifySignUp(email, password);
         if (loginSuccess) {
             /*TODO: NEXT PAGE CONTROL FUNCTION*/
+            /*TODO: THIS SHOULD BE DONE IN THE APPWINDOW.JAVA FILE*/
             System.out.println("Login successful");
             //new DiscoverPage();
         } /*else {

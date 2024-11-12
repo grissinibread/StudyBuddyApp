@@ -1,5 +1,6 @@
 import view.DiscoverPage;
-import view.SignupLoginPage;
+import view.LoginPage;
+import view.SignUpPage;
 
 import javax.swing.*;
 import java.awt.geom.RoundRectangle2D;
@@ -17,18 +18,21 @@ public class AppWindow extends JFrame {
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
 
         // setting custom icon
-        ImageIcon logo = new ImageIcon("code/view/img/logo.png");
+        ImageIcon logo = new ImageIcon("Code/view/img/logo.png");
         setIconImage(logo.getImage());
 
         // opens the window in the center of the screen
         setLocationRelativeTo(null);
 
         // adds the login screen to this window
-        SignupLoginPage loginPage = new SignupLoginPage();
-        add(loginPage);
+        LoginPage loginPage = new LoginPage();
+        //add(loginPage);
+
+        SignUpPage signUpPage = new SignUpPage();
+        add(signUpPage);
 
         // discoverPage view
         DiscoverPage discoverPage = new DiscoverPage();
-        add(discoverPage);
+        // add(discoverPage);
     }
 }
