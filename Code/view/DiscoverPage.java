@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class DiscoverPage extends JPanel {
-    public DiscoverPage() throws IOException {
+    public DiscoverPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 

@@ -7,29 +7,36 @@ public class SignUpPage extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
+        //Title
+        JLabel signUpLabel = new JLabel("Sign Up");
+        signUpLabel.setFont(signUpLabel.getFont().deriveFont(Font.BOLD));
+        frameConstraints.gridx = 0;
+        frameConstraints.gridy = 0;
+        add(signUpLabel, frameConstraints);
+
         // First name
         JLabel firstName = new JLabel("First Name");
         frameConstraints.gridx = 0;
-        frameConstraints.gridy = 0;
+        frameConstraints.gridy = 1;
         add(firstName, frameConstraints);
 
         JTextArea firstNameField = new JTextArea();
         firstNameField.setPreferredSize(new Dimension(200, 20));
         frameConstraints.gridx = 1;
-        frameConstraints.gridy = 0;
+        frameConstraints.gridy = 1;
         add(firstNameField, frameConstraints);
         /*TODO: CONNECT BACKEND WORK*/
 
         // Last Name
         JLabel lastName = new JLabel("Last Name");
         frameConstraints.gridx = 2;
-        frameConstraints.gridy = 0;
+        frameConstraints.gridy = 1;
         add(lastName, frameConstraints);
 
         JTextArea lastNameField = new JTextArea();
         lastNameField.setPreferredSize(new Dimension(200, 20));
         frameConstraints.gridx = 3;
-        frameConstraints.gridy = 0;
+        frameConstraints.gridy = 1;
         add(lastNameField, frameConstraints);
         /*TODO: CONNECT BACKEND WORK*/
 

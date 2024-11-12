@@ -1,6 +1,4 @@
-import view.DiscoverPage;
-import view.LoginPage;
-import view.SignUpPage;
+import view.*;
 
 import javax.swing.*;
 import java.awt.geom.RoundRectangle2D;
@@ -29,10 +27,16 @@ public class AppWindow extends JFrame {
         //add(loginPage);
 
         SignUpPage signUpPage = new SignUpPage();
-        add(signUpPage);
+        //add(signUpPage);
 
         // discoverPage view
         DiscoverPage discoverPage = new DiscoverPage();
         // add(discoverPage);
+
+        MessagesPage messagesPage = new MessagesPage();
+        add(messagesPage);
+
+        ChatPage chatPage = new ChatPage();
+        //add(chatPage);
     }
 }
