@@ -1,6 +1,7 @@
 import view.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
@@ -13,7 +14,7 @@ public class AppWindow extends JFrame {
         setSize(800, 600);
 
         // rounds the corners of the window
-        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 38, 38));
 
         // setting custom icon
         ImageIcon logo = new ImageIcon("Code/view/img/logo.png");
@@ -24,7 +25,7 @@ public class AppWindow extends JFrame {
 
         // adds the login screen to this window
         LoginPage loginPage = new LoginPage();
-        //add(loginPage);
+        add(loginPage);
 
         SignUpPage signUpPage = new SignUpPage();
         //add(signUpPage);
@@ -34,7 +35,7 @@ public class AppWindow extends JFrame {
         // add(discoverPage);
 
         MessagesPage messagesPage = new MessagesPage();
-        add(messagesPage);
+        //add(messagesPage);
 
         ChatPage chatPage = new ChatPage();
         //add(chatPage);

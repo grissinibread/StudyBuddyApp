@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class ChatPage extends JPanel {
     public ChatPage() {
+        setBackground(Color.decode("#F7F7F7"));
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 

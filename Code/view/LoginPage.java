@@ -6,10 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 
 public class LoginPage extends JPanel {
     private SignUpController Lcontrol;
     public LoginPage() {
+        setBackground(Color.decode("#F7F7F7"));
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
@@ -18,6 +20,7 @@ public class LoginPage extends JPanel {
 
         // Set the font size and style for the title
         titleLabel.setFont(new Font("Serif", Font.BOLD, 24)); // Font size 24 and bold style
+        titleLabel.setForeground(Color.decode("#4A4A4A"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 0;
         // Add the label to the frame
@@ -27,6 +30,7 @@ public class LoginPage extends JPanel {
         emailTextBox.setPreferredSize(new Dimension(200, 20));
         JLabel emailLabel = new JLabel("Email");
         emailLabel.setFont(new Font("Serif", Font.BOLD, 12));
+        emailLabel.setForeground(Color.decode("#4A4A4A"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 1;
         add(emailLabel, frameConstraints);
@@ -40,6 +44,7 @@ public class LoginPage extends JPanel {
         passwordTextBox.setPreferredSize(new Dimension(200, 20));
         JLabel passwordLabel = new JLabel("Password");
         passwordLabel.setFont(new Font("Serif", Font.BOLD, 12));
+        passwordLabel.setForeground(Color.decode("#4A4A4A"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 3;
         add(passwordLabel, frameConstraints);
@@ -50,12 +55,14 @@ public class LoginPage extends JPanel {
 
         // Login button
         JButton loginButton = new JButton("Login");
+        loginButton.setBackground(Color.decode("#F8E71C"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 5;
         add(loginButton, frameConstraints);
 
         // Password Retrieval
         JButton forgotPasswordButton = new JButton("Forgot Password?");
+        forgotPasswordButton.setBorderPainted(false);
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 6;
         add(forgotPasswordButton, frameConstraints);
@@ -63,13 +70,15 @@ public class LoginPage extends JPanel {
 
         // SignUp Option
         JLabel signupLabel = new JLabel("Don't have an account?");
+        signupLabel.setFont(new Font("Serif", Font.BOLD, 12));
+        signupLabel.setForeground(Color.decode("#4A4A4A"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 7;
         add(signupLabel, frameConstraints);
-        JButton signUprButton = new JButton("Sign Up");
+        JButton signUpButton = new JButton("Sign Up");
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 8;
-        add(signUprButton, frameConstraints);
+        add(signUpButton, frameConstraints);
 
         // BACKEND CONNECTS: VERIFICATION OF EMAIL AND PASSWORD
         Lcontrol = new SignUpController(); // to be able to run functions connected to controller
