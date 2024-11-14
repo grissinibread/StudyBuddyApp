@@ -34,10 +34,17 @@ public class AppWindow extends JFrame {
         DiscoverPage discoverPage = new DiscoverPage();
         // add(discoverPage);
 
+
         MessagesPage messagesPage = new MessagesPage();
         //add(messagesPage);
 
         ChatPage chatPage = new ChatPage();
         //add(chatPage);
+    }
+    // transfer from page to page
+    public void openPage(JPanel page){
+        setContentPane(page);
+        revalidate();
+        repaint();
     }
 }

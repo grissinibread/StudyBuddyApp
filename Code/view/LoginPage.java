@@ -1,7 +1,7 @@
 package view;
 
 import controller.SignUpController;
-
+//import view.AppWindow; //this too did nothing for me
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +10,8 @@ import java.awt.geom.RoundRectangle2D;
 
 public class LoginPage extends JPanel {
     private SignUpController Lcontrol;
+    //public boolean loginApproved = false;
+   // private AppWindow appWindow; // I was trying to direct it using this class but it wouldn't let me :,) cry
     public LoginPage() {
         setBackground(Color.decode("#F7F7F7"));
         setLayout(new GridBagLayout());
@@ -87,20 +89,22 @@ public class LoginPage extends JPanel {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                attemptLogin(emailTextBox.getText(), passwordTextBox.getText());
+                //loginApproved = Lcontrol.verifySignUp(emailTextBox.getText(), passwordTextBox.getText());
+                if (Lcontrol.verifySignUp(emailTextBox.getText(), passwordTextBox.getText())) {
+                    //appWindow.openPage(new DiscoverPage());
+                }
             }
         });
     }
 
-    public void attemptLogin(String email, String password) {
-        boolean loginSuccess = Lcontrol.verifySignUp(email, password);
-        if (loginSuccess) {
-            /*TODO: NEXT PAGE CONTROL FUNCTION*/
-            /*TODO: THIS SHOULD BE DONE IN THE APPWINDOW.JAVA FILE*/
-            System.out.println("Login successful");
-            //new DiscoverPage();
-        } /*else {
-            JOptionPane.showMessageDialog(null, "Sign Up Unsuccessful");
-        }*/
-    }
+//    public boolean attemptLogin(String email, String password) {
+//        boolean loginSuccess = Lcontrol.verifySignUp(email, password);
+//        if (loginSuccess) {
+//            /*TODO: NEXT PAGE CONTROL FUNCTION*/
+//            /*TODO: THIS SHOULD BE DONE IN THE APPWINDOW.JAVA FILE*/
+//            System.out.println("Login successful");
+//            return true;
+//        }
+//        return false;
+//    }
 }
