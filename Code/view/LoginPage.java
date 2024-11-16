@@ -93,6 +93,18 @@ public class LoginPage extends JPanel {
                 }
             }
         });
+
+        // When Sign Up Button is pressed, it takes you to the Sign Up Page.
+        signUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignUpPage signUpPage = new SignUpPage();
+                LoginPage.this.removeAll();
+                LoginPage.this.add(signUpPage);
+                revalidate();
+                repaint();
+            }
+        });
     }
 
 //    public boolean attemptLogin(String email, String password) {
