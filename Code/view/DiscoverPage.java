@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DiscoverPage extends JPanel {
-    private DiscoverController discoverController;
+    //private DiscoverController discoverController;
     public DiscoverPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
