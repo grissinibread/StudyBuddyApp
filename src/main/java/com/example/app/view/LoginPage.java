@@ -102,12 +102,6 @@ public class LoginPage extends JPanel {
         frameConstraints.gridy = 7;
         add(signupLabel, frameConstraints);
 
-        JButton signUpButton = new JButton("Sign Up");
-        signUpButton.setBackground(Color.decode("#F8E71C"));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 8;
-        add(signUpButton, frameConstraints);
-
         // BACKEND CONNECTS: VERIFICATION OF EMAIL AND PASSWORD
         Lcontrol = new SignUpController(); // to be able to run functions connected to controller
 
@@ -119,18 +113,6 @@ public class LoginPage extends JPanel {
                 if (Lcontrol.verifySignUp(emailTextBox.getText(), passwordTextBox.getText())) {
                     //appW.openPage(new DiscoverPage());
                 }
-            }
-        });
-
-        // When Sign Up Button is pressed, it takes you to the Sign Up Page.
-        signUpButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SignUpPage signUpPage = new SignUpPage();
-                LoginPage.this.removeAll();
-                LoginPage.this.add(signUpPage);
-                revalidate();
-                repaint();
             }
         });
     }
