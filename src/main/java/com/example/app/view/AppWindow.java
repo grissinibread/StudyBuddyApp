@@ -1,11 +1,13 @@
 package main.java.com.example.app.view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
+import java.io.File;
 import java.io.IOException;
 
 public class AppWindow extends JFrame {
-    public AppWindow() throws IOException {
+    public AppWindow() {
         setTitle("Study Buddy");
         setUndecorated(true); // removes default title bar
 

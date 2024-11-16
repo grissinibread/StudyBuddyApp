@@ -21,7 +21,7 @@ public class LoginPage extends JPanel {
         JLabel titleLabel = new JLabel("Study Buddy");
 
         // Set the font size and style for the title
-        titleLabel.setFont(new Font("Comic Sans", Font.BOLD, 24)); // Font size 24 and bold style
+        titleLabel.setFont(new Font("Comic Sans", Font.BOLD, 48)); // Font size 24 and bold style
         titleLabel.setForeground(Color.decode("#4A4A4A"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 0;
