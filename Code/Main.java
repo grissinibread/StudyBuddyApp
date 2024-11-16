@@ -7,5 +7,4 @@ public class Main {
         AppWindow appWindow = new AppWindow();
         appWindow.setVisible(true); //Displays the window
     }
-
 }
