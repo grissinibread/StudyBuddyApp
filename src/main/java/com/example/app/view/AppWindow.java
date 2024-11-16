@@ -1,4 +1,4 @@
-import view.*;
+package main.java.com.example.app.view;
 
 import javax.swing.*;
 import java.awt.geom.RoundRectangle2D;
@@ -16,7 +16,7 @@ public class AppWindow extends JFrame {
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
 
         // setting custom icon
-        ImageIcon logo = new ImageIcon("Code/view/img/logo.png");
+        ImageIcon logo = new ImageIcon("src/resources/img/logo.png");
         setIconImage(logo.getImage());
 
         // opens the window in the center of the screen
@@ -35,8 +35,5 @@ public class AppWindow extends JFrame {
 
         MessagesPage messagesPage = new MessagesPage();
         //add(messagesPage);
-
-        ChatPage chatPage = new ChatPage();
-        //add(chatPage);
     }
 }

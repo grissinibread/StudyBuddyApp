@@ -1,11 +1,7 @@
-package view;
-import controller.DiscoverController;
-import model.User;
+package main.java.com.example.app.view;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class DiscoverPage extends JPanel {
     //private DiscoverController discoverController;
@@ -54,7 +50,8 @@ public class DiscoverPage extends JPanel {
         // TODO: BACKEND
 
         // settingsIcon
-        JButton settingsIcon = new JButton("Settings Icon");
+        ImageIcon settings = new ImageIcon("Code/view/img/settings.png", "Settings Icon");
+        JButton settingsIcon = new JButton(settings);
         frameConstraints.gridx = 3;
         frameConstraints.gridy = 0;
         add(settingsIcon, frameConstraints);

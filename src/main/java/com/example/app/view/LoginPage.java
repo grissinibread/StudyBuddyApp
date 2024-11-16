@@ -1,19 +1,18 @@
-package view;
+package main.java.com.example.app.view;
 
-import controller.SignUpController;
-// import view.AppWindow; //this too did nothing for me
+import main.java.com.example.app.controller.SignUpController;
+// import view.appW; //this too did nothing for me
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.RoundRectangle2D;
 
 public class LoginPage extends JPanel {
     private SignUpController Lcontrol;
     //public boolean loginApproved = false;
-   // private AppWindow appW; // I was trying to direct it using this class but it wouldn't let me :,) cry
+    // private appW; // I was trying to direct it using this class but it wouldn't let me :,) cry
     public LoginPage() {
-        setBackground(Color.decode("#F7F7F7"));
+        setBackground(Color.decode("#4A90E2"));
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
@@ -21,7 +20,7 @@ public class LoginPage extends JPanel {
         JLabel titleLabel = new JLabel("Study Buddy");
 
         // Set the font size and style for the title
-        titleLabel.setFont(new Font("Serif", Font.BOLD, 24)); // Font size 24 and bold style
+        titleLabel.setFont(new Font("Comic Sans", Font.BOLD, 24)); // Font size 24 and bold style
         titleLabel.setForeground(Color.decode("#4A4A4A"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 0;
@@ -31,7 +30,7 @@ public class LoginPage extends JPanel {
         JTextArea emailTextBox = new JTextArea();
         emailTextBox.setPreferredSize(new Dimension(200, 20));
         JLabel emailLabel = new JLabel("Email");
-        emailLabel.setFont(new Font("Serif", Font.BOLD, 12));
+        emailLabel.setFont(new Font("Comic Sans", Font.BOLD, 12));
         emailLabel.setForeground(Color.decode("#4A4A4A"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 1;
@@ -55,9 +54,12 @@ public class LoginPage extends JPanel {
 
         // Login button
         JButton loginButton = new JButton("Login");
+        loginButton.setFont(new Font("Serif", Font.BOLD, 12));
+        loginButton.setForeground(Color.decode("#4A4A4A"));
         loginButton.setBackground(Color.decode("#F8E71C"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 5;
+        frameConstraints.insets = new Insets(10, 0, 0, 0);
         add(loginButton, frameConstraints);
 
         // Password Retrieval
@@ -75,7 +77,9 @@ public class LoginPage extends JPanel {
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 7;
         add(signupLabel, frameConstraints);
+
         JButton signUpButton = new JButton("Sign Up");
+        signUpButton.setBackground(Color.decode("#F8E71C"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 8;
         add(signUpButton, frameConstraints);
