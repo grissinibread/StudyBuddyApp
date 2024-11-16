@@ -13,7 +13,8 @@ public class LoginPage extends JPanel {
     //public boolean loginApproved = false;
    // private AppWindow appW; // I was trying to direct it using this class but it wouldn't let me :,) cry
     public LoginPage() {
-        setBackground(Color.decode("#F7F7F7"));
+        //OG COLOR CODE: #F7F7F7
+        setBackground(Color.decode("#EEEEEE"));
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
