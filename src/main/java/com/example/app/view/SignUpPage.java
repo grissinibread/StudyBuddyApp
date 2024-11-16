@@ -111,5 +111,24 @@ public class SignUpPage extends JPanel {
         frameConstraints.gridx = 1;
         frameConstraints.gridy = 7;
         add(graduationYearComboBox, frameConstraints);
+
+        //Makes and displays a Back to Login Button.
+        JButton backToLoginButton = new JButton("Back to Login");
+        frameConstraints.gridx = 3;
+        frameConstraints.gridy = 8;
+        add(backToLoginButton, frameConstraints);
+
+        // Pressing the "Back to Login" button takes the user
+        // back to the login screen.
+        backToLoginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginPage loginPage = new LoginPage();
+                SignUpPage.this.removeAll();
+                SignUpPage.this.add(loginPage);
+                revalidate();
+                repaint();
+            }
+        });
     }
 }

@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 
 public class LoginPage extends JPanel {
     private SignUpController Lcontrol;
@@ -95,6 +96,18 @@ public class LoginPage extends JPanel {
                 if (Lcontrol.verifySignUp(emailTextBox.getText(), passwordTextBox.getText())) {
                     //appW.openPage(new DiscoverPage());
                 }
+            }
+        });
+
+        // When Sign Up Button is pressed, it takes you to the Sign Up Page.
+        signUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignUpPage signUpPage = new SignUpPage();
+                LoginPage.this.removeAll();
+                LoginPage.this.add(signUpPage);
+                revalidate();
+                repaint();
             }
         });
     }
