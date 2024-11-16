@@ -1,7 +1,7 @@
 package view;
 
 import controller.SignUpController;
-//import view.AppWindow; //this too did nothing for me
+// import view.AppWindow; //this too did nothing for me
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ import java.awt.geom.RoundRectangle2D;
 public class LoginPage extends JPanel {
     private SignUpController Lcontrol;
     //public boolean loginApproved = false;
-   // private AppWindow appWindow; // I was trying to direct it using this class but it wouldn't let me :,) cry
+   // private AppWindow appW; // I was trying to direct it using this class but it wouldn't let me :,) cry
     public LoginPage() {
         setBackground(Color.decode("#F7F7F7"));
         setLayout(new GridBagLayout());
@@ -39,7 +39,6 @@ public class LoginPage extends JPanel {
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 2;
         add(emailTextBox, frameConstraints);
-        /*TODO: CONNECT BACKEND WORK*/
 
         // Password input
         JTextArea passwordTextBox = new JTextArea();
@@ -53,7 +52,6 @@ public class LoginPage extends JPanel {
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 4;
         add(passwordTextBox, frameConstraints);
-        /*TODO: CONNECT BACKEND WORK*/
 
         // Login button
         JButton loginButton = new JButton("Login");
@@ -91,7 +89,7 @@ public class LoginPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 //loginApproved = Lcontrol.verifySignUp(emailTextBox.getText(), passwordTextBox.getText());
                 if (Lcontrol.verifySignUp(emailTextBox.getText(), passwordTextBox.getText())) {
-                    //appWindow.openPage(new DiscoverPage());
+                    //appW.openPage(new DiscoverPage());
                 }
             }
         });

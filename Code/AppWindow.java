@@ -32,7 +32,7 @@ public class AppWindow extends JFrame {
 
         // discoverPage view
         DiscoverPage discoverPage = new DiscoverPage();
-        // add(discoverPage);
+        //add(discoverPage);
 
 
         MessagesPage messagesPage = new MessagesPage();

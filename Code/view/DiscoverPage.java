@@ -1,13 +1,14 @@
 package view;
+import controller.DiscoverController;
+import model.User;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DiscoverPage extends JPanel {
+    private DiscoverController discoverController;
     public DiscoverPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
@@ -58,6 +59,17 @@ public class DiscoverPage extends JPanel {
         frameConstraints.gridy = 0;
         add(settingsIcon, frameConstraints);
         // TODO: BACKEND
+
+        // TESTING MATCH (does not work atm)
+//        User user1 = new User("Adria", 21, "Software", 3, "Beach", "Coding", "Music");
+//        User user2 = new User("John", 20, "Software", 3, "Beach", "Coding", "Music");
+//        settingsIcon.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                //loginApproved = Lcontrol.verifySignUp(emailTextBox.getText(), passwordTextBox.getText());
+//                discoverController.matchStudents(user1, user2);
+//            }
+//        });
     }
 
     public void profileTemplate() {
