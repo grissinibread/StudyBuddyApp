@@ -43,7 +43,6 @@ public class AppWindow extends JFrame {
 
         //Sign Up Button
         JButton signUpButton = new JButton("Sign Up");
-        signUpButton.setBackground(Color.decode("#F8E71C"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 8;
         loginPage.add(signUpButton, frameConstraints);

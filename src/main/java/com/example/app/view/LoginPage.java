@@ -79,8 +79,6 @@ public class LoginPage extends JPanel {
         // Login button
         JButton loginButton = new JButton("Login");
         loginButton.setFont(new Font("Serif", Font.BOLD, 12));
-        loginButton.setForeground(Color.decode("#4A4A4A"));
-        loginButton.setBackground(Color.decode("#F8E71C"));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 5;
         frameConstraints.insets = new Insets(10, 0, 0, 0);
@@ -88,7 +86,6 @@ public class LoginPage extends JPanel {
 
         // Password Retrieval
         JButton forgotPasswordButton = new JButton("Forgot Password?");
-        forgotPasswordButton.setBorderPainted(false);
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 6;
         add(forgotPasswordButton, frameConstraints);
