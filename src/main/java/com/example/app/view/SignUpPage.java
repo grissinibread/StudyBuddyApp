@@ -1,6 +1,6 @@
-package main.java.com.example.app.view;
+package com.example.app.view;
 
-import main.java.com.example.app.util.FontManager;
+import com.example.app.util.FontManager;
 
 import javax.swing.*;
 import java.awt.*;

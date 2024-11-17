@@ -1,4 +1,4 @@
-package main.java.com.example.app.controller;
+package com.example.app.controller;
 
 import javax.swing.*;
 

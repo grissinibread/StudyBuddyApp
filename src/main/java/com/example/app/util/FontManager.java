@@ -1,4 +1,4 @@
-package main.java.com.example.app.util;
+package com.example.app.util;
 
 import java.awt.*;
 import java.io.File;

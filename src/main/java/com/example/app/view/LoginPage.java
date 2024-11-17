@@ -1,7 +1,7 @@
-package main.java.com.example.app.view;
+package com.example.app.view;
 
-import main.java.com.example.app.controller.SignUpController;
-import main.java.com.example.app.util.FontManager;
+import com.example.app.controller.SignUpController;
+import com.example.app.util.FontManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,10 +35,10 @@ public class LoginPage extends JPanel {
         addTitleLabel(constraints);
 
         // Email Section
-        JTextArea emailTextBox = addLabeledTextField("Email", constraints, 1);
+        JTextArea emailTextBox = addLabeledTextField(constraints, 1);
 
         // Password Section
-        JPasswordField passwordTextBox = addPasswordField("Password", constraints, 3);
+        JPasswordField passwordTextBox = addPasswordField(constraints, 3);
 
         // Login Button
         addLoginButton(emailTextBox, passwordTextBox, constraints);
@@ -60,30 +60,6 @@ public class LoginPage extends JPanel {
         add(titleLabel, constraints);
     }
 
-    private JTextArea addLabeledTextField(String labelText, GridBagConstraints constraints, int row) {
-        createLabel(labelText, constraints, row);
-
-        JTextArea textBox = new JTextArea();
-        textBox.setPreferredSize(new Dimension(200, 18));
-        constraints.gridy = row + 1;
-        constraints.insets = new Insets(0, 0, 10, 0);
-        add(textBox, constraints);
-
-        return textBox;
-    }
-
-    private JPasswordField addPasswordField(String labelText, GridBagConstraints constraints, int row) {
-        createLabel(labelText, constraints, row);
-
-        JPasswordField passwordBox = new JPasswordField();
-        passwordBox.setPreferredSize(new Dimension(200, 18));
-        constraints.gridy = row + 1;
-        constraints.insets = new Insets(0, 0, 10, 0);
-        add(passwordBox, constraints);
-
-        return passwordBox;
-    }
-
     private void createLabel(String labelText, GridBagConstraints constraints, int row) {
         JLabel label = new JLabel(labelText);
         label.setFont(FontManager.getCustomFont(16));
@@ -94,12 +70,37 @@ public class LoginPage extends JPanel {
         add(label, constraints);
     }
 
+    private JTextArea addLabeledTextField(GridBagConstraints constraints, int row) {
+        createLabel("Email", constraints, row);
+        JTextArea textBox = new JTextArea();
+        textBox.setPreferredSize(new Dimension(200, 18));
+        constraints.gridy = row + 1;
+        constraints.insets = new Insets(0, 0, 10, 0);
+        add(textBox, constraints);
+
+        return textBox;
+    }
+
+    private JPasswordField addPasswordField(GridBagConstraints constraints, int row) {
+        createLabel("Password", constraints, row);
+
+        JPasswordField passwordBox = new JPasswordField();
+        passwordBox.setPreferredSize(new Dimension(200, 18));
+        constraints.gridy = row + 1;
+        constraints.insets = new Insets(0, 0, 10, 0);
+        add(passwordBox, constraints);
+
+        return passwordBox;
+    }
+
     private void addLoginButton(JTextArea emailTextBox, JPasswordField passwordTextBox, GridBagConstraints constraints) {
         JButton loginButton = new JButton("Login");
         loginButton.setFont(FontManager.getCustomFont(12));
         constraints.gridx = 0;
         constraints.gridy = 5;
+        constraints.insets = new Insets(0, 0, 5, 0);
         add(loginButton, constraints);
+        constraints.insets = new Insets(0, 0, 0, 0); // reset constraints
 
         loginButton.addActionListener(e -> handleLogin(emailTextBox.getText(), passwordTextBox.getText()));
     }
@@ -109,6 +110,7 @@ public class LoginPage extends JPanel {
             // Navigate to the next page
             System.out.println("Login successful");
             // Example: appWindow.openPage(new DiscoverPage());
+            // TODO: Change windows
         }
     }
 

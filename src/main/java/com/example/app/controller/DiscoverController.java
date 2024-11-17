@@ -1,5 +1,5 @@
-package main.java.com.example.app.controller;
-import main.java.com.example.app.model.User;
+package com.example.app.controller;
+import com.example.app.model.User;
 import java.util.Vector;
 
 public class DiscoverController {
