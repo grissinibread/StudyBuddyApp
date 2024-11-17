@@ -57,7 +57,7 @@ public class LoginPage extends JPanel {
         add(emailLabel, frameConstraints);
 
         JTextArea emailTextBox = new JTextArea();
-        emailTextBox.setPreferredSize(new Dimension(200, 20));
+        emailTextBox.setPreferredSize(new Dimension(200, 18));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 2;
         add(emailTextBox, frameConstraints);
@@ -71,7 +71,7 @@ public class LoginPage extends JPanel {
         add(passwordLabel, frameConstraints);
 
         JTextArea passwordTextBox = new JTextArea();
-        passwordTextBox.setPreferredSize(new Dimension(200, 20));
+        passwordTextBox.setPreferredSize(new Dimension(200, 18));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 4;
         add(passwordTextBox, frameConstraints);

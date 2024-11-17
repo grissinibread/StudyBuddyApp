@@ -110,7 +110,8 @@ public class SignUpPage extends JPanel {
         frameConstraints.gridy = 7;
         add(major, frameConstraints);
 
-        JComboBox<String> majorComboBox = new JComboBox<String>(new String[]{"Computer Science", "Software Engineering"});
+        JComboBox<String> majorComboBox = new JComboBox<String>(new String[]{"Computer Science", "Software Engineering", "Computer Engineering", "Cyber Security", "Computer Information Systems", "Electrical Engineering", "Mathematics", "Applied Physics", "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences", "Wildfire Science & the Urban Interface"});
+        // TODO: DECLARE LIST ELSEWHERE TO USE IN OTHER INSTANCES
         frameConstraints.gridx = 1;
         frameConstraints.gridy = 7;
         add(majorComboBox, frameConstraints);
