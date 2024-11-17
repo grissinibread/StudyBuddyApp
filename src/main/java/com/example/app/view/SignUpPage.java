@@ -1,139 +1,89 @@
 package main.java.com.example.app.view;
+
 import main.java.com.example.app.util.FontManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class SignUpPage extends JPanel {
+
     public SignUpPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
-        //Title
-        JLabel signUpLabel = new JLabel("Sign Up");
-        signUpLabel.setFont(FontManager.getCustomFont(50).deriveFont(Font.BOLD));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 1;
-        frameConstraints.insets = new Insets(0, 0, 25, 0);
-        add(signUpLabel, frameConstraints);
+        // Title
+        addLabel("Sign Up", 50, frameConstraints, 0, 1, 25);
 
-        // First name
-        JLabel firstName = new JLabel("First Name");
-        firstName.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 2;
-        frameConstraints.insets = new Insets(0, 0, 10, 0);
-        add(firstName, frameConstraints);
+        // First Name and Last Name
+        addLabeledTextField("First Name", frameConstraints, 0, 2);
+        addLabeledTextField("Last Name", frameConstraints, 2, 2);
 
-        JTextArea firstNameField = new JTextArea();
-        firstNameField.setPreferredSize(new Dimension(200, 20));
-        frameConstraints.gridx = 1;
-        frameConstraints.gridy = 2;
-        add(firstNameField, frameConstraints);
-        /*TODO: CONNECT BACKEND WORK*/
+        // Email
+        addLabeledTextField("Email", frameConstraints, 0, 3);
 
-        // Last Name
-        JLabel lastName = new JLabel("Last Name");
-        lastName.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 2;
-        frameConstraints.gridy = 2;
-        frameConstraints.insets = new Insets(0, 10, 0, 30);
-        add(lastName, frameConstraints);
-
-        JTextArea lastNameField = new JTextArea();
-        lastNameField.setPreferredSize(new Dimension(200, 20));
-        frameConstraints.gridx = 3;
-        frameConstraints.gridy = 2;
-        frameConstraints.insets = new Insets(0, 0, 10, 0);
-        add(lastNameField, frameConstraints);
-        /*TODO: CONNECT BACKEND WORK*/
-
-        // email
-        JLabel email = new JLabel("Email");
-        email.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 3;
-        add(email, frameConstraints);
-
-        JTextArea emailField = new JTextArea();
-        emailField.setPreferredSize(new Dimension(200, 20));
-        frameConstraints.gridx = 1;
-        frameConstraints.gridy = 3;
-        add(emailField, frameConstraints);
-
-        // password
-        JLabel password = new JLabel("Password");
-        password.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 4;
-        add(password, frameConstraints);
-
-        JPasswordField passwordField = new JPasswordField();
-        passwordField.setPreferredSize(new Dimension(200, 20));
-        frameConstraints.gridx = 1;
-        frameConstraints.gridy = 4;
-        add(passwordField, frameConstraints);
-
-        JLabel confirmPassword = new JLabel("Confirm Password");
-        confirmPassword.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 5;
-        add(confirmPassword, frameConstraints);
-
-        JPasswordField confirmPasswordField = new JPasswordField();
-        confirmPasswordField.setPreferredSize(new Dimension(200, 20));
-        frameConstraints.gridx = 1;
-        frameConstraints.gridy = 5;
-        add(confirmPasswordField, frameConstraints);
+        // Password and Confirm Password
+        addLabeledPasswordField("Password", frameConstraints, 0, 4);
+        addLabeledPasswordField("Confirm Password", frameConstraints, 0, 5);
 
         // Age
-        JLabel age = new JLabel("Age");
-        age.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 6;
-        add(age, frameConstraints);
+        addLabeledTextField("Age", frameConstraints, 0, 6);
 
-        JTextArea ageField = new JTextArea();
-        ageField.setPreferredSize(new Dimension(200, 20));
-        frameConstraints.gridx = 1;
-        frameConstraints.gridy = 6;
-        add(ageField, frameConstraints);
+        // Major ComboBox
+        addComboBox("Major", new String[]{
+                "Computer Science", "Software Engineering", "Computer Engineering", "Cyber Security",
+                "Computer Information Systems", "Electrical Engineering", "Mathematics", "Applied Physics",
+                "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences",
+                "Wildfire Science & the Urban Interface"
+        }, frameConstraints, 0, 7);
 
-        /*TODO: ASK ABOUT HOW TO IMPLEMENT AGE*/
+        // Graduation Year ComboBox
+        addComboBox("Graduation Year", new Integer[]{2024, 2025}, frameConstraints, 0, 8);
 
-        // major drop down menu
-        JLabel major = new JLabel("Major");
-        major.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 7;
-        add(major, frameConstraints);
+        // Sign Up Button
+        addSignUpButton(frameConstraints, 3, 8);
+    }
 
-        JComboBox<String> majorComboBox = new JComboBox<String>(new String[]{"Computer Science", "Software Engineering", "Computer Engineering", "Cyber Security", "Computer Information Systems", "Electrical Engineering", "Mathematics", "Applied Physics", "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences", "Wildfire Science & the Urban Interface"});
-        // TODO: DECLARE LIST ELSEWHERE TO USE IN OTHER INSTANCES
-        frameConstraints.gridx = 1;
-        frameConstraints.gridy = 7;
-        add(majorComboBox, frameConstraints);
-        /*TODO: ADD ALL MAJORS THROUGH A LIST FROM CSUSM*/
+    private void addLabel(String text, int fontSize, GridBagConstraints constraints, int gridX, int gridY, int bottomInset) {
+        JLabel label = new JLabel(text);
+        label.setFont(FontManager.getCustomFont(fontSize).deriveFont(Font.BOLD));
+        constraints.gridx = gridX;
+        constraints.gridy = gridY;
+        constraints.insets = new Insets(0, 0, bottomInset, 0);
+        add(label, constraints);
+    }
 
-        /*TODO: YEAR DROP DOWN*/
-        JLabel graduationYear = new JLabel("Graduation Year");
-        graduationYear.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 0;
-        frameConstraints.gridy = 8;
-        add(graduationYear, frameConstraints);
+    private void addLabeledTextField(String labelText, GridBagConstraints constraints, int gridX, int gridY) {
+        addLabel(labelText, 15, constraints, gridX, gridY, 10);
+        JTextArea textField = new JTextArea();
+        textField.setPreferredSize(new Dimension(200, 20));
+        constraints.gridx = gridX + 1;
+        constraints.gridy = gridY;
+        add(textField, constraints);
+    }
 
-        JComboBox<Integer> graduationYearComboBox = new JComboBox<Integer>(new Integer[]{2024, 2025});
-        frameConstraints.gridx = 1;
-        frameConstraints.gridy = 8;
-        add(graduationYearComboBox, frameConstraints);
+    private void addLabeledPasswordField(String labelText, GridBagConstraints constraints, int gridX, int gridY) {
+        addLabel(labelText, 15, constraints, gridX, gridY, 10);
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setPreferredSize(new Dimension(200, 20));
+        constraints.gridx = gridX + 1;
+        constraints.gridy = gridY;
+        add(passwordField, constraints);
+    }
 
+    private void addComboBox(String labelText, Object[] items, GridBagConstraints constraints, int gridX, int gridY) {
+        addLabel(labelText, 15, constraints, gridX, gridY, 10);
+        JComboBox<Object> comboBox = new JComboBox<>(items);
+        constraints.gridx = gridX + 1;
+        constraints.gridy = gridY;
+        add(comboBox, constraints);
+    }
+
+    private void addSignUpButton(GridBagConstraints constraints, int gridX, int gridY) {
         JButton signUpButton = new JButton("Sign Up");
         signUpButton.setFont(FontManager.getCustomFont(15));
-        frameConstraints.gridx = 3;
-        frameConstraints.gridy = 8;
-        add(signUpButton, frameConstraints);
-        // TODO: BACKEND
+        constraints.gridx = gridX;
+        constraints.gridy = gridY;
+        add(signUpButton, constraints);
+        // TODO: Add backend functionality for sign up
     }
 }

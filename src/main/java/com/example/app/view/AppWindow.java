@@ -9,69 +9,72 @@ import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 
 public class AppWindow extends JFrame {
+
     public AppWindow() {
+        // Basic window settings
         setTitle("Study Buddy");
-        setUndecorated(true); // removes default title bar
-        GridBagConstraints frameConstraints = new GridBagConstraints();
+        setUndecorated(true); // Removes default title bar
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Opens the window in the center of the screen
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20)); // Rounds the corners
+        setIconImage(new ImageIcon("src/resources/img/logo.png").getImage()); // Custom logo
 
-        // rounds the corners of the window
-        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
+        // Layout settings
+        setLayout(new BorderLayout());
 
-        // setting custom logo
-        ImageIcon logo = new ImageIcon("src/resources/img/logo.png");
-        setIconImage(logo.getImage());
-
-        // opens the window in the center of the screen
-        setLocationRelativeTo(null);
-
-        // adds the login screen to this window
+        // Pages
         LoginPage loginPage = new LoginPage();
+        SignUpPage signUpPage = new SignUpPage();
+        DiscoverPage discoverPage = new DiscoverPage(); // Not used in this example, but included for context
+
+        // Add the Login page by default
         add(loginPage, BorderLayout.CENTER);
 
-        // discoverPage view
-        DiscoverPage discoverPage = new DiscoverPage();
+        // Sign Up Button
+        addSignUpButton(loginPage, signUpPage);
 
-        //Sign Up Button
-        SignUpPage signUpPage = new SignUpPage();
+        // Back to Login Button
+        addBackToLoginButton(signUpPage, loginPage);
+    }
+
+    private void addSignUpButton(LoginPage loginPage, SignUpPage signUpPage) {
         JButton signUpButton = new JButton("Sign Up");
         signUpButton.setFont(FontManager.getCustomFont(12));
+
+        GridBagConstraints frameConstraints = new GridBagConstraints();
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 8;
         loginPage.add(signUpButton, frameConstraints);
-        // TODO: MOVE BUTTON TO PROPER JAVA FILE
 
-        // When Sign Up Button is pressed, it takes you to the Sign Up Page.
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 openPage(signUpPage);
             }
         });
-        // TODO: MOVE LOGIC TO PROPER JAVA FILE
+    }
 
-        //Makes and displays a Back to Login Button.
+    private void addBackToLoginButton(SignUpPage signUpPage, LoginPage loginPage) {
         JButton backToLoginButton = new JButton("Back to Login");
+
+        GridBagConstraints frameConstraints = new GridBagConstraints();
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 0;
         signUpPage.add(backToLoginButton, frameConstraints);
-        // TODO: MOVE BUTTON TO PROPER JAVA FILE (LOGIN PAGE)
 
-        // Pressing the "Back to Login" button takes the user
-        // back to the login screen.
         backToLoginButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {openPage(loginPage);
+            public void actionPerformed(ActionEvent e) {
+                openPage(loginPage);
             }
         });
-        // TODO: MOVE LOGIC TO PROPER JAVA FILE (SIGN UP PAGE)
     }
 
+    // Open a specific page inside the window
     public void openPage(JPanel page) {
         setContentPane(page);
         revalidate();
         repaint();
     }
 }
-
