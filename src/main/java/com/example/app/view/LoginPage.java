@@ -78,7 +78,7 @@ public class LoginPage extends JPanel {
 
         // Login button
         JButton loginButton = new JButton("Login");
-        loginButton.setFont(new Font("Serif", Font.BOLD, 12));
+        loginButton.setFont(FontManager.getCustomFont(12));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 5;
         frameConstraints.insets = new Insets(10, 0, 0, 0);
@@ -86,6 +86,7 @@ public class LoginPage extends JPanel {
 
         // Password Retrieval
         JButton forgotPasswordButton = new JButton("Forgot Password?");
+        forgotPasswordButton.setFont(FontManager.getCustomFont(12));
         frameConstraints.gridx = 0;
         frameConstraints.gridy = 6;
         add(forgotPasswordButton, frameConstraints);
