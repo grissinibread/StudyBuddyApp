@@ -26,10 +26,12 @@ public class AppWindow extends JFrame {
         // Pages
         LoginPage loginPage = new LoginPage();
         SignUpPage signUpPage = new SignUpPage();
+        ProfilePage profilePage = new ProfilePage();
         DiscoverPage discoverPage = new DiscoverPage(); // Not used in this example, but included for context
 
         // Add the Login page by default
-        add(loginPage, BorderLayout.CENTER);
+        // add(loginPage, BorderLayout.CENTER);
+        // add(profilePage, BorderLayout.CENTER);
 
         // Sign Up Button
         addSignUpButton(loginPage, signUpPage);
