@@ -25,7 +25,7 @@ public final class LoginPage extends JPanel {
         initializeUI();
     }
 
-    //Returns the one instance of the signUpPage.
+    //Returns the one instance of the loginPage.
     public static LoginPage getLoginPage()
     {
         return loginPage;
