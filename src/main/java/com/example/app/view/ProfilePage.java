@@ -3,6 +3,7 @@ package com.example.app.view;
 import javax.swing.*;
 import java.awt.*;
 
+// TODO: Make this file one instance/singleton model.
 public class ProfilePage extends JPanel {
     public ProfilePage() {
         setLayout(new GridBagLayout());

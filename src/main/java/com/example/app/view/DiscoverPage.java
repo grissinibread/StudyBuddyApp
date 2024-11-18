@@ -3,9 +3,14 @@ package com.example.app.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class DiscoverPage extends JPanel {
+public final class DiscoverPage extends JPanel {
+    //Initializes the one instance of a Discover Page to be used by the rest of the program.
+    private static final DiscoverPage discoverPage = new DiscoverPage();
+
     //private DiscoverController discoverController;
-    public DiscoverPage() {
+
+    //Discover Page constructor.
+    private DiscoverPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
@@ -67,6 +72,12 @@ public class DiscoverPage extends JPanel {
 //                discoverController.matchStudents(user1, user2);
 //            }
 //        });
+    }
+
+    //Returns the one instance of the discoverPage.
+    public static DiscoverPage getDiscoverPage()
+    {
+        return discoverPage;
     }
 
     public void profileTemplate() {

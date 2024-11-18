@@ -1,5 +1,8 @@
 package com.example.app.controller;
 import com.example.app.model.User;
+import com.example.app.view.AppWindow;
+import com.example.app.view.DiscoverPage;
+
 import java.util.Vector;
 
 public class DiscoverController {
@@ -100,6 +103,12 @@ public class DiscoverController {
         }
         else { rank = -1; } // not an acceptable match
         System.out.println("Rank: " + rank);
+    }
+
+    //Takes the user to the Discover Page.
+    public void goToDiscoverPage(){
+        //AppWindow.getAppWindow().openPage(AppWindow.getAppWindow().getDiscoverPage());
+        AppWindow.getAppWindow().openPage(DiscoverPage.getDiscoverPage());
     }
 }
 

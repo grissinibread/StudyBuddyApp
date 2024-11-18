@@ -1,13 +1,23 @@
 package com.example.app.view;
 
+import com.example.app.controller.SignUpController;
 import com.example.app.util.FontManager;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class SignUpPage extends JPanel {
+public final class SignUpPage extends JPanel {
+    //Initializes the one instance of a Sign Up page to be used by the rest of the program.
+    private static final SignUpPage signUpPage = new SignUpPage();
 
-    public SignUpPage() {
+    //Initializes the sign up controller to be used by the class.
+    private final SignUpController signUpController;
+
+    //Sign Up page constructor.
+    private SignUpPage() {
+        //Initializes the sign up controller to be used by the class.
+        this.signUpController = new SignUpController();
+
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
@@ -41,6 +51,15 @@ public class SignUpPage extends JPanel {
 
         // Sign Up Button
         addSignUpButton(frameConstraints, 3, 8);
+
+        // Back to Login Button
+        addBackToLoginButton(frameConstraints);
+    }
+
+    //Returns the one instance of the signUpPage.
+    public static SignUpPage getSignUpPage()
+    {
+        return signUpPage;
     }
 
     private void addLabel(String text, int fontSize, GridBagConstraints constraints, int gridX, int gridY, int bottomInset) {
@@ -85,5 +104,14 @@ public class SignUpPage extends JPanel {
         constraints.gridy = gridY;
         add(signUpButton, constraints);
         // TODO: Add backend functionality for sign up
+    }
+
+    private void addBackToLoginButton(GridBagConstraints constraints) {
+        JButton backToLoginButton = new JButton("Back to Login");
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        add(backToLoginButton, constraints);
+
+        backToLoginButton.addActionListener(e -> signUpController.goToLoginPage());
     }
 }

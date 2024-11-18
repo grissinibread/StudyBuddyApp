@@ -1,17 +1,34 @@
 package com.example.app.view;
 
 import com.example.app.controller.SignUpController;
+import com.example.app.controller.DiscoverController;
 import com.example.app.util.FontManager;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginPage extends JPanel {
-    private final SignUpController signUpController;
+public final class LoginPage extends JPanel {
+    //Initializes the one instance of a Login Page to be used by the rest of the program.
+    private static final LoginPage loginPage = new LoginPage();
 
-    public LoginPage() {
+    //Initializes the sign up controller to be used by the class.
+    private final SignUpController signUpController;
+    //Initializes the discover controller to be used by the class.
+    private final DiscoverController discoverController;
+
+    //Login Page constructor.
+    private LoginPage() {
+        //Initializes the sign up controller to be used by the class.
         this.signUpController = new SignUpController();
+        //Initializes the discover controller to be used by the class.
+        this.discoverController = new DiscoverController();
         initializeUI();
+    }
+
+    //Returns the one instance of the signUpPage.
+    public static LoginPage getLoginPage()
+    {
+        return loginPage;
     }
 
     @Override
@@ -48,6 +65,9 @@ public class LoginPage extends JPanel {
 
         // Sign-up Option
         addSignUpOption(constraints);
+
+        // Sign-Up Button
+        addSignUpButton(constraints);
     }
 
     private void addTitleLabel(GridBagConstraints constraints) {
@@ -109,8 +129,7 @@ public class LoginPage extends JPanel {
         if (signUpController.verifySignUp(email, password)) {
             // Navigate to the next page
             System.out.println("Login successful");
-            // Example: appWindow.openPage(new DiscoverPage());
-            // TODO: Change windows
+            discoverController.goToDiscoverPage();
         }
     }
 
@@ -128,6 +147,15 @@ public class LoginPage extends JPanel {
         signUpLabel.setForeground(Color.decode("#4A4A4A"));
         constraints.gridy = 7;
         add(signUpLabel, constraints);
-        // TODO: Add a sign-up button
+    }
+
+    private void addSignUpButton(GridBagConstraints constraints) {
+        JButton signUpButton = new JButton("Sign Up");
+        signUpButton.setFont(FontManager.getCustomFont(12));
+        constraints.gridx = 0;
+        constraints.gridy = 8;
+        add(signUpButton, constraints);
+
+        signUpButton.addActionListener(e -> signUpController.goToSignUpPage());
     }
 }
