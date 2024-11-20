@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 // TODO: Make this file one instance/singleton model.
-public class MessagesPage extends JPanel {
-    public MessagesPage() {
+public class ConnectionsPage extends JPanel {
+    public ConnectionsPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 

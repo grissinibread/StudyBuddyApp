@@ -60,9 +60,6 @@ public final class LoginPage extends JPanel {
         // Login Button
         addLoginButton(emailTextBox, passwordTextBox, constraints);
 
-        // Forgot Password Button
-        addForgotPasswordButton(constraints);
-
         // Sign-up Option
         addSignUpOption(constraints);
 
@@ -133,13 +130,13 @@ public final class LoginPage extends JPanel {
         }
     }
 
-    private void addForgotPasswordButton(GridBagConstraints constraints) {
-        JButton forgotPasswordButton = new JButton("Forgot Password?");
-        forgotPasswordButton.setFont(FontManager.getCustomFont(12));
-        constraints.gridy = 6;
-        add(forgotPasswordButton, constraints);
-        // TODO: Add action listener for password retrieval
-    }
+//    private void addForgotPasswordButton(GridBagConstraints constraints) {
+//        JButton forgotPasswordButton = new JButton("Forgot Password?");
+//        forgotPasswordButton.setFont(FontManager.getCustomFont(12));
+//        constraints.gridy = 6;
+//        add(forgotPasswordButton, constraints);
+//        // TODO: Add action listener for password retrieval
+//    }
 
     private void addSignUpOption(GridBagConstraints constraints) {
         JLabel signUpLabel = new JLabel("Don't have an account?");

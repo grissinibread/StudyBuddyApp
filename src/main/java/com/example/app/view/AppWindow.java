@@ -11,14 +11,24 @@ public final class AppWindow extends JFrame {
     private static final AppWindow appWindow = new AppWindow();
 
     private AppWindow() {
-        // Basic window settings
+        // Setting the title of the application
         setTitle("Study Buddy");
-        setUndecorated(true); // Removes default title bar
+
+        // Removing the default title bar
+        setUndecorated(true);
+
+        // Setting default size of the window
         setSize(800, 600);
+
+        // Closes application
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Opens the window in the center of the screen
-        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20)); // Rounds the corners
-        setIconImage(new ImageIcon("src/resources/img/logo.png").getImage()); // Custom logo
+
+        // Opens the window in the center of the screen
+        setLocationRelativeTo(null);
+
+        // Rounds the corners of the frame
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
+        setIconImage(new ImageIcon("src/resources/img/logo.png").getImage());
 
         // Layout settings
         setLayout(new BorderLayout());
@@ -34,8 +44,7 @@ public final class AppWindow extends JFrame {
     }
 
     //Returns the one instance of the AppWindow.
-    public static AppWindow getAppWindow()
-    {
+    public static AppWindow getAppWindow() {
         return appWindow;
     }
 
