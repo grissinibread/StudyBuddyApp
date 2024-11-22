@@ -1,4 +1,8 @@
-package controller;
+package com.example.app.controller;
+
+import com.example.app.view.AppWindow;
+import com.example.app.view.LoginPage;
+import com.example.app.view.SignUpPage;
 
 import javax.swing.*;
 
@@ -117,4 +121,15 @@ public class SignUpController {
         return emailValid(email) && passwordValid(password);
     }
 
+    //Takes the user to the Sign Up Page.
+    public void goToSignUpPage(){
+        AppWindow.getAppWindow().openPage(SignUpPage.getSignUpPage());
+    }
+
+    //Takes the user to the Login Page.
+    //NOTE: This will be later moved to a potential "LoginController"
+    //Didn't feel like making one yet though so I just put it here.
+    public void goToLoginPage(){
+        AppWindow.getAppWindow().openPage(LoginPage.getLoginPage());
+    }
 }

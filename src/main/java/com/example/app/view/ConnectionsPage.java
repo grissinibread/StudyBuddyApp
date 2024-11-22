@@ -1,10 +1,11 @@
-package view;
+package com.example.app.view;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MessagesPage extends JPanel {
-    public MessagesPage() {
+// TODO: Make this file one instance/singleton model.
+public class ConnectionsPage extends JPanel {
+    public ConnectionsPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
