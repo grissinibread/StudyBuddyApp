@@ -45,7 +45,6 @@ public class DiscoverController {
         ageDiff = Math.abs(user1.getAge() - user2.getAge()); // 0-2 yrs, 2+ yrs
         if (ageDiff <= 2){ commonalities++;}
 
-        // TODO: RANK MATCHES
         // if major matches, at least 2 other aspects must match
         // if major does not match 3 others ( year + 2 more)
         int rank = 0; // all aspects match
