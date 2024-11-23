@@ -3,9 +3,12 @@ package com.example.app.view;
 import javax.swing.*;
 import java.awt.*;
 
-// TODO: Make this file one instance/singleton model.
-public class ConnectionsPage extends JPanel {
-    public ConnectionsPage() {
+public final class ConnectionsPage extends JPanel {
+    //Initializes the one instance of a Connections Page to be used by the rest of the program.
+    private static final ConnectionsPage connectionsPage = new ConnectionsPage();
+
+    //Connections Page constructor.
+    private ConnectionsPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
@@ -15,4 +18,7 @@ public class ConnectionsPage extends JPanel {
         frameConstraints.gridy = 0;
         add(titleLabel, frameConstraints);
     }
+
+    //Returns the one instance of the connectionsPage.
+    public static ConnectionsPage getConnectionsPage() { return connectionsPage; }
 }

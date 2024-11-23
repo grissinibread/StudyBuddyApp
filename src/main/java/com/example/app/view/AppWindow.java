@@ -33,12 +33,6 @@ public final class AppWindow extends JFrame {
         // Layout settings
         setLayout(new BorderLayout());
 
-        // Login and Sign Up pages are already initialized in their respective class file.
-        //LoginPage loginPage = new LoginPage();
-        //SignUpPage signUpPage = new SignUpPage();
-        ProfilePage profilePage = new ProfilePage();
-        //DiscoverPage discoverPage = new DiscoverPage(); // Not used in this example, but included for context
-
         // Add the Login page by default
         add(LoginPage.getLoginPage(), BorderLayout.CENTER);
     }
