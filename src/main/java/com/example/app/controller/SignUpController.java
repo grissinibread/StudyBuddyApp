@@ -28,6 +28,7 @@ public class SignUpController {
             JOptionPane.showMessageDialog(null, "Email: Not CSUSM Email");
             return false;
         }
+        //TODO: STORE IN USER
         return true;
     }
 
@@ -74,6 +75,7 @@ public class SignUpController {
             JOptionPane.showMessageDialog(null, "Password: Character Missing");
             return false;
         }
+        //TODO: STORE IN USER
         return true;
     }
 
@@ -102,6 +104,7 @@ public class SignUpController {
                 }
             }
         }
+        //TODO: STORE IN USER
         return true;
     }
 
@@ -111,17 +114,28 @@ public class SignUpController {
             JOptionPane.showMessageDialog(null, "Age Invalid");
             return false;
         }
+        //TODO: STORE IN USER ?
         return true;
     }
 
-    //TODO: MAJOR SELECT
-    //TODO: YEAR SELECT
+    //TODO: MAJOR SELECT STORED IN USER
+    //TODO: YEAR SELECT STORED IN USER
 
-    public boolean verifySignUp(String email, String password){
-        return emailValid(email) && passwordValid(password);
+    // TODO: STORE USER IN DATABASE
+
+    public boolean verifyLogin (String email, String password){
+        // TODO: ADD VALIDITY CHECK AGAINST DATABASE
+        return emailValid(email) && passwordValid(password); // these will eventually be replaced with checking against database
+    }
+    public boolean verifySignUp(String firstName, String lastName, String email, String password, String confirmPass, int age){
+        if (!confirmPass.equals(password)) {
+            JOptionPane.showMessageDialog(null, "Passwords Do Not Match");
+            return false;
+        }
+        return verifyLogin(email, password) && nameValid(firstName, lastName) && ageValid(age);
     }
 
-    //Takes the user to the Sign Up Page.
+    //Takes the user to the SignUp Page.
     public void goToSignUpPage(){
         AppWindow.getAppWindow().openPage(SignUpPage.getSignUpPage());
     }

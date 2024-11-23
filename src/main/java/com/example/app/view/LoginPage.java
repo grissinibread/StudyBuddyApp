@@ -123,7 +123,7 @@ public final class LoginPage extends JPanel {
     }
 
     private void handleLogin(String email, String password) {
-        if (signUpController.verifySignUp(email, password)) {
+        if (signUpController.verifyLogin(email, password)) {
             // Navigate to the next page
             System.out.println("Login successful");
             discoverController.goToDiscoverPage();

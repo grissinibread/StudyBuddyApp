@@ -1,6 +1,7 @@
 package com.example.app.view;
 
 import com.example.app.controller.SignUpController;
+import com.example.app.controller.DiscoverController;
 import com.example.app.util.FontManager;
 
 import javax.swing.*;
@@ -10,14 +11,17 @@ public final class SignUpPage extends JPanel {
     //Initializes the one instance of a Sign Up page to be used by the rest of the program.
     private static final SignUpPage signUpPage = new SignUpPage();
 
-    //Initializes the sign up controller to be used by the class.
+    //Initializes the signup controller to be used by the class.
     private final SignUpController signUpController;
+    //Initializes the discover controller to be used by the class.
+    private final DiscoverController discoverController;
 
     //Sign Up page constructor.
     private SignUpPage() {
-        //Initializes the sign up controller to be used by the class.
+        //Initializes the signup controller to be used by the class.
         this.signUpController = new SignUpController();
-
+        // Initializes the discover controller to be used by the class.
+        this.discoverController = new DiscoverController();
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
 
@@ -25,18 +29,18 @@ public final class SignUpPage extends JPanel {
         addLabel("Sign Up", 50, frameConstraints, 0, 1, 25);
 
         // First Name and Last Name
-        addLabeledTextField("First Name", frameConstraints, 0, 2);
-        addLabeledTextField("Last Name", frameConstraints, 2, 2);
+        JTextArea firstNameTextBox = addLabeledTextField("First Name", frameConstraints, 0, 2);
+        JTextArea lastNameTextBox = addLabeledTextField("Last Name", frameConstraints, 2, 2);
 
         // Email
-        addLabeledTextField("Email", frameConstraints, 0, 3);
+        JTextArea emailTextBox = addLabeledTextField("Email", frameConstraints, 0, 3);
 
         // Password and Confirm Password
-        addLabeledPasswordField("Password", frameConstraints, 0, 4);
-        addLabeledPasswordField("Confirm Password", frameConstraints, 0, 5);
+        JPasswordField passwordField = addLabeledPasswordField("Password", frameConstraints, 0, 4);
+        JPasswordField confirmPasswordField = addLabeledPasswordField("Confirm Password", frameConstraints, 0, 5);
 
         // Age
-        addLabeledTextField("Age", frameConstraints, 0, 6);
+        JTextArea ageTextBox = addLabeledTextField("Age", frameConstraints, 0, 6);
 
         // Major ComboBox
         addComboBox("Major", new String[]{
@@ -50,7 +54,7 @@ public final class SignUpPage extends JPanel {
         addComboBox("Graduation Year", new Integer[]{2024, 2025}, frameConstraints, 0, 8);
 
         // Sign Up Button
-        addSignUpButton(frameConstraints, 3, 8);
+        addSignUpAttemptButton(firstNameTextBox, lastNameTextBox, emailTextBox, passwordField, confirmPasswordField, ageTextBox, frameConstraints, 3, 8);
 
         // Back to Login Button
         addBackToLoginButton(frameConstraints);
@@ -71,22 +75,24 @@ public final class SignUpPage extends JPanel {
         add(label, constraints);
     }
 
-    private void addLabeledTextField(String labelText, GridBagConstraints constraints, int gridX, int gridY) {
+    private JTextArea addLabeledTextField(String labelText, GridBagConstraints constraints, int gridX, int gridY) {
         addLabel(labelText, 15, constraints, gridX, gridY, 10);
         JTextArea textField = new JTextArea();
         textField.setPreferredSize(new Dimension(200, 20));
         constraints.gridx = gridX + 1;
         constraints.gridy = gridY;
         add(textField, constraints);
+        return textField;
     }
 
-    private void addLabeledPasswordField(String labelText, GridBagConstraints constraints, int gridX, int gridY) {
+    private JPasswordField addLabeledPasswordField(String labelText, GridBagConstraints constraints, int gridX, int gridY) {
         addLabel(labelText, 15, constraints, gridX, gridY, 10);
         JPasswordField passwordField = new JPasswordField();
         passwordField.setPreferredSize(new Dimension(200, 20));
         constraints.gridx = gridX + 1;
         constraints.gridy = gridY;
         add(passwordField, constraints);
+        return passwordField;
     }
 
     private void addComboBox(String labelText, Object[] items, GridBagConstraints constraints, int gridX, int gridY) {
@@ -97,13 +103,25 @@ public final class SignUpPage extends JPanel {
         add(comboBox, constraints);
     }
 
-    private void addSignUpButton(GridBagConstraints constraints, int gridX, int gridY) {
-        JButton signUpButton = new JButton("Sign Up");
-        signUpButton.setFont(FontManager.getCustomFont(15));
+    private void addSignUpAttemptButton(JTextArea firstNameBox, JTextArea lastNameBox, JTextArea emailBox, JPasswordField passwordField, JPasswordField confirmPassField, JTextArea ageBox, GridBagConstraints constraints, int gridX, int gridY) {
+        JButton signUpAttemptButton = new JButton("Sign Up");
+        signUpAttemptButton.setFont(FontManager.getCustomFont(15));
         constraints.gridx = gridX;
         constraints.gridy = gridY;
-        add(signUpButton, constraints);
-        // TODO: Add backend functionality for sign up
+        add(signUpAttemptButton, constraints);
+        signUpAttemptButton.addActionListener(e -> handleSignUp(firstNameBox.getText(), lastNameBox.getText(), emailBox.getText(), passwordField.getText(), confirmPassField.getText(), ageBox.getText()));
+
+    }
+
+    private void handleSignUp(String first, String last, String email, String password, String confirmPass, String ageText) {
+        int age = Integer.parseInt(ageText);
+        System.out.println("info: " + first + " " + last + " " + email + " " + password + " " + confirmPass + " " + age);
+        if (signUpController.verifySignUp(first, last, email, password, confirmPass, age)) {
+            // Navigate to the next page
+            // TODO: IF VALID STORE IN DATABASE
+            System.out.println("SignUp successful");
+            //discoverController.goToDiscoverPage();
+        }
     }
 
     private void addBackToLoginButton(GridBagConstraints constraints) {
