@@ -1,6 +1,6 @@
 package com.example.app.view;
 
-import com.example.app.controller.SignUpController;
+import com.example.app.controller.LoginController;
 import com.example.app.util.FontManager;
 
 import javax.swing.*;
@@ -11,12 +11,12 @@ public final class SignUpPage extends JPanel {
     private static final SignUpPage signUpPage = new SignUpPage();
 
     //Initializes the sign up controller to be used by the class.
-    private final SignUpController signUpController;
+    private final LoginController loginController;
 
     //Sign Up page constructor.
     private SignUpPage() {
         //Initializes the sign up controller to be used by the class.
-        this.signUpController = new SignUpController();
+        this.loginController = new LoginController();
 
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
@@ -112,6 +112,6 @@ public final class SignUpPage extends JPanel {
         constraints.gridy = 0;
         add(backToLoginButton, constraints);
 
-        backToLoginButton.addActionListener(e -> signUpController.goToLoginPage());
+        backToLoginButton.addActionListener(e -> loginController.goToLoginPage());
     }
 }
