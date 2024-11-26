@@ -1,6 +1,7 @@
 package com.example.app.view;
 
 import com.example.app.controller.SignUpController;
+import com.example.app.controller.LoginController;
 import com.example.app.controller.DiscoverController;
 import com.example.app.util.FontManager;
 
@@ -10,10 +11,13 @@ import java.awt.*;
 public final class SignUpPage extends JPanel {
     //Initializes the one instance of a Sign Up page to be used by the rest of the program.
     private static final SignUpPage signUpPage = new SignUpPage();
-    private final DiscoverController discoverController;
 
     //Initializes the sign up controller to be used by the class.
+    private final DiscoverController discoverController;
+    //Initializes the sign up controller to be used by the class.
     private final SignUpController signUpController;
+    //Initializes the login controller to be used by the class.
+    private final LoginController loginController;
 
     //Sign Up page constructor.
     private SignUpPage() {
@@ -21,6 +25,8 @@ public final class SignUpPage extends JPanel {
         this.signUpController = new SignUpController();
         //Initializes the discover controller to be used by the class.
         this.discoverController = new DiscoverController();
+        //Initializes the discover controller to be used by the class.
+        this.loginController = new LoginController();
 
         setLayout(new GridBagLayout());
         GridBagConstraints frameConstraints = new GridBagConstraints();
@@ -130,7 +136,6 @@ public final class SignUpPage extends JPanel {
         constraints.gridy = 0;
         add(backToLoginButton, constraints);
 
-        // commented out bc errors
-        //backToLoginButton.addActionListener(e -> signUpController.goToLoginPage());
+        backToLoginButton.addActionListener(e -> loginController.goToLoginPage());
     }
 }
