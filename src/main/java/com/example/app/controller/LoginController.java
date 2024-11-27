@@ -18,6 +18,7 @@ public class LoginController {
     private boolean emailValid (String email){
         // VERY IMPORTANT: email must be "hello" till todo is completed
         if (!email.equals("hello")){
+            JOptionPane.showMessageDialog(null, "Temporary: make email \"hello\" and password \"world\"");
             System.out.println("Log In failed: Email must be \"hello\" for temporary test");
             return false;
         }
