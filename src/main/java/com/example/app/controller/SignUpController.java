@@ -2,10 +2,12 @@ package com.example.app.controller;
 
 import com.example.app.view.AppWindow;
 import com.example.app.view.SignUpPage;
+import com.example.app.model.User;
 
 import javax.swing.*;
 
 public class SignUpController {
+    private User user = new User();
     // VALID EMAIL
     private boolean emailValid (String email){
         int length = email.length();
@@ -27,7 +29,8 @@ public class SignUpController {
             JOptionPane.showMessageDialog(null, "Email: Not CSUSM Email");
             return false;
         }
-        //TODO: STORE IN USER
+        // store in user if email is valid
+        user.setEmail(email);
         return true;
     }
 
@@ -74,7 +77,8 @@ public class SignUpController {
             JOptionPane.showMessageDialog(null, "Password: Character Missing");
             return false;
         }
-        //TODO: STORE IN USER
+        // store in user if password is valid
+        user.setPassword(password);
         return true;
     }
 
@@ -103,7 +107,8 @@ public class SignUpController {
                 }
             }
         }
-        //TODO: STORE IN USER
+        // store in user if name is valid
+        user.setName(firstName, lastName);
         return true;
     }
 
@@ -113,12 +118,20 @@ public class SignUpController {
             JOptionPane.showMessageDialog(null, "Age Invalid");
             return false;
         }
-        //TODO: STORE IN USER ?
+        // store in user if name is valid
+        user.setAge(age);
         return true;
     }
 
-    //TODO: MAJOR SELECT STORED IN USER
-    //TODO: YEAR SELECT STORED IN USER
+    // major selected stored in user
+    private void userMajor (String major){
+        user.setMajor(major);
+    }
+
+    // year selected stored in user
+    private void userYear (int year){
+        user.setYear(year);
+    }
 
     // TODO: STORE USER IN DATABASE
 

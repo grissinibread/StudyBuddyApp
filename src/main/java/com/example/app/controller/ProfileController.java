@@ -9,4 +9,7 @@ public class ProfileController {
     public void goToProfilePage(){
         AppWindow.getAppWindow().openPage(ProfilePage.getProfilePage());
     }
+    private String capitalizeName(String name){
+        return name.substring(0, 1).toUpperCase() + name.substring(1);
+    }
 }

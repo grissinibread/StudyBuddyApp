@@ -6,8 +6,8 @@ import com.example.app.view.DiscoverPage;
 import java.util.Vector;
 
 public class DiscoverController {
-    private User user1 = new User();
-    private User user2 = new User();
+    //private User user1 = new User();
+    //private User user2 = new User();
     //MATCHING ALGORITHM
     public void matchStudents(User user1, User user2) {
         /*OBJECTIVES: match based on...
@@ -32,18 +32,30 @@ public class DiscoverController {
             yearDiff = Math.abs(user1.getYear() - user2.getYear());
         }
 
-        if (user1.getInterest1() == user2.getInterest1()){
-            interestsMatch++;
-            commonalities++;
+        for (int i = 0; i<3; i++){
+            for( int j=0; j<3; j++){
+                if (user1.getInterest(i).equals(user2.getInterest(j))){
+                    interestsMatch++;
+                    commonalities++;
+                    break;
+                }
+            }
         }
-        if (user1.getInterest2() == user2.getInterest2()){
-            interestsMatch++;
-            commonalities++;
-        }
-        if (user1.getInterest3() == user2.getInterest3()){
-            interestsMatch++;
-            commonalities++;
-        }
+//        if (user1.getInterest1().equals(user2.getInterest1()) || user1.getInterest1().equals(user2.getInterest2()) ||
+//                user1.getInterest1().equals(user2.getInterest3())){
+//            interestsMatch++;
+//            commonalities++;
+//        }
+//        if (user1.getInterest2().equals(user2.getInterest1()) || user1.getInterest2().equals(user2.getInterest2()) ||
+//                user1.getInterest2().equals(user2.getInterest3())){
+//            interestsMatch++;
+//            commonalities++;
+//        }
+//        if (user1.getInterest3() == user2.getInterest3()){
+//            interestsMatch++;
+//            commonalities++;
+//        }
+//
 
         ageDiff = Math.abs(user1.getAge() - user2.getAge()); // 0-2 yrs, 2+ yrs
         if (ageDiff <= 2){ commonalities++;}

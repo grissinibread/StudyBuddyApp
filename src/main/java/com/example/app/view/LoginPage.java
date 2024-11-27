@@ -1,5 +1,6 @@
 package com.example.app.view;
 
+import com.example.app.controller.LoginController;
 import com.example.app.controller.SignUpController;
 import com.example.app.controller.DiscoverController;
 import com.example.app.util.FontManager;
@@ -11,13 +12,17 @@ public final class LoginPage extends JPanel {
     //Initializes the one instance of a Login Page to be used by the rest of the program.
     private static final LoginPage loginPage = new LoginPage();
 
-    //Initializes the sign up controller to be used by the class.
+    //Initializes the log in up controller to be used by the class.
+    private final LoginController loginController;
+    //Initializes the log in up controller to be used by the class.
     private final SignUpController signUpController;
     //Initializes the discover controller to be used by the class.
     private final DiscoverController discoverController;
 
     //Login Page constructor.
     private LoginPage() {
+        //Initializes the sign up controller to be used by the class.
+        this.loginController = new LoginController();
         //Initializes the sign up controller to be used by the class.
         this.signUpController = new SignUpController();
         //Initializes the discover controller to be used by the class.
@@ -123,7 +128,7 @@ public final class LoginPage extends JPanel {
     }
 
     private void handleLogin(String email, String password) {
-        if (signUpController.verifyLogin(email, password)) {
+        if (loginController.verifyLogin(email, password)) {
             // Navigate to the next page
             System.out.println("Login successful");
             discoverController.goToDiscoverPage();

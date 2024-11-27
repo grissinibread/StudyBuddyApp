@@ -1,7 +1,9 @@
 package com.example.app.view;
 
 import com.example.app.controller.SignUpController;
+import com.example.app.controller.LoginController;
 import com.example.app.controller.DiscoverController;
+import com.example.app.controller.ProfileController;
 import com.example.app.util.FontManager;
 
 import javax.swing.*;
@@ -10,15 +12,24 @@ import java.awt.*;
 public final class SignUpPage extends JPanel {
     //Initializes the one instance of a Sign Up page to be used by the rest of the program.
     private static final SignUpPage signUpPage = new SignUpPage();
-    private final DiscoverController discoverController;
-
     //Initializes the sign up controller to be used by the class.
     private final SignUpController signUpController;
+    //Initializes the login controller to be used by the class.
+    private final LoginController loginController;
+    //Initializes the profile controller to be used by the class.
+    private final ProfileController profileController;
+    //Initializes the discover controller to be used by the class.
+    private final DiscoverController discoverController;
+
 
     //Sign Up page constructor.
     private SignUpPage() {
         //Initializes the sign up controller to be used by the class.
         this.signUpController = new SignUpController();
+        //Initializes the login controller to be used by the class.
+        this.loginController = new LoginController();
+        //Initializes the discover controller to be used by the class.
+        this.profileController = new ProfileController();
         //Initializes the discover controller to be used by the class.
         this.discoverController = new DiscoverController();
 
@@ -119,8 +130,9 @@ public final class SignUpPage extends JPanel {
         int age = Integer.parseInt(ageText);
         if (signUpController.verifySignUp(first, last, email, password, confirmPass, age)) {
             // Navigate to the next page
-            System.out.println("Login successful");
-            discoverController.goToDiscoverPage();
+            System.out.println("SignUp successful");
+            profileController.goToProfilePage();
+            //discoverController.goToDiscoverPage();
         }
     }
 
@@ -129,8 +141,6 @@ public final class SignUpPage extends JPanel {
         constraints.gridx = 0;
         constraints.gridy = 0;
         add(backToLoginButton, constraints);
-
-        // commented out bc errors
-        //backToLoginButton.addActionListener(e -> signUpController.goToLoginPage());
+        backToLoginButton.addActionListener(e -> loginController.goToLoginPage());
     }
 }
