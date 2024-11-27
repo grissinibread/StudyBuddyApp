@@ -1,7 +1,5 @@
 package com.example.app.model;
 
-import javax.swing.*;
-
 public class User {
     private String name;
     private int age;
