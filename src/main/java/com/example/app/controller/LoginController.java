@@ -4,9 +4,19 @@ import com.example.app.view.AppWindow;
 import com.example.app.view.LoginPage;
 import com.example.app.model.User;
 
+// mongoDB packages
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.example.app.util.MongoDBConnector;
+import org.bson.Document;
+
 import javax.swing.*;
 
 public class LoginController {
+    private final MongoDatabase database;
+    public LoginController() {
+        this.database = MongoDBConnector.getDatabase();
+}
     private User user = new User();
 
     //Takes the user to the Login Page.
@@ -41,6 +51,26 @@ public class LoginController {
 
     public boolean verifyLogin (String email, String password){
         // TODO: ADD VALIDITY CHECK AGAINST DATABASE
+        MongoCollection<Document> usersCollection = database.getCollection("SB_users"); // grabs the entirety of the users database
+        Document query = new Document("email", email).append("password", password);
+        Document user = usersCollection.find(query).first();
+
+        if (user != null) {
+            // User found in the database
+            System.out.println("User exists!");
+            System.out.println("User details: " + user.toJson());
+
+            // Optionally, check the password (hashed passwords recommended)
+            if (password.equals(user.getString("password"))) {
+                System.out.println("Login successful!");
+            } else {
+                System.out.println("Incorrect password.");
+            }
+        } else {
+            // User does not exist
+            System.out.println("User not found.");
+        }
+
         return emailValid(email) && passwordValid(password); // these will eventually be replaced with checking against database
     }
 }
