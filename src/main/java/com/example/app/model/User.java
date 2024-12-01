@@ -2,6 +2,8 @@ package com.example.app.model;
 
 public class User {
     private String name;
+    private String fname;
+    private String lname;
     private int age;
     private String major;
     private int year;
@@ -37,7 +39,13 @@ public class User {
     public String getName() {
         return name;
     }
+    //Full name for display, ex. "John Doe"
     public void setName(String first, String last) { this.name = first + " " + last; }
+    //First & Last name separated
+    public void setFName(String firstName) { this.fname = firstName; }
+    public void setLName(String lastName) {this.lname = lastName;}
+    public String getFName() { return fname; }
+    public String getLName() { return lname; }
     // age functions
     public int getAge() {
         return age;
@@ -78,4 +86,7 @@ public class User {
     // password functions
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+    // database function
+    public void storeUser() {
+    }
 }

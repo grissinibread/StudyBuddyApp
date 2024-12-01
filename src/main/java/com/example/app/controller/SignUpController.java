@@ -3,6 +3,11 @@ package com.example.app.controller;
 import com.example.app.view.AppWindow;
 import com.example.app.view.SignUpPage;
 import com.example.app.model.User;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.example.app.util.MongoDBConnector;
+
+import org.bson.Document;
 
 import javax.swing.*;
 
@@ -107,8 +112,8 @@ public class SignUpController {
                 }
             }
         }
-        // store in user if name is valid
-        user.setName(firstName, lastName);
+        // store in user if name is valid (Full name & separated first name, last name)
+        user.setName(firstName, lastName); user.setFName(firstName); user.setLName(lastName);
         return true;
     }
 
@@ -133,7 +138,31 @@ public class SignUpController {
         user.setYear(year);
     }
 
-    // TODO: STORE USER IN DATABASE
+    // TODO: ADJUST MAJOR & YEAR DROP DOWN MENUS B/C currently variables are saved null
+    // Store user in MongoDB upon Sign Up
+    public void storeUser() {
+        try {
+            MongoDatabase database = MongoDBConnector.getDatabase();
+            MongoCollection<Document> usersCollection = database.getCollection("SB_users");
+
+            Document userDocument = new Document()
+                    .append("name", user.getName())         // Full name
+                    .append("fname", user.getFName())       // First name
+                    .append("lname", user.getLName())       // Last name
+                    .append("email", user.getEmail())       // Email
+                    .append("password", user.getPassword()) // Password
+                    .append("age", user.getAge())           // Age
+                    .append("major", user.getMajor())       // Major
+                    .append("year", user.getYear());        // Year
+
+            usersCollection.insertOne(userDocument);
+            System.out.println("User successfully added to the database. :)");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error storing user in database: " + e.getMessage());
+        }
+    }
 
     public boolean verifyLogin (String email, String password){
         // TODO: ADD VALIDITY CHECK AGAINST DATABASE
@@ -144,6 +173,16 @@ public class SignUpController {
             JOptionPane.showMessageDialog(null, "Passwords Do Not Match");
             return false;
         }
+
+        // Fill user info after validation
+        user.setName(firstName, lastName);
+        user.setFName(firstName);
+        user.setLName(lastName);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setAge(age);
+
+        storeUser();
         return verifyLogin(email, password) && nameValid(firstName, lastName) && ageValid(age);
     }
 
