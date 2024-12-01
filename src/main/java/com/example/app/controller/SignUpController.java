@@ -164,9 +164,47 @@ public class SignUpController {
         }
     }
 
+    // Check for existing email in DB
+    public boolean verifyEmail_DB(String email){
+        MongoDatabase database = MongoDBConnector.getDatabase();
+        MongoCollection<Document> usersCollection = database.getCollection("SB_users");
+        Document query = new Document("email", email);
+        Document user = usersCollection.find(query).first();
+        return user != null; // Return true if email exists
+    }
+
+    // Check for matching password in DB
+    public boolean verifyPassword_DB(String email, String password){
+        MongoDatabase database = MongoDBConnector.getDatabase();
+        MongoCollection<Document> usersCollection = database.getCollection("SB_users");
+        Document query = new Document("email", email).append("password", password);
+        Document user = usersCollection.find(query).first();
+        return user != null; // Return true if email and password match
+    }
+
+    //note: there are two verifyLogin functions(SignUp & Login Controller)
+    //Check if email and password are correct/match database
     public boolean verifyLogin (String email, String password){
         // TODO: ADD VALIDITY CHECK AGAINST DATABASE
-        return emailValid(email) && passwordValid(password); // these will eventually be replaced with checking against database
+        try {
+        // If email is existing email in DB
+        if (verifyEmail_DB(email)) {
+            JOptionPane.showMessageDialog(null, "This email address is already taken. Please try another.");
+            return false;
+        }
+
+        // If email is incorrect/does not match database
+        if(!verifyPassword_DB(email, password)) {
+            JOptionPane.showMessageDialog(null,"Incorrect password.");
+            return false;
+        }
+        return true;
+        } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error Verifying Login: " + e.getMessage());
+                return false;
+            }
+        //return emailValid(email) && passwordValid(password); // these will eventually be replaced with checking against database
     }
     public boolean verifySignUp(String firstName, String lastName, String email, String password, String confirmPass, int age){
         if (!confirmPass.equals(password)) {
@@ -174,16 +212,19 @@ public class SignUpController {
             return false;
         }
 
-        // Fill user info after validation
-        user.setName(firstName, lastName);
-        user.setFName(firstName);
-        user.setLName(lastName);
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setAge(age);
+        // Store user info after validation and non-existing email
+        if(emailValid(email) && passwordValid(password) && nameValid(firstName, lastName) && ageValid(age) && !verifyEmail_DB(email)){
+            // TODO: ADJUST MAJOR & YEAR DROP DOWN MENUS B/C currently variables are saved null
+//            userYear(user.getYear());
+//            userMajor(user.getMajor());
 
-        storeUser();
-        return verifyLogin(email, password) && nameValid(firstName, lastName) && ageValid(age);
+            storeUser();
+            return true;
+        } else if (verifyEmail_DB(email)) {
+            JOptionPane.showMessageDialog(null, "This email address is already taken. Please try another.");
+        }
+        return false;
+//        return verifyLogin(email, password) && nameValid(firstName, lastName) && ageValid(age);
     }
 
     //Takes the user to the SignUp Page.
