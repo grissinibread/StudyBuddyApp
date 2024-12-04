@@ -19,11 +19,11 @@ public final class DiscoverPage extends JPanel {
         // Top Nav Bar
         add(topNav(), BorderLayout.NORTH);
 
-        // Left Nav Bar;
-        add(leftNav(), BorderLayout.WEST);
-
         // Main Content
         add(mainContent(), BorderLayout.CENTER);
+
+        // Left Nav Bar;
+        add(bottomNav(), BorderLayout.SOUTH);
 
         // TESTING MATCH (does not work atm)
 //        User user1 = new User("Adria", 21, "Software", 3, "Beach", "Coding", "Music");
@@ -64,40 +64,40 @@ public final class DiscoverPage extends JPanel {
         topNav.add(titleLabel, constraints);
 
         // settingsIcon
-        ImageIcon settingsIcon = new ImageIcon("src/main/resources/img/settings.png");
-        JButton settingsIconButton = new JButton(settingsIcon);
-        settingsIconButton.setPreferredSize(new Dimension(40,40));
+        ImageIcon logout = new ImageIcon("src/main/resources/img/logout.jpeg");
+        JButton logoutButton = new JButton("logout");
 
         // Optional: Customize button (e.g., remove border and focus)
-        settingsIconButton.setBorderPainted(false);
-        settingsIconButton.setContentAreaFilled(false); // Transparent background
-        settingsIconButton.setFocusPainted(false);
-        settingsIconButton.setToolTipText("Settings"); // Add a tooltip
+        logoutButton.setBorderPainted(false);
+        logoutButton.setContentAreaFilled(false); // Transparent background
+        logoutButton.setFocusPainted(false);
+        logoutButton.setToolTipText("Logout"); // Add a tooltip
 
         constraints.gridx = 2;
         constraints.weightx = 1;
         constraints.anchor = GridBagConstraints.EAST;
-        topNav.add(settingsIconButton, constraints);
+        topNav.add(logoutButton, constraints);
         // TODO: BACKEND
 
         return topNav;
     }
 
-    private JPanel leftNav() {
-        JPanel leftNav = new JPanel();
-        leftNav.setBackground(Color.WHITE);
-        leftNav.setLayout(new GridBagLayout());
-        leftNav.setPreferredSize(new Dimension(100, getHeight()));
+    private JPanel bottomNav() {
+        JPanel bottomNav = new JPanel();
+        bottomNav.setBackground(Color.WHITE);
+        bottomNav.setLayout(new GridBagLayout());
+        bottomNav.setPreferredSize(new Dimension(getWidth(), 50));
         GridBagConstraints constraints = new GridBagConstraints();
 
         // Message Icon
-        JButton messagesIcon = new JButton("Connections");
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        leftNav.add(messagesIcon, constraints);
+        JButton messagesIcon = new JButton("Inbox");
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.weightx = 1;
+        constraints.insets = new Insets(0, 5, 0, 0);
+        bottomNav.add(messagesIcon, constraints);
         // TODO: BACKEND
 
-        return leftNav;
+        return bottomNav;
     }
 
     private JPanel mainContent() {
@@ -128,8 +128,21 @@ public final class DiscoverPage extends JPanel {
         // Create a custom rounded JPanel
         JPanel profileCard = new RoundedPanel(20);
         profileCard.setLayout(new GridBagLayout());
-        profileCard.setPreferredSize(new Dimension(300, 150));
+        GridBagConstraints constraints = new GridBagConstraints();
+        profileCard.setPreferredSize(new Dimension(350, 200));
         profileCard.setBackground(Color.BLACK);
+
+        // Addition of Image (Bread Image Temp)
+        // TODO: GET IMAGE FROM DATABASE
+        ImageIcon profileIcon = new ImageIcon("src/resources/img/bread.png");
+        JButton profileIconButton = new JButton(profileIcon);
+        profileIconButton.setPreferredSize(new Dimension(40,40));
+        profileIconButton.setBorderPainted(false);
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        profileCard.add(profileIconButton, constraints);
+
+        // TODO: GET ACCOUNT INFO FROM DATABASE
 
         JLabel bread = new JLabel("Bread");
         bread.setForeground(Color.WHITE); // To make text visible against the black background
