@@ -21,14 +21,32 @@ public final class SignUpPage extends JPanel {
     //Initializes the discover controller to be used by the class.
     private final DiscoverController discoverController;
 
+    //Initialize these objects so that it is possible to access them on other methods
+    // (Mainly to clear them/make them default when the page is changed).
+    private JTextArea firstNameBox;
+    private JTextArea lastNameBox;
+    private JTextArea emailBox;
+    private JPasswordField passwordBox;
+    private JPasswordField confirmPasswordBox;
+    private JTextArea ageBox;
+
+    String majorArray[] = {"Computer Science", "Software Engineering", "Computer Engineering", "Cyber Security",
+            "Computer Information Systems", "Electrical Engineering", "Mathematics", "Applied Physics",
+            "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences",
+            "Wildfire Science & the Urban Interface"};
+
+    Integer yearArray[] = {2024, 2025};
+
+    private JComboBox<String> majorComboBox = new JComboBox(majorArray);
+    private JComboBox<Integer> gradYearComboBox = new JComboBox(yearArray);
 
     //Sign Up page constructor.
     private SignUpPage() {
-        //Initializes the sign up controller to be used by the class.
+        //Initializes the sign-up controller to be used by the class.
         this.signUpController = new SignUpController();
         //Initializes the login controller to be used by the class.
         this.loginController = new LoginController();
-        //Initializes the discover controller to be used by the class.
+        //Initializes the profile controller to be used by the class.
         this.profileController = new ProfileController();
         //Initializes the discover controller to be used by the class.
         this.discoverController = new DiscoverController();
@@ -40,29 +58,30 @@ public final class SignUpPage extends JPanel {
         addLabel("Sign Up", 50, frameConstraints, 0, 1, 25);
 
         // First Name and Last Name
-        JTextArea firstNameBox = addLabeledTextField("First Name", frameConstraints, 0, 2);
-        JTextArea lastNameBox =addLabeledTextField("Last Name", frameConstraints, 2, 2);
+        firstNameBox = addLabeledTextField("First Name", frameConstraints, 0, 2);
+        lastNameBox = addLabeledTextField("Last Name", frameConstraints, 2, 2);
 
         // Email
-        JTextArea emailBox =addLabeledTextField("Email", frameConstraints, 0, 3);
+        emailBox = addLabeledTextField("Email", frameConstraints, 0, 3);
 
         // Password and Confirm Password
-        JPasswordField passwordBox =addLabeledPasswordField("Password", frameConstraints, 0, 4);
-        JPasswordField confirmPasswordBox = addLabeledPasswordField("Confirm Password", frameConstraints, 0, 5);
+        passwordBox = addLabeledPasswordField("Password", frameConstraints, 0, 4);
+        confirmPasswordBox = addLabeledPasswordField("Confirm Password", frameConstraints, 0, 5);
 
         // Age
-        JTextArea ageBox =addLabeledTextField("Age", frameConstraints, 0, 6);
+        ageBox = addLabeledTextField("Age", frameConstraints, 0, 6);
 
         // Major ComboBox
-        addComboBox("Major", new String[]{
-                "Computer Science", "Software Engineering", "Computer Engineering", "Cyber Security",
-                "Computer Information Systems", "Electrical Engineering", "Mathematics", "Applied Physics",
-                "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences",
-                "Wildfire Science & the Urban Interface"
-        }, frameConstraints, 0, 7);
+        this.addLabel("Major", 15, frameConstraints, 0, 7, 25);
+        frameConstraints.gridx = 1;
+        frameConstraints.gridy = 7;
+        this.add(majorComboBox, frameConstraints);
 
         // Graduation Year ComboBox
-        addComboBox("Graduation Year", new Integer[]{2024, 2025}, frameConstraints, 0, 8);
+        this.addLabel("Graduation Year", 15, frameConstraints, 0, 8, 25);
+        frameConstraints.gridx = 1;
+        frameConstraints.gridy = 8;
+        this.add(gradYearComboBox, frameConstraints);
 
         // Sign Up Button
         addSignUpButton(firstNameBox, lastNameBox, emailBox, passwordBox, confirmPasswordBox, ageBox, frameConstraints, 3, 8);
@@ -132,6 +151,8 @@ public final class SignUpPage extends JPanel {
             // Navigate to the next page
             System.out.println("SignUp successful");
             profileController.goToProfilePage();
+            //TODO: Might have to double check this but most likely not.
+            clearSignUpChoice();
             //discoverController.goToDiscoverPage();
         }
     }
@@ -141,6 +162,22 @@ public final class SignUpPage extends JPanel {
         constraints.gridx = 0;
         constraints.gridy = 0;
         add(backToLoginButton, constraints);
-        backToLoginButton.addActionListener(e -> loginController.goToLoginPage());
+
+        backToLoginButton.addActionListener(e -> {
+            loginController.goToLoginPage();
+            clearSignUpChoice();
+        });
+    }
+
+    //Makes it so that every input in the sign-up page is reset to default.
+    private void clearSignUpChoice() {
+        firstNameBox.setText(null);
+        lastNameBox.setText(null);
+        emailBox.setText(null);
+        passwordBox.setText(null);
+        confirmPasswordBox.setText(null);
+        ageBox.setText(null);
+        majorComboBox.setSelectedIndex(0);
+        gradYearComboBox.setSelectedIndex(0);
     }
 }

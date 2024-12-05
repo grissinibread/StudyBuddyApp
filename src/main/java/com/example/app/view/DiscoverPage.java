@@ -2,11 +2,21 @@ package com.example.app.view;
 
 import com.example.app.util.FontManager;
 import com.example.app.util.RoundedPanel;
+import com.example.app.controller.LoginController;
+import com.example.app.controller.ProfileController;
+import com.example.app.controller.InboxController;
 
 import javax.swing.*;
 import java.awt.*;
 
 public final class DiscoverPage extends JPanel {
+    //Initializes the login controller to be used by the class.
+    private final LoginController loginController;
+    //Initializes the profile controller to be used by the class.
+    private final ProfileController profileController;
+    //Initializes the inbox controller to be used by the class.
+    private final InboxController inboxController;
+
     //Initializes the one instance of a Discover Page to be used by the rest of the program.
     private static final DiscoverPage discoverPage = new DiscoverPage();
 
@@ -14,6 +24,15 @@ public final class DiscoverPage extends JPanel {
 
     //Discover Page constructor.
     private DiscoverPage() {
+        //Initializes the login controller to be used by the class.
+        this.loginController = new LoginController();
+
+        //Initializes the profile controller to be used by the class.
+        this.profileController = new ProfileController();
+
+        //Initializes the inbox controller to be used by the class.
+        this.inboxController = new InboxController();
+
         setLayout(new BorderLayout());
 
         // Top Nav Bar
@@ -59,6 +78,7 @@ public final class DiscoverPage extends JPanel {
         constraints.weightx = 1;
         constraints.anchor = GridBagConstraints.WEST;
         topNav.add(profileIcon, constraints);
+        profileIcon.addActionListener(e -> profileController.goToProfilePage());
 
         // Title of the page
         JLabel titleLabel = new JLabel("Discover");
@@ -74,6 +94,7 @@ public final class DiscoverPage extends JPanel {
         Image scaledImage = originalIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         ImageIcon logout = new ImageIcon(scaledImage);
         JButton logoutButton = new JButton(logout);
+        logoutButton.addActionListener(e -> loginController.goToLoginPage());
 
         // Optional: Customize button (e.g., remove border and focus)
         logoutButton.setBorderPainted(false);
@@ -111,7 +132,8 @@ public final class DiscoverPage extends JPanel {
         constraints.weightx = 1;
         constraints.insets = new Insets(0, 20, 20, 0);
         bottomNav.add(messagesIcon, constraints);
-        // TODO: BACKEND
+        // TODO: BACKEND? - Axel
+        messagesIcon.addActionListener(e -> inboxController.goToInboxPage());
 
         return bottomNav;
     }

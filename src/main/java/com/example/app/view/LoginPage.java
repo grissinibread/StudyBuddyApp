@@ -19,11 +19,16 @@ public final class LoginPage extends JPanel {
     //Initializes the discover controller to be used by the class.
     private final DiscoverController discoverController;
 
+    //Initialize these objects so that it is possible to access them on other methods
+    // (Mainly to clear them when a successful login attempt is made).
+    private JTextArea emailTextBox;
+    private JPasswordField passwordTextBox;
+
     //Login Page constructor.
     private LoginPage() {
-        //Initializes the sign up controller to be used by the class.
+        //Initializes the login controller to be used by the class.
         this.loginController = new LoginController();
-        //Initializes the sign up controller to be used by the class.
+        //Initializes the sign-up controller to be used by the class.
         this.signUpController = new SignUpController();
         //Initializes the discover controller to be used by the class.
         this.discoverController = new DiscoverController();
@@ -57,10 +62,10 @@ public final class LoginPage extends JPanel {
         addTitleLabel(constraints);
 
         // Email Section
-        JTextArea emailTextBox = addLabeledTextField(constraints, 1);
+        emailTextBox = addLabeledTextField(constraints, 1);
 
         // Password Section
-        JPasswordField passwordTextBox = addPasswordField(constraints, 3);
+        passwordTextBox = addPasswordField(constraints, 3);
 
         // Login Button
         addLoginButton(emailTextBox, passwordTextBox, constraints);
@@ -132,6 +137,9 @@ public final class LoginPage extends JPanel {
             // Navigate to the next page
             System.out.println("Login successful");
             discoverController.goToDiscoverPage();
+
+            emailTextBox.setText(null);
+            passwordTextBox.setText(null);
         }
     }
 
