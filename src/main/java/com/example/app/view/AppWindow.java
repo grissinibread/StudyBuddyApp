@@ -1,7 +1,5 @@
 package com.example.app.view;
 
-import com.example.app.util.FontManager;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
@@ -32,6 +30,9 @@ public final class AppWindow extends JFrame {
 
         // Layout settings
         setLayout(new BorderLayout());
+
+        // temp
+        add(MessagingPage.getConnectionsPage(), BorderLayout.CENTER);
 
         // Add the Login page by default
         add(LoginPage.getLoginPage(), BorderLayout.CENTER);
