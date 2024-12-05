@@ -90,8 +90,10 @@ public final class DiscoverPage extends JPanel {
         GridBagConstraints constraints = new GridBagConstraints();
 
         // Message Icon
-        ImageIcon inbox = new ImageIcon("src/main/resources/img/inbox.jpeg");
+        ImageIcon inbox = new ImageIcon("src/resources/img/inbox.png");
         JButton messagesIcon = new JButton(inbox);
+        messagesIcon.setPreferredSize(new Dimension(40, 40));
+        messagesIcon.setBorderPainted(false);
         constraints.anchor = GridBagConstraints.WEST;
         constraints.weightx = 1;
         constraints.insets = new Insets(0, 5, 0, 0);
