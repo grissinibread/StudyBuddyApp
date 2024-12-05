@@ -49,7 +49,13 @@ public final class DiscoverPage extends JPanel {
         topNav.setPreferredSize(new Dimension(getWidth(), 75));
 
         // Profile Icon
-        JButton profileIcon = new JButton("Profile Icon");
+        ImageIcon original = new ImageIcon("src/resources/img/profileFiller.png");
+        Image scaled = original.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon profile = new ImageIcon(scaled);
+        JButton profileIcon = new JButton(profile);
+        profileIcon.setBorderPainted(false);
+        profileIcon.setContentAreaFilled(false);
+        profileIcon.setFocusPainted(false);
         constraints.weightx = 1;
         constraints.anchor = GridBagConstraints.WEST;
         topNav.add(profileIcon, constraints);
@@ -63,9 +69,11 @@ public final class DiscoverPage extends JPanel {
         constraints.anchor = GridBagConstraints.CENTER;
         topNav.add(titleLabel, constraints);
 
-        // settingsIcon
-        ImageIcon logout = new ImageIcon("src/main/resources/img/logout.jpeg");
-        JButton logoutButton = new JButton("logout");
+        // logoutIcon
+        ImageIcon originalIcon = new ImageIcon("src/resources/img/logout.jpeg");
+        Image scaledImage = originalIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon logout = new ImageIcon(scaledImage);
+        JButton logoutButton = new JButton(logout);
 
         // Optional: Customize button (e.g., remove border and focus)
         logoutButton.setBorderPainted(false);
@@ -86,17 +94,22 @@ public final class DiscoverPage extends JPanel {
         JPanel bottomNav = new JPanel();
         bottomNav.setBackground(Color.WHITE);
         bottomNav.setLayout(new GridBagLayout());
-        bottomNav.setPreferredSize(new Dimension(getWidth(), 50));
+        bottomNav.setPreferredSize(new Dimension(getWidth(), 60));
         GridBagConstraints constraints = new GridBagConstraints();
 
-        // Message Icon
-        ImageIcon inbox = new ImageIcon("src/resources/img/inbox.png");
+        // Inbox Icon
+        ImageIcon originalIcon = new ImageIcon("src/resources/img/Inbox.png");
+        Image scaledImage = originalIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon inbox = new ImageIcon(scaledImage);
         JButton messagesIcon = new JButton(inbox);
         messagesIcon.setPreferredSize(new Dimension(40, 40));
         messagesIcon.setBorderPainted(false);
+        messagesIcon.setContentAreaFilled(false);
+        messagesIcon.setFocusPainted(false);
+        messagesIcon.setToolTipText("Inbox");
         constraints.anchor = GridBagConstraints.WEST;
         constraints.weightx = 1;
-        constraints.insets = new Insets(0, 5, 0, 0);
+        constraints.insets = new Insets(0, 20, 20, 0);
         bottomNav.add(messagesIcon, constraints);
         // TODO: BACKEND
 
@@ -133,11 +146,13 @@ public final class DiscoverPage extends JPanel {
         profileCard.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         profileCard.setPreferredSize(new Dimension(350, 200));
-        profileCard.setBackground(Color.BLACK);
+        profileCard.setBackground(Color.ORANGE);
 
         // Addition of Image (Bread Image Temp)
         // TODO: GET IMAGE FROM DATABASE
-        ImageIcon profileIcon = new ImageIcon("src/resources/img/bread.png");
+        ImageIcon originalIcon = new ImageIcon("src/resources/img/bread.png");
+        Image scaledImage = originalIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        ImageIcon profileIcon = new ImageIcon(scaledImage);
         JButton profileIconButton = new JButton(profileIcon);
         profileIconButton.setPreferredSize(new Dimension(40,40));
         profileIconButton.setBorderPainted(false);
