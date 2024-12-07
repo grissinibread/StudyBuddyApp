@@ -69,8 +69,12 @@ public class LoginController {
         } else {
             // User does not exist
             System.out.println("User not found.");
+            return false;
         }
 
-        return emailValid(email) && passwordValid(password); // these will eventually be replaced with checking against database
+        //return emailValid(email) && passwordValid(password); // these will eventually be replaced with checking against database
+        return true;
     }
 }
+// TODO: MAKE THIS MORE SECURE
+// TODO: PASS CURRENT USER AND SAME FOR SIGN UP

@@ -128,17 +128,17 @@ public class SignUpController {
         return true;
     }
 
-    // major selected stored in user
-    private void userMajor (String major){
-        user.setMajor(major);
-    }
+    // i don't think these are needed but im leaving for now just in case
+//    // major selected stored in user
+//    private void userMajor (String major){
+//        user.setMajor(major);
+//    }
+//
+//    // year selected stored in user
+//    private void userYear (int year){
+//        user.setYear(year);
+//    }
 
-    // year selected stored in user
-    private void userYear (int year){
-        user.setYear(year);
-    }
-
-    // TODO: ADJUST MAJOR & YEAR DROP DOWN MENUS B/C currently variables are saved null
     // Store user in MongoDB upon Sign Up
     public void storeUser() {
         try {
@@ -156,7 +156,7 @@ public class SignUpController {
                     .append("year", user.getYear());        // Year
 
             usersCollection.insertOne(userDocument);
-            System.out.println("User successfully added to the database. :)");
+            System.out.println("User successfully added to the database. :) "+ userDocument);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -206,7 +206,7 @@ public class SignUpController {
             }
         //return emailValid(email) && passwordValid(password); // these will eventually be replaced with checking against database
     }
-    public boolean verifySignUp(String firstName, String lastName, String email, String password, String confirmPass, int age){
+    public boolean verifySignUp(String firstName, String lastName, String email, String password, String confirmPass, int age, String major, Integer gradYear){
         if (!confirmPass.equals(password)) {
             JOptionPane.showMessageDialog(null, "Passwords Do Not Match");
             return false;
@@ -214,10 +214,9 @@ public class SignUpController {
 
         // Store user info after validation and non-existing email
         if(emailValid(email) && passwordValid(password) && nameValid(firstName, lastName) && ageValid(age) && !verifyEmail_DB(email)){
-            // TODO: ADJUST MAJOR & YEAR DROP DOWN MENUS B/C currently variables are saved null
-//            userYear(user.getYear());
-//            userMajor(user.getMajor());
-
+           user.setMajor(major);
+           user.setYear(gradYear);
+            System.out.println("user about to be stored: " + user + " " + user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getAge() + " " + user.getMajor() + " " + user.getYear());
             storeUser();
             return true;
         } else if (verifyEmail_DB(email)) {

@@ -5,6 +5,7 @@ import com.example.app.controller.LoginController;
 import com.example.app.controller.DiscoverController;
 import com.example.app.controller.ProfileController;
 import com.example.app.util.FontManager;
+import com.example.app.model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +21,7 @@ public final class SignUpPage extends JPanel {
     private final ProfileController profileController;
     //Initializes the discover controller to be used by the class.
     private final DiscoverController discoverController;
+    private User user;
 
     //Initialize these objects so that it is possible to access them on other methods
     // (Mainly to clear them/make them default when the page is changed).
@@ -39,6 +41,8 @@ public final class SignUpPage extends JPanel {
 
     private JComboBox<String> majorComboBox = new JComboBox(majorArray);
     private JComboBox<Integer> gradYearComboBox = new JComboBox(yearArray);
+    private String major; // holds major selection
+    private Integer gradYear; // holds gradYear selection
 
     //Sign Up page constructor.
     private SignUpPage() {
@@ -84,7 +88,8 @@ public final class SignUpPage extends JPanel {
         this.add(gradYearComboBox, frameConstraints);
 
         // Sign Up Button
-        addSignUpButton(firstNameBox, lastNameBox, emailBox, passwordBox, confirmPasswordBox, ageBox, frameConstraints, 3, 8);
+        addSignUpButton(firstNameBox, lastNameBox, emailBox, passwordBox, confirmPasswordBox, ageBox,
+                frameConstraints, 3, 8);
 
         // Back to Login Button
         addBackToLoginButton(frameConstraints);
@@ -94,6 +99,19 @@ public final class SignUpPage extends JPanel {
     public static SignUpPage getSignUpPage()
     {
         return signUpPage;
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        int width = getWidth();
+        int height = getHeight();
+        Color color1 = Color.decode("#FFCC33"); // Darker yellow
+        Color color2 = Color.decode("#FFFF99"); // Light yellow
+        Color color3 = Color.decode("#FFB6C1"); // Light pink
+        GradientPaint gradient = new GradientPaint(0, 0, color3, width, height, color2);
+        g2d.setPaint(gradient);
+        g2d.fillRect(0, 0, width, height);
     }
 
     private void addLabel(String text, int fontSize, GridBagConstraints constraints, int gridX, int gridY, int bottomInset) {
@@ -145,9 +163,17 @@ public final class SignUpPage extends JPanel {
                 passwordBox.getText(), confirmPassBox.getText(), ageBox.getText()));
     }
 
+    // T0DO: ADD MAJOR AND YEAR INTO PARAMETERS
     private void handleSignUp(String first, String last, String email, String password, String confirmPass, String ageText) {
         int age = Integer.parseInt(ageText);
-        if (signUpController.verifySignUp(first, last, email, password, confirmPass, age)) {
+        major = (String) majorComboBox.getSelectedItem(); // extracts from major box
+        gradYear = (Integer) gradYearComboBox.getSelectedItem(); // extracts from gradYear box
+        System.out.println("User:" + first + " " + last + " " + email + " " + password + " " + confirmPass + " " + age + " " + major + " " + gradYear);
+        if (signUpController.verifySignUp(first, last, email, password, confirmPass, age, major, gradYear)) {
+            if (major == null){ System.out.println("Major is null"); }
+            else {user.setMajor(major);}
+            if (gradYear == 0){ System.out.println("Grad Year is null"); }
+            else { user.setYear(gradYear);}
             // Navigate to the next page
             System.out.println("SignUp successful");
             profileController.goToProfilePage();

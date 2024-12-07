@@ -24,6 +24,7 @@ public final class DiscoverPage extends JPanel {
 
     //Discover Page constructor.
     private DiscoverPage() {
+
         //Initializes the login controller to be used by the class.
         this.loginController = new LoginController();
 
@@ -191,3 +192,5 @@ public final class DiscoverPage extends JPanel {
         return profileCard;
     }
 }
+
+// TODO: TEST MATCHING
