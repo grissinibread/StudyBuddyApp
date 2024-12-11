@@ -6,7 +6,6 @@ import com.example.app.util.RoundedPanel;
 import com.example.app.controller.LoginController;
 import com.example.app.controller.ProfileController;
 import com.example.app.controller.InboxController;
-import com.example.app.model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,8 +19,6 @@ public final class DiscoverPage extends JPanel {
     private final InboxController inboxController;
     // Initializes the discover controller to be used by the class.
     private DiscoverController discoverController;
-    //user passed from login
-    //private User currentUser = new User();
 
     //Initializes the one instance of a Discover Page to be used by the rest of the program.
     private static final DiscoverPage discoverPage = new DiscoverPage();
@@ -37,6 +34,9 @@ public final class DiscoverPage extends JPanel {
 
         //Initializes the inbox controller to be used by the class.
         this.inboxController = new InboxController();
+
+        //Initializes the inbox controller to be used by the class.
+        this.discoverController = new DiscoverController();
 
         setLayout(new BorderLayout());
 
@@ -142,7 +142,9 @@ public final class DiscoverPage extends JPanel {
 
         // Matching button
         JButton matchButton = new JButton("Get Matches");
+        matchButton.setFont(FontManager.getCustomFont(12));
         bottomNav.add(matchButton, constraints);
+        matchButton.addActionListener(e -> discoverController.getMatches());
         return bottomNav;
     }
 

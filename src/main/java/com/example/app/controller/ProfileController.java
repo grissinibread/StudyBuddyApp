@@ -8,8 +8,7 @@ import com.example.app.controller.UserSession;
 import java.util.List;
 
 public class ProfileController {
-    UserSession userSession;
-    User user = userSession.getLoggedInUser();
+    User user = UserSession.getLoggedInUser();
     //Takes the user to the Profile Page.
     public void goToProfilePage(){
         AppWindow.getAppWindow().openPage(ProfilePage.getProfilePage());

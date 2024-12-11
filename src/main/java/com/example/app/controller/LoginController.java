@@ -3,7 +3,6 @@ package com.example.app.controller;
 import com.example.app.view.AppWindow;
 import com.example.app.view.LoginPage;
 import com.example.app.model.User;
-//import com.example.app.controller.UserSession;
 
 // mongoDB packages
 import com.mongodb.client.MongoCollection;
@@ -17,8 +16,7 @@ public class LoginController {
     private final MongoDatabase database;
     public LoginController() {
         this.database = MongoDBConnector.getDatabase();
-}
-    protected UserSession userSession;
+    }
     //Takes the user to the Login Page.
     public void goToLoginPage(){
         AppWindow.getAppWindow().openPage(LoginPage.getLoginPage());
@@ -35,7 +33,7 @@ public class LoginController {
             System.out.println("User details: " + user.toJson());
             return new User(user.getString("email"), user.getString("password"), user.getString("fname"),
                     user.getString("lname"), user.getInteger("age"), user.getString("major"),
-                    user.getInteger("gradYear"), user.getString("bio"), user.getList("interests", String.class));
+                    user.getInteger("gradYear"), user.getString("bio")/*, user.getList("interests", String.class)*/);
         }
         return null;
     }
@@ -47,7 +45,7 @@ public class LoginController {
         if (currentUser != null) {
             // User found in the database
             System.out.println("User exists!");
-            userSession.setLoggedInUser(currentUser);
+            UserSession.setLoggedInUser(currentUser);
             return true;
         } else {
             // User does not exist

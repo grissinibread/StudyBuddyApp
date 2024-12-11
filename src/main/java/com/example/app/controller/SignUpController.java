@@ -1,10 +1,8 @@
 package com.example.app.controller;
 
 import com.example.app.view.AppWindow;
-import com.example.app.view.LoginPage;
 import com.example.app.view.SignUpPage;
 import com.example.app.model.User;
-import com.example.app.controller.UserSession;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.example.app.util.MongoDBConnector;
@@ -14,8 +12,7 @@ import org.bson.Document;
 import javax.swing.*;
 
 public class SignUpController {
-    protected User user = User.getUser();
-    private UserSession userSession;
+    protected User user = UserSession.getLoggedInUser();
     // VALID EMAIL
     private boolean emailValid (String email){
         int length = email.length();
@@ -121,7 +118,7 @@ public class SignUpController {
     }
 
     //VALID AGE
-    private boolean ageValid (int age){
+    private boolean ageValid (Integer age){
         if (age < 16 || age > 100){
             JOptionPane.showMessageDialog(null, "Age Invalid");
             return false;
@@ -131,17 +128,6 @@ public class SignUpController {
         return true;
     }
 
-    // i don't think these are needed but im leaving for now just in case
-//    // major selected stored in user
-//    private void userMajor (String major){
-//        user.setMajor(major);
-//    }
-//
-//    // year selected stored in user
-//    private void userYear (int year){
-//        user.setYear(year);
-//    }
-
     // Store user in MongoDB upon Sign Up
     public void storeUser() {
         try {
@@ -149,14 +135,16 @@ public class SignUpController {
             MongoCollection<Document> usersCollection = database.getCollection("SB_users");
 
             Document userDocument = new Document()
-                    .append("name", user.getName())         // Full name
-                    .append("fname", user.getFName())       // First name
-                    .append("lname", user.getLName())       // Last name
-                    .append("email", user.getEmail())       // Email
-                    .append("password", user.getPassword()) // Password
-                    .append("age", user.getAge())           // Age
-                    .append("major", user.getMajor())       // Major
-                    .append("gradYear", user.getYear());        // Year
+                    .append("name", user.getName())             // Full name
+                    .append("fname", user.getFName())           // First name
+                    .append("lname", user.getLName())           // Last name
+                    .append("email", user.getEmail())           // Email
+                    .append("password", user.getPassword())     // Password
+                    .append("age", user.getAge())               // Age
+                    .append("major", user.getMajor())           // Major
+                    .append("gradYear", user.getYear())         // Year
+                    .append("bio", user.getBio())               // Bio
+                    .append("interests", user.getInterestts()); // Interests List
 
             usersCollection.insertOne(userDocument);
             System.out.println("User successfully added to the database. :) "+ userDocument);
@@ -189,26 +177,26 @@ public class SignUpController {
     //Check if email and password are correct/match database
     public boolean verifyLogin (String email, String password){
         try {
-        // If email is existing email in DB
-        if (verifyEmail_DB(email)) {
-            JOptionPane.showMessageDialog(null, "This email address is already taken. Please try another.");
-            return false;
-        }
-
-        // If email is incorrect/does not match database
-        if(!verifyPassword_DB(email, password)) {
-            JOptionPane.showMessageDialog(null,"Incorrect password.");
-            return false;
-        }
-        return true;
-        } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error Verifying Login: " + e.getMessage());
+            // If email is existing email in DB
+            if (verifyEmail_DB(email)) {
+                JOptionPane.showMessageDialog(null, "This email address is already taken. Please try another.");
                 return false;
             }
+
+            // If email is incorrect/does not match database
+            if(!verifyPassword_DB(email, password)) {
+                JOptionPane.showMessageDialog(null,"Incorrect password.");
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error Verifying Login: " + e.getMessage());
+            return false;
+        }
         //return emailValid(email) && passwordValid(password); // these will eventually be replaced with checking against database
     }
-    public boolean verifySignUp(String firstName, String lastName, String email, String password, String confirmPass, int age, String major, Integer gradYear){
+    public boolean verifySignUp(String firstName, String lastName, String email, String password, String confirmPass, Integer age, String major, Integer gradYear){
         if (!confirmPass.equals(password)) {
             JOptionPane.showMessageDialog(null, "Passwords Do Not Match");
             return false;
@@ -216,9 +204,9 @@ public class SignUpController {
 
         // Store user info after validation and non-existing email
         if(emailValid(email) && passwordValid(password) && nameValid(firstName, lastName) && ageValid(age) && !verifyEmail_DB(email)){
-           user.setMajor(major);
-           user.setYear(gradYear);
-            userSession.setLoggedInUser(user);
+            user.setMajor(major);
+            user.setYear(gradYear);
+            UserSession.setLoggedInUser(user);
             System.out.println("user about to be stored: " + user + " " + user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getAge() + " " + user.getMajor() + " " + user.getYear());
             System.out.println("User instance in SignUpController: " + user);
             storeUser();

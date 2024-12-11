@@ -1,9 +1,6 @@
 package com.example.app.view;
 
-import com.example.app.controller.SignUpController;
-import com.example.app.controller.LoginController;
-import com.example.app.controller.DiscoverController;
-import com.example.app.controller.ProfileController;
+import com.example.app.controller.*;
 import com.example.app.util.FontManager;
 import com.example.app.model.User;
 
@@ -21,7 +18,7 @@ public final class SignUpPage extends JPanel {
     private final ProfileController profileController;
     //Initializes the discover controller to be used by the class.
     private final DiscoverController discoverController;
-    private User user = User.getUser();
+    private User user = UserSession.getLoggedInUser();
 
     //Initialize these objects so that it is possible to access them on other methods
     // (Mainly to clear them/make them default when the page is changed).

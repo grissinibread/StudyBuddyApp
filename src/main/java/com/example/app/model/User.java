@@ -6,30 +6,28 @@ public class User {
     private String name;
     private String fname;
     private String lname;
-    private int age;
+    private Integer age;
     private String major;
-    private int year;
+    private Integer year;
     private String bio;
     private String[] interests;
-    public List<String> interestts;
-//    private String interest2;
-//    private String interest3;
+    private List<String> interestts;
     private String email;
     private String password;
 
     private static User currentUser;
 
-    private User (){
+    public User (){
 //        this.name = "";
 //        this.age = 0;
 //        this.major = "";
 //        this.year = 0;
-        this.interests = new String[0];
+//        this.interests = new String[0];
 //        this.email = "";
 //        this.password = "";
     }
 
-    public User(String email, String password, String fname, String lname, int age, String major, int year, String bio, List<String> interestts) {
+    public User(String email, String password, String fname, String lname, Integer age, String major, Integer year, String bio/*, List<String> interestts*/) {
         this.name = fname + " " + lname;
         this.fname = fname;
         this.lname = lname;
@@ -39,13 +37,20 @@ public class User {
         this.major = major;
         this.year = year;
         this.bio = bio;
-        this.interests = new String[0];
-        this.interestts = interestts;
+//        this.interests = new String[0];
+        //this.interestts = interestts;
     }
 
-    public static void setUser(User user) {
-        currentUser = user;
+    public User(String fname, Integer age, String major, Integer year) { // for matching comparisons, so password of other users isn't shown
+        this.fname = fname;
+        this.lname = fname;
+        this.age = age;
+        this.major = major;
+        this.year = year;
+        //this.interestts = interestts<0>;
     }
+
+    //public static void setUser(User user) {currentUser = user;}
 
     public static User getUser() {
         if (currentUser == null) {
@@ -67,7 +72,7 @@ public class User {
     public String getFName() { return fname; }
     public String getLName() { return lname; }
     // age functions
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
     public void setAge(int age) {this.age = age;}
@@ -77,7 +82,7 @@ public class User {
     }
     public void setMajor(String major) {this.major = major;}
     // year functions
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
     public void setYear(int year) {this.year = year;}

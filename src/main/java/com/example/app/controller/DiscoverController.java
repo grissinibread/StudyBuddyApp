@@ -7,7 +7,7 @@ import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 
 import java.util.ArrayList;
-//import java.util.Vector;
+import java.util.List;
 
 // mongoDB packages
 import com.mongodb.client.MongoDatabase;
@@ -15,10 +15,11 @@ import com.example.app.util.MongoDBConnector;
 
 public class DiscoverController {
     private final MongoDatabase database;
+    private final User mainUser;
     public DiscoverController() {
         this.database = MongoDBConnector.getDatabase();
+        this.mainUser = UserSession.getLoggedInUser();
     }
-    //private User user = new User();
     //MATCHING ALGORITHM
     private int matchRank(User user1, User user2) {
         /*OBJECTIVES: match based on...
@@ -116,7 +117,7 @@ public class DiscoverController {
         AppWindow.getAppWindow().openPage(DiscoverPage.getDiscoverPage());
     }
 
-    public ArrayList<User> getMatches(User mainUser){
+    public ArrayList<User> getMatches(){
         MongoCollection<Document> usersCollection = database.getCollection("SB_users"); // grabs the entirety of the users database
         ArrayList<User> matches = new ArrayList<>();
 
@@ -126,16 +127,15 @@ public class DiscoverController {
                 if(otherUsers.getString("email").equals(mainUser.getEmail())){
                     continue; // skip mainUser
                 }
-//                User userCompared = new User(
-//                        otherUsers.getString("name"), otherUsers.getInteger("age"),
-//                        otherUsers.getString("major"), otherUsers.getInteger("year"),
-//                        otherUsers.getString("interest1"), otherUsers.getString("interest2"), otherUsers.getString("interest3")
-//                );
-//                int rank = matchRank(mainUser, userCompared);
-//                if (rank > 0){
-//                    matches.add(userCompared);
-//                    bubbleUp(matches, mainUser);
-//                }
+                User userCompared = new User(
+                        otherUsers.getString("name"), otherUsers.getInteger("age"),
+                        otherUsers.getString("major"), otherUsers.getInteger("year")
+                );
+                int rank = matchRank(mainUser, userCompared);
+                if (rank > 0){
+                    matches.add(userCompared);
+                    bubbleUp(matches, mainUser);
+                }
             }
         }
 
@@ -157,5 +157,11 @@ public class DiscoverController {
             i--;
         }
     }
-}
 
+//    private List<User> findMatches(){
+//        List<User> matchedUsers = new ArrayList<>();
+//
+//    }
+//    return matchedUsers;
+//    }
+}
