@@ -7,7 +7,7 @@ public final class InboxPage extends JPanel {
     //Initializes the one instance of an Inbox Page to be used by the rest of the program.
     private static final InboxPage inboxPage = new InboxPage();
 
-    //Profile Page constructor.
+    //Inbox Page constructor.
     private InboxPage() {
         setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();

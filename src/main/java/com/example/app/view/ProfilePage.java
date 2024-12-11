@@ -3,6 +3,8 @@ package com.example.app.view;
 import com.example.app.model.User;
 import com.example.app.util.FontManager;
 import com.example.app.controller.ProfileController;
+import com.example.app.controller.DiscoverController;
+import com.example.app.controller.SettingsController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +14,8 @@ public final class ProfilePage extends JPanel {
     private static final ProfilePage profilePage = new ProfilePage();
     private User user = User.getUser();
     private final ProfileController profileController = new ProfileController();
+    private final DiscoverController discoverController = new DiscoverController();
+    private final SettingsController settingsController = new SettingsController();
 
     //Profile Page constructor.
     private ProfilePage() {
@@ -54,12 +58,14 @@ public final class ProfilePage extends JPanel {
         constraints.anchor = GridBagConstraints.WEST;
         constraints.weightx = 1;
         topPanel.add(backButton, constraints);
+        backButton.addActionListener(e -> {discoverController.goToDiscoverPage();});
 
         // Edit profile button
         JButton editProfileButton = new JButton("Edit Profile");
         constraints.insets = new Insets(0, 0, 0, 10);
         constraints.anchor = GridBagConstraints.EAST;
         topPanel.add(editProfileButton, constraints);
+        editProfileButton.addActionListener(e -> {settingsController.goToSettingsPage();});
 
         return topPanel;
     }
