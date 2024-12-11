@@ -31,8 +31,9 @@ public final class AppWindow extends JFrame {
         // Layout settings
         setLayout(new BorderLayout());
 
-        // temp
-        add(MessagingPage.getConnectionsPage(), BorderLayout.CENTER);
+
+        // Temp add
+        // add(ProfilePage.getProfilePage(), BorderLayout.CENTER);
 
         // Add the Login page by default
         add(LoginPage.getLoginPage(), BorderLayout.CENTER);

@@ -37,7 +37,7 @@ public final class SignUpPage extends JPanel {
             "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences",
             "Wildfire Science & the Urban Interface"};
 
-    Integer yearArray[] = {2024, 2025};
+    Integer yearArray[] = {2024, 2025, 2026, 2027, 2028};
 
     private JComboBox<String> majorComboBox = new JComboBox(majorArray);
     private JComboBox<Integer> gradYearComboBox = new JComboBox(yearArray);
