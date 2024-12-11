@@ -5,6 +5,8 @@ import com.example.app.view.ProfilePage;
 import com.example.app.model.User;
 import com.example.app.controller.UserSession;
 
+import java.util.List;
+
 public class ProfileController {
     UserSession userSession;
     User user = userSession.getLoggedInUser();
@@ -17,15 +19,22 @@ public class ProfileController {
         return user.getFName().substring(0, 1).toUpperCase() + user.getFName().substring(1);
     }
     //Return Bio if existing
-    public String BioDisplay(){
+    public String displayBio(){
         String bio = user.getBio();
         if(bio == null || bio.length() == 0){
-            return "Talk about how awesome sauce you are here!";
+            return "Talk about how awesome you are here!";
         }
         return bio;
     }
-    public String MajorDisplay(){
+    public String displayMajor(){
         String major = user.getMajor();
         return major;
+    }
+    public String displayInterests(){
+        List<String> interests = user.getInterestts();
+        if(interests == null || interests.isEmpty()){
+            return "Pick some interests to display here! :)";
+        }
+        return String.join(", ", interests);
     }
 }

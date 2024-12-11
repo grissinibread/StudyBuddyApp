@@ -104,7 +104,7 @@ public final class ProfilePage extends JPanel {
         mainPanel.add(descriptionLabel, constraints);
         
         // Description Text/Bio
-        JLabel descriptionText = new JLabel(profileController.BioDisplay()); // temporary text
+        JLabel descriptionText = new JLabel(profileController.displayBio()); // temporary text
         descriptionText.setFont(FontManager.getCustomFont(14));
         constraints.insets = new Insets(120, 0, 0, 0); // TEMPORARY SOLUTION
         mainPanel.add(descriptionText, constraints);
@@ -116,10 +116,22 @@ public final class ProfilePage extends JPanel {
         mainPanel.add(majorLabel, constraints);
 
         // Major text
-        JLabel majorText = new JLabel(profileController.MajorDisplay());
+        JLabel majorText = new JLabel(profileController.displayMajor());
         majorText.setFont(FontManager.getCustomFont(14));
         constraints.insets = new Insets(180, 0, 0, 0);
         mainPanel.add(majorText, constraints);
+
+        // Interests
+        JLabel interestsLabel = new JLabel("Interests");
+        interestsLabel.setFont(FontManager.getCustomFont(16).deriveFont(Font.BOLD));
+        constraints.insets = new Insets(210,0,0,0); // TEMPORARY SOLUTION
+        mainPanel.add(interestsLabel, constraints);
+
+        // Interests Array
+        JLabel interestsText = new JLabel(profileController.displayInterests());
+        interestsText.setFont(FontManager.getCustomFont(14));
+        constraints.insets = new Insets(240, 0, 0, 0); // TEMPORARY SOLUTION
+        mainPanel.add(interestsText, constraints);
 
         return mainPanel;
     }

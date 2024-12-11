@@ -1,5 +1,7 @@
 package com.example.app.model;
 
+import java.util.List;
+
 public class User {
     private String name;
     private String fname;
@@ -9,6 +11,7 @@ public class User {
     private int year;
     private String bio;
     private String[] interests;
+    public List<String> interestts;
 //    private String interest2;
 //    private String interest3;
     private String email;
@@ -26,7 +29,7 @@ public class User {
 //        this.password = "";
     }
 
-    public User(String email, String password, String fname, String lname, int age, String major, int year, String bio) {
+    public User(String email, String password, String fname, String lname, int age, String major, int year, String bio, List<String> interestts) {
         this.name = fname + " " + lname;
         this.fname = fname;
         this.lname = lname;
@@ -37,6 +40,7 @@ public class User {
         this.year = year;
         this.bio = bio;
         this.interests = new String[0];
+        this.interestts = interestts;
     }
 
     public static void setUser(User user) {
@@ -80,6 +84,10 @@ public class User {
     //bio functions
     public String getBio() {return bio;}
     //public String setBio(String bio) {this.bio = bio;}
+    //interestts functions
+    public List<String> getInterestts(){ return interestts;}
+    public void setInterestts(List<String> interestts){ this.interestts = interestts;}
+
     // interest functions
     public String getInterests() {
         return interests[0] + ", " + interests[1] + ", " + interests[2];
