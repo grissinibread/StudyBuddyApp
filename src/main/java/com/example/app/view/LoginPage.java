@@ -3,6 +3,7 @@ package com.example.app.view;
 import com.example.app.controller.LoginController;
 import com.example.app.controller.SignUpController;
 import com.example.app.controller.DiscoverController;
+import com.example.app.model.User;
 import com.example.app.util.FontManager;
 
 import javax.swing.*;
@@ -133,9 +134,10 @@ public final class LoginPage extends JPanel {
     }
 
     private void handleLogin(String email, String password) {
-        if (loginController.verifyLogin(email, password)) {
+        if (loginController.attemptLogin(email, password)) {
             // Navigate to the next page
             System.out.println("Login successful");
+            User user = User.getUser();
             discoverController.goToDiscoverPage();
 
             emailTextBox.setText(null);

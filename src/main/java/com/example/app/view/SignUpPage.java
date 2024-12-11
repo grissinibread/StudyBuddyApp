@@ -21,7 +21,7 @@ public final class SignUpPage extends JPanel {
     private final ProfileController profileController;
     //Initializes the discover controller to be used by the class.
     private final DiscoverController discoverController;
-    private User user;
+    private User user = User.getUser();
 
     //Initialize these objects so that it is possible to access them on other methods
     // (Mainly to clear them/make them default when the page is changed).
@@ -168,14 +168,15 @@ public final class SignUpPage extends JPanel {
         int age = Integer.parseInt(ageText);
         major = (String) majorComboBox.getSelectedItem(); // extracts from major box
         gradYear = (Integer) gradYearComboBox.getSelectedItem(); // extracts from gradYear box
-        System.out.println("User:" + first + " " + last + " " + email + " " + password + " " + confirmPass + " " + age + " " + major + " " + gradYear);
+        System.out.println("User before: " + user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getAge() + " " + user.getMajor() + " " + user.getYear());
         if (signUpController.verifySignUp(first, last, email, password, confirmPass, age, major, gradYear)) {
-            if (major == null){ System.out.println("Major is null"); }
-            else {user.setMajor(major);}
-            if (gradYear == 0){ System.out.println("Grad Year is null"); }
-            else { user.setYear(gradYear);}
+//            if (major == null){ System.out.println("Major is null"); }
+//            else {user.setMajor(major);}
+//            if (gradYear == 0){ System.out.println("Grad Year is null"); }
+//            else { user.setYear(gradYear);}
             // Navigate to the next page
             System.out.println("SignUp successful");
+            System.out.println("User after: " + user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getAge() + " " + user.getMajor() + " " + user.getYear());
             profileController.goToProfilePage();
             //TODO: Might have to double check this but most likely not.
             clearSignUpChoice();

@@ -13,28 +13,42 @@ public class User {
     private String email;
     private String password;
 
-    public User (){
-        this.name = "";
-        this.age = 0;
-        this.major = "";
-        this.year = 0;
+    private static User currentUser;
+
+    private User (){
+//        this.name = "";
+//        this.age = 0;
+//        this.major = "";
+//        this.year = 0;
         this.interests = new String[0];
-//        this.interest2 = "";
-//        this.interest3 = "";
-        this.email = "";
-        this.password = "";
+//        this.email = "";
+//        this.password = "";
     }
 
-    public User(String name, int age, String major, int year, String interest1, String interest2, String interest3) {
-        this.name = name;
+    public User(String email, String password, String fname, String lname, int age, String major, int year) {
+        this.name = fname + " " + lname;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.password = password;
         this.age = age;
         this.major = major;
         this.year = year;
-        this.interests = new String[]{interest1, interest2, interest3};
-//        this.interest2 = interest2;
-//        this.interest3 = interest3;
+        this.interests = new String[0];
     }
 
+    public static void setUser(User user) {
+        currentUser = user;
+    }
+
+    public static User getUser() {
+        if (currentUser == null) {
+            currentUser = new User();
+        }
+        return currentUser;
+    }
+
+    // GETTERS AND SETTERS
     // name functions
     public String getName() {
         return name;
@@ -69,12 +83,7 @@ public class User {
     public String getInterest(int pos) {
         return interests[pos];
     }
-//    public String getInterest2() {
-//        return interest2;
-//    }
-//    public String getInterest3() {
-//        return interest3;
-//    }
+
     public void setInterests(String interest1, String interest2, String interest3) {
         this.interests[0] = interest1;
         this.interests[1] = interest2;
@@ -89,4 +98,6 @@ public class User {
     // database function
     public void storeUser() {
     }
+
+
 }

@@ -1,6 +1,8 @@
 package com.example.app.view;
 
+import com.example.app.model.User;
 import com.example.app.util.FontManager;
+import com.example.app.controller.ProfileController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +10,8 @@ import java.awt.*;
 public final class ProfilePage extends JPanel {
     //Initializes the one instance of a Profile Page to be used by the rest of the program.
     private static final ProfilePage profilePage = new ProfilePage();
+    private User user = User.getUser();
+    private final ProfileController profileController = new ProfileController();
 
     //Profile Page constructor.
     private ProfilePage() {
@@ -87,8 +91,7 @@ public final class ProfilePage extends JPanel {
         mainPanel.add(profilePictureLabel, constraints);
 
         // User name
-        // TODO: Retrieve the user's name (Modify temporary code below)
-        JLabel userName = new JLabel("Temporary Username");
+        JLabel userName = new JLabel(profileController.capitalizedName());
         userName.setFont(FontManager.getCustomFont(25).deriveFont(Font.BOLD));
         constraints.insets = new Insets(30, 0, 0, 0);
         constraints.gridx = 1;
@@ -116,7 +119,7 @@ public final class ProfilePage extends JPanel {
         mainPanel.add(majorLabel, constraints);
 
         // Major text
-        JLabel majorText = new JLabel("Temporary Major Text"); //TODO: RETRIEVE DATA FROM DATABASE
+        JLabel majorText = new JLabel(user.getMajor()); //TODO: RETRIEVE DATA FROM DATABASE
         majorText.setFont(FontManager.getCustomFont(14));
         constraints.insets = new Insets(180, 0, 0, 0);
         mainPanel.add(majorText, constraints);

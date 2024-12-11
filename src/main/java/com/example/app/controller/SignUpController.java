@@ -1,8 +1,10 @@
 package com.example.app.controller;
 
 import com.example.app.view.AppWindow;
+import com.example.app.view.LoginPage;
 import com.example.app.view.SignUpPage;
 import com.example.app.model.User;
+import com.example.app.controller.UserSession;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.example.app.util.MongoDBConnector;
@@ -12,7 +14,8 @@ import org.bson.Document;
 import javax.swing.*;
 
 public class SignUpController {
-    private User user = new User();
+    protected User user = User.getUser();
+    private UserSession userSession;
     // VALID EMAIL
     private boolean emailValid (String email){
         int length = email.length();
@@ -153,7 +156,7 @@ public class SignUpController {
                     .append("password", user.getPassword()) // Password
                     .append("age", user.getAge())           // Age
                     .append("major", user.getMajor())       // Major
-                    .append("year", user.getYear());        // Year
+                    .append("gradYear", user.getYear());        // Year
 
             usersCollection.insertOne(userDocument);
             System.out.println("User successfully added to the database. :) "+ userDocument);
@@ -216,7 +219,9 @@ public class SignUpController {
         if(emailValid(email) && passwordValid(password) && nameValid(firstName, lastName) && ageValid(age) && !verifyEmail_DB(email)){
            user.setMajor(major);
            user.setYear(gradYear);
+            userSession.setLoggedInUser(user);
             System.out.println("user about to be stored: " + user + " " + user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getAge() + " " + user.getMajor() + " " + user.getYear());
+            System.out.println("User instance in SignUpController: " + user);
             storeUser();
             return true;
         } else if (verifyEmail_DB(email)) {

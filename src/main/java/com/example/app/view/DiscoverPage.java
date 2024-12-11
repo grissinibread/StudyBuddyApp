@@ -1,10 +1,12 @@
 package com.example.app.view;
 
+import com.example.app.controller.DiscoverController;
 import com.example.app.util.FontManager;
 import com.example.app.util.RoundedPanel;
 import com.example.app.controller.LoginController;
 import com.example.app.controller.ProfileController;
 import com.example.app.controller.InboxController;
+import com.example.app.model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,11 +18,13 @@ public final class DiscoverPage extends JPanel {
     private final ProfileController profileController;
     //Initializes the inbox controller to be used by the class.
     private final InboxController inboxController;
+    // Initializes the discover controller to be used by the class.
+    private DiscoverController discoverController;
+    //user passed from login
+    //private User currentUser = new User();
 
     //Initializes the one instance of a Discover Page to be used by the rest of the program.
     private static final DiscoverPage discoverPage = new DiscoverPage();
-
-    //private DiscoverController discoverController;
 
     //Discover Page constructor.
     private DiscoverPage() {
@@ -136,6 +140,9 @@ public final class DiscoverPage extends JPanel {
         // TODO: BACKEND? - Axel
         messagesIcon.addActionListener(e -> inboxController.goToInboxPage());
 
+        // Matching button
+        JButton matchButton = new JButton("Get Matches");
+        bottomNav.add(matchButton, constraints);
         return bottomNav;
     }
 
@@ -162,6 +169,18 @@ public final class DiscoverPage extends JPanel {
 
         return mainContent;
     }
+
+//    private void addMatchButton(GridBagConstraints constraints) {
+//        JButton matchButton = new JButton("Get Matches");
+//        matchButton.setFont(FontManager.getCustomFont(12));
+//        constraints.gridx = 0;
+//        constraints.gridy = 5;
+//        constraints.insets = new Insets(0, 0, 5, 0);
+//        add(matchButton, constraints);
+//        constraints.insets = new Insets(0, 0, 0, 0); // reset constraints
+//
+//        //loginButton.addActionListener(e -> discoverController.getMatches(user));
+//    }
 
     private JPanel profileTemplate() {
         // Create a custom rounded JPanel
