@@ -103,11 +103,8 @@ public final class ProfilePage extends JPanel {
         constraints.insets = new Insets(90, 0, 0, 0); // TEMPORARY SOLUTION
         mainPanel.add(descriptionLabel, constraints);
         
-        // Description text
-
-        // Default Text
-        // TODO: RETRIEVE UPDATED DESCRIPTION FROM DATABASE IF APPLICABLE
-        JLabel descriptionText = new JLabel("Talk about how awesome you are here!"); // temporary text
+        // Description Text/Bio
+        JLabel descriptionText = new JLabel(profileController.BioDisplay()); // temporary text
         descriptionText.setFont(FontManager.getCustomFont(14));
         constraints.insets = new Insets(120, 0, 0, 0); // TEMPORARY SOLUTION
         mainPanel.add(descriptionText, constraints);
@@ -119,7 +116,7 @@ public final class ProfilePage extends JPanel {
         mainPanel.add(majorLabel, constraints);
 
         // Major text
-        JLabel majorText = new JLabel(user.getMajor()); //TODO: RETRIEVE DATA FROM DATABASE
+        JLabel majorText = new JLabel(profileController.MajorDisplay());
         majorText.setFont(FontManager.getCustomFont(14));
         constraints.insets = new Insets(180, 0, 0, 0);
         mainPanel.add(majorText, constraints);

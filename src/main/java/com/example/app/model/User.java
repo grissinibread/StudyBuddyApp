@@ -7,6 +7,7 @@ public class User {
     private int age;
     private String major;
     private int year;
+    private String bio;
     private String[] interests;
 //    private String interest2;
 //    private String interest3;
@@ -25,7 +26,7 @@ public class User {
 //        this.password = "";
     }
 
-    public User(String email, String password, String fname, String lname, int age, String major, int year) {
+    public User(String email, String password, String fname, String lname, int age, String major, int year, String bio) {
         this.name = fname + " " + lname;
         this.fname = fname;
         this.lname = lname;
@@ -34,6 +35,7 @@ public class User {
         this.age = age;
         this.major = major;
         this.year = year;
+        this.bio = bio;
         this.interests = new String[0];
     }
 
@@ -75,6 +77,9 @@ public class User {
         return year;
     }
     public void setYear(int year) {this.year = year;}
+    //bio functions
+    public String getBio() {return bio;}
+    //public String setBio(String bio) {this.bio = bio;}
     // interest functions
     public String getInterests() {
         return interests[0] + ", " + interests[1] + ", " + interests[2];

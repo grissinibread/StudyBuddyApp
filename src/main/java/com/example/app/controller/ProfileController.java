@@ -16,4 +16,16 @@ public class ProfileController {
         System.out.println("current user in Profile Controller" + user.getName());
         return user.getFName().substring(0, 1).toUpperCase() + user.getFName().substring(1);
     }
+    //Return Bio if existing
+    public String BioDisplay(){
+        String bio = user.getBio();
+        if(bio == null || bio.length() == 0){
+            return "Talk about how awesome sauce you are here!";
+        }
+        return bio;
+    }
+    public String MajorDisplay(){
+        String major = user.getMajor();
+        return major;
+    }
 }

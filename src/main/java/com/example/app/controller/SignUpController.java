@@ -188,7 +188,6 @@ public class SignUpController {
     //note: there are two verifyLogin functions(SignUp & Login Controller)
     //Check if email and password are correct/match database
     public boolean verifyLogin (String email, String password){
-        // TODO: ADD VALIDITY CHECK AGAINST DATABASE
         try {
         // If email is existing email in DB
         if (verifyEmail_DB(email)) {

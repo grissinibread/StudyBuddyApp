@@ -35,7 +35,7 @@ public class LoginController {
             System.out.println("User details: " + user.toJson());
             return new User(user.getString("email"), user.getString("password"), user.getString("fname"),
                     user.getString("lname"), user.getInteger("age"), user.getString("major"),
-                    user.getInteger("gradYear"));
+                    user.getInteger("gradYear"), user.getString("bio"));
         }
         return null;
     }
