@@ -30,6 +30,11 @@ public class ProfileController {
         String major = user.getMajor();
         return major;
     }
+    public Integer displayGradYear(){
+        Integer gradYear = user.getYear();
+        return gradYear;
+    }
+
     public String displayInterests(){
         List<String> interests = user.getInterestts();
         if(interests == null || interests.isEmpty()){

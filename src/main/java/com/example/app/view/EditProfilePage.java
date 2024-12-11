@@ -1,5 +1,6 @@
 package com.example.app.view;
 
+import com.example.app.controller.EditProfileController;
 import com.example.app.controller.ProfileController;
 import com.example.app.model.User;
 import com.example.app.util.FontManager;
@@ -11,6 +12,7 @@ public class EditProfilePage extends JPanel {
 
     //Initializes the one instance of a EditProfile Page to be used by the rest of the program.
     private static final com.example.app.view.EditProfilePage editProfilePage = new com.example.app.view.EditProfilePage();
+    private final ProfileController profileController = new ProfileController();
     private User user = User.getUser();
     //private final EditProfileController editProfileController = new EditProfileController();
 
@@ -55,6 +57,7 @@ public class EditProfilePage extends JPanel {
         constraints.anchor = GridBagConstraints.WEST;
         constraints.weightx = 1;
         topPanel.add(backButton, constraints);
+        backButton.addActionListener(e -> {profileController.goToProfilePage();});
 
         // Edit profile button
         JButton editProfileButton = new JButton("Save");
@@ -106,7 +109,7 @@ public class EditProfilePage extends JPanel {
         mainPanel.add(descriptionText, constraints);
 
         // Major
-        JLabel majorLabel = new JLabel("Major");
+        JLabel majorLabel = new JLabel("Majorrr");
         majorLabel.setFont(FontManager.getCustomFont(16).deriveFont(Font.BOLD));
         constraints.insets = new Insets(150, 0, 0, 0); // TEMPORARY SOLUTION
         mainPanel.add(majorLabel, constraints);
