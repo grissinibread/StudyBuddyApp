@@ -144,13 +144,13 @@ public final class ProfilePage extends JPanel {
         // Interests
         JLabel interestsLabel = new JLabel("Interests");
         interestsLabel.setFont(FontManager.getCustomFont(16).deriveFont(Font.BOLD));
-        constraints.insets = new Insets(210,0,0,0); // TEMPORARY SOLUTION
+        constraints.insets = new Insets(270, 0, 0, 0); // TEMPORARY SOLUTION
         mainPanel.add(interestsLabel, constraints);
 
         // Interests Array
         JLabel interestsText = new JLabel(profileController.displayInterests());
+        constraints.insets = new Insets(300, 0, 0, 0); // TEMPORARY SOLUTION
         interestsText.setFont(FontManager.getCustomFont(14));
-        constraints.insets = new Insets(240, 0, 0, 0); // TEMPORARY SOLUTION
         mainPanel.add(interestsText, constraints);
 
         return mainPanel;
