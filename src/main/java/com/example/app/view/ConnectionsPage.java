@@ -30,6 +30,7 @@ public final class ConnectionsPage extends JPanel {
 
     public JPanel topPanel() {
         JPanel topPanel = new JPanel();
+        topPanel.setBackground(Color.WHITE);
 
         // Panel Properties
         topPanel.setPreferredSize(new Dimension(getWidth(), 100));
@@ -59,6 +60,9 @@ public final class ConnectionsPage extends JPanel {
 
     public JPanel mainPanel() {
         JPanel mainPanel = new JPanel();
+
+        // Panel Properties
+        mainPanel.setBackground(Color.WHITE);
         mainPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
 

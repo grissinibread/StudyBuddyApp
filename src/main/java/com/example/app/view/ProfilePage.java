@@ -82,6 +82,7 @@ public final class ProfilePage extends JPanel {
     private JPanel mainPanel() {
         // Panel properties
         JPanel mainPanel = new JPanel();
+        mainPanel.setBackground(Color.WHITE);
         mainPanel.setLayout(new GridBagLayout());
 
         // Constraints of the grid
