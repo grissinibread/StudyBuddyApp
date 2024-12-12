@@ -1,7 +1,7 @@
 package com.example.app.view;
 
-import com.example.app.controller.EditProfileController;
 import com.example.app.controller.ProfileController;
+import com.example.app.controller.UserSession;
 import com.example.app.model.User;
 import com.example.app.util.FontManager;
 
@@ -12,8 +12,8 @@ public class EditProfilePage extends JPanel {
 
     //Initializes the one instance of a EditProfile Page to be used by the rest of the program.
     private static final com.example.app.view.EditProfilePage editProfilePage = new com.example.app.view.EditProfilePage();
+    private User user = UserSession.getLoggedInUser();
     private final ProfileController profileController = new ProfileController();
-    private User user = User.getUser();
     //private final EditProfileController editProfileController = new EditProfileController();
 
     //Edit Profile Page constructor.
@@ -57,7 +57,8 @@ public class EditProfilePage extends JPanel {
         constraints.anchor = GridBagConstraints.WEST;
         constraints.weightx = 1;
         topPanel.add(backButton, constraints);
-        backButton.addActionListener(e -> {profileController.goToProfilePage();});
+        backButton.addActionListener(e -> {
+            profileController.goToProfilePage();});
 
         // Edit profile button
         JButton editProfileButton = new JButton("Save");
@@ -89,36 +90,38 @@ public class EditProfilePage extends JPanel {
         constraints.insets = new Insets(30, 30, 0, 0);
         mainPanel.add(profilePictureLabel, constraints);
 
-        // User name
-        JLabel userName = new JLabel("Temp Name");
-        userName.setFont(FontManager.getCustomFont(25).deriveFont(Font.BOLD));
-        constraints.insets = new Insets(30, 0, 0, 0);
-        constraints.gridx = 1;
-        mainPanel.add(userName, constraints);
+        // default contraints
+        int topConstraint = 25;
+        // first name
+        constraints.insets = new Insets(topConstraint, 0, 0, 0);
+        JPanel userFname = createEditableTextField("First Name", user.getFName(), constraints, 200, 20);
+        mainPanel.add(userFname, constraints);
+        topConstraint += 50;
 
-        // Description
-        JLabel descriptionLabel = new JLabel("Description");
-        descriptionLabel.setFont(FontManager.getCustomFont(16).deriveFont(Font.BOLD));
-        constraints.insets = new Insets(90, 0, 0, 0); // TEMPORARY SOLUTION
-        mainPanel.add(descriptionLabel, constraints);
+        // last name
+        constraints.insets = new Insets(topConstraint, 0, 0, 0);
+        JPanel userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
+        mainPanel.add(userLname, constraints);
+        topConstraint += 50;
 
-        // Description Text/Bio
-        JLabel descriptionText = new JLabel("Temp Bio"); // temporary text
-        descriptionText.setFont(FontManager.getCustomFont(14));
-        constraints.insets = new Insets(120, 0, 0, 0); // TEMPORARY SOLUTION
-        mainPanel.add(descriptionText, constraints);
+        // Age
+        constraints.insets = new Insets(topConstraint, 0, 0, 0);
+        JPanel userAge = createEditableTextField("Age", "temp age", constraints, 200, 20);
+        mainPanel.add(userAge, constraints);
+        topConstraint += 50;
 
         // Major
-        JLabel majorLabel = new JLabel("Majorrr");
-        majorLabel.setFont(FontManager.getCustomFont(16).deriveFont(Font.BOLD));
-        constraints.insets = new Insets(150, 0, 0, 0); // TEMPORARY SOLUTION
-        mainPanel.add(majorLabel, constraints);
+        constraints.insets = new Insets(topConstraint, 0, 0, 0);
+        JPanel userMajor = createEditableTextField("Major", user.getMajor(), constraints, 200, 20);
+        mainPanel.add(userMajor, constraints);
+        topConstraint += 50;
 
-        // Major text
-        JLabel majorText = new JLabel("Temp Major");
-        majorText.setFont(FontManager.getCustomFont(14));
-        constraints.insets = new Insets(180, 0, 0, 0);
-        mainPanel.add(majorText, constraints);
+        // Description
+        constraints.insets = new Insets(topConstraint, 0, 0, 0);
+        JPanel userBio = createEditableTextField("Description", user.getBio(), constraints, 400, 100);
+        mainPanel.add(userBio, constraints);
+        topConstraint += 50;
+
 
         // Interests
         JLabel interestsLabel = new JLabel("Interests");
@@ -133,5 +136,27 @@ public class EditProfilePage extends JPanel {
         mainPanel.add(interestsText, constraints);
 
         return mainPanel;
+    }
+    private JPanel createEditableTextField(String text, String fieldValue, GridBagConstraints constraints, int width, int height) {
+        JPanel labeledTextFieldPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints fieldConstraints = new GridBagConstraints();
+        fieldConstraints.gridx = 0;
+        fieldConstraints.gridy = 0;
+        fieldConstraints.insets = new Insets(0, 250, 5, 0); // Spacing between label and text field
+
+        // label
+        JLabel label = new JLabel(text);
+        label.setFont(FontManager.getCustomFont(16).deriveFont(Font.BOLD));
+        labeledTextFieldPanel.add(label, fieldConstraints);
+
+        // text field
+        fieldConstraints.gridy++;
+        JTextField textField = new JTextField(); // width of box
+        textField.setPreferredSize(new Dimension(width, height));
+        textField.setText(fieldValue);
+        textField.setFont(FontManager.getCustomFont(14));
+        labeledTextFieldPanel.add(textField, fieldConstraints);
+
+        return labeledTextFieldPanel;
     }
 }

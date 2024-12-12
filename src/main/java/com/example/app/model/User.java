@@ -25,6 +25,7 @@ public class User {
 //        this.interests = new String[0];
 //        this.email = "";
 //        this.password = "";
+        this.bio = "Tell us about yourself here!";
     }
 
     public User(String email, String password, String fname, String lname, Integer age, String major, Integer year, String bio/*, List<String> interestts*/) {
