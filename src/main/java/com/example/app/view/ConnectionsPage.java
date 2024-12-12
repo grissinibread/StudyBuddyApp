@@ -5,26 +5,26 @@ import com.example.app.util.FontManager;
 import com.example.app.util.RoundedPanel;
 import com.example.app.controller.LoginController;
 import com.example.app.controller.ProfileController;
-import com.example.app.controller.InboxController;
+import com.example.app.controller.ConnectionsController;
 
 import javax.swing.*;
 import java.awt.*;
 
-public final class DiscoverPage extends JPanel {
+public final class ConnectionsPage extends JPanel {
     //Initializes the login controller to be used by the class.
     private final LoginController loginController;
     //Initializes the profile controller to be used by the class.
     private final ProfileController profileController;
     //Initializes the inbox controller to be used by the class.
-    private final InboxController inboxController;
+    private final ConnectionsController connectionsController;
     // Initializes the discover controller to be used by the class.
     private DiscoverController discoverController;
 
     //Initializes the one instance of a Discover Page to be used by the rest of the program.
-    private static final DiscoverPage discoverPage = new DiscoverPage();
+    private static final ConnectionsPage CONNECTIONS_PAGE = new ConnectionsPage();
 
     //Discover Page constructor.
-    private DiscoverPage() {
+    private ConnectionsPage() {
 
         //Initializes the login controller to be used by the class.
         this.loginController = new LoginController();
@@ -33,7 +33,7 @@ public final class DiscoverPage extends JPanel {
         this.profileController = new ProfileController();
 
         //Initializes the inbox controller to be used by the class.
-        this.inboxController = new InboxController();
+        this.connectionsController = new ConnectionsController();
 
         //Initializes the inbox controller to be used by the class.
         this.discoverController = new DiscoverController();
@@ -63,7 +63,7 @@ public final class DiscoverPage extends JPanel {
     }
 
     //Returns the one instance of the discoverPage.
-    public static DiscoverPage getDiscoverPage() { return discoverPage; }
+    public static ConnectionsPage getDiscoverPage() { return CONNECTIONS_PAGE; }
 
     private JPanel topNav() {
         JPanel topNav = new JPanel();
@@ -138,7 +138,7 @@ public final class DiscoverPage extends JPanel {
         constraints.insets = new Insets(0, 20, 20, 0);
         bottomNav.add(messagesIcon, constraints);
         // TODO: BACKEND? - Axel
-        messagesIcon.addActionListener(e -> inboxController.goToInboxPage());
+        messagesIcon.addActionListener(e -> connectionsController.goToInboxPage());
 
         // Matching button
         JButton matchButton = new JButton("Get More Matches");

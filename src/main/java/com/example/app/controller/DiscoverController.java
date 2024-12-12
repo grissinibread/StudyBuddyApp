@@ -1,13 +1,12 @@
 package com.example.app.controller;
 import com.example.app.model.User;
 import com.example.app.view.AppWindow;
-import com.example.app.view.DiscoverPage;
+import com.example.app.view.ConnectionsPage;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 
 import java.util.ArrayList;
-import java.util.List;
 
 // mongoDB packages
 import com.mongodb.client.MongoDatabase;
@@ -114,7 +113,7 @@ public class DiscoverController {
     //Takes the user to the Discover Page.
     public void goToDiscoverPage(){
         //AppWindow.getAppWindow().openPage(AppWindow.getAppWindow().getDiscoverPage());
-        AppWindow.getAppWindow().openPage(DiscoverPage.getDiscoverPage());
+        AppWindow.getAppWindow().openPage(ConnectionsPage.getDiscoverPage());
     }
 
     public ArrayList<User> getMatches(){

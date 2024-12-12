@@ -164,34 +164,45 @@ public class EditProfilePage extends JPanel {
         constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
         JTextField userBio = createEditableTextField("Age", user.getBio(), constraints, 400, 100);
         mainPanel.add(userBio, constraints);
-        topConstraint += 50;
+        topConstraint += 150;
 
+        // Interests
 
-//        // Interests
-        JLabel interestlabel = new JLabel("Interest");
-        interestlabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
+        // TODO: BACKEND
+
+        // Interest 1
+        JLabel firstInterest = new JLabel("Interest 1");
+        firstInterest.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
         constraints.insets = new Insets(topConstraint, 0, 0, 0);
         constraints.gridx = 1;
-        mainPanel.add(interestlabel, constraints);
+        mainPanel.add(firstInterest, constraints);
+
         constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
-//        JTextField userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
-        mainPanel.add(interestComboBox, constraints);
+        JComboBox<String> firstComboBox = new JComboBox<>(interestArray);
+        mainPanel.add(firstComboBox, constraints);
         interestComboBox.setSelectedItem(interestArray[0]);
-        topConstraint += 50;
-//        // interest 1
-//        constraints.insets = new Insets(topConstraint, 0, 0, 0);
-//        JPanel userInt1 = createEditableComboBox("Interest", interestArray[0]/*user.getInterest(0)*/, constraints, interestArray, 0, 2);
-//        mainPanel.add(userInt1, constraints);
-//        topConstraint += 80;
-//        //interest 2
-//        constraints.insets = new Insets(topConstraint, 0, 0, 0);
-//        JPanel userInt2 = createEditableComboBox("Interest", interestArray[0]/*user.getInterest(1)*/, constraints, interestArray, 2, 2);
-//        mainPanel.add(userInt2, constraints);
-//        topConstraint += 60;
-//        //interest 3
-//        constraints.insets = new Insets(topConstraint,500 , 0, 0);
-//        JPanel userInt3 = createEditableComboBox("Interest", interestArray[0]/*user.getInterest(2)*/, constraints, interestArray);
-//        mainPanel.add(userInt3, constraints);
+
+        //interest 2
+        JLabel secondInterest = new JLabel("Interest 2");
+        secondInterest.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
+        constraints.insets = new Insets(topConstraint, 150, 0, 0);
+        mainPanel.add(secondInterest, constraints);
+
+        constraints.insets = new Insets(topConstraint + 20, 150, 0, 0);
+        JComboBox<String> secondComboBox = new JComboBox<>(interestArray);
+        mainPanel.add(secondComboBox, constraints);
+        interestComboBox.setSelectedItem(interestArray[0]);
+
+        //interest 3
+        JLabel thirdInterest = new JLabel("Interest 3");
+        thirdInterest.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
+        constraints.insets = new Insets(topConstraint, 300, 0, 0);
+        mainPanel.add(thirdInterest, constraints);
+
+        constraints.insets = new Insets(topConstraint + 20, 300, 0, 0);
+        JComboBox<String> thirdComboBox = new JComboBox<>(interestArray);
+        mainPanel.add(thirdComboBox, constraints);
+        interestComboBox.setSelectedItem(interestArray[0]);
 
         return mainPanel;
     }
