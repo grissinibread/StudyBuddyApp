@@ -193,7 +193,7 @@ public final class DiscoverPage extends JPanel {
         profileCard.setPreferredSize(new Dimension(375, 200));
         profileCard.setBackground(Color.decode("#87CEFA"));
 
-        // Addition of Image (Bread Image Temp)
+        // Addition of Image
         ImageIcon profilePicture = new ImageIcon("src/resources/img/profileFiller.png");
         Image scaled = profilePicture.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ImageIcon profileIcon = new ImageIcon(scaled);

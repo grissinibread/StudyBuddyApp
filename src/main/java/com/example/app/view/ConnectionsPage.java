@@ -66,6 +66,24 @@ public final class ConnectionsPage extends JPanel {
         mainPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
 
+        // Profile Cards
+        // TODO: ADD AS MANY AS ARE STORED IN THE DATABASE
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        mainPanel.add(profileTemplate(), constraints); // TEMP
+
+        constraints.gridy = 1;
+        mainPanel.add(profileTemplate(), constraints); // TEMP
+
+        constraints.gridy = 2;
+        mainPanel.add(profileTemplate(), constraints); // TEMP
+
+        constraints.gridy = 3;
+        mainPanel.add(profileTemplate(), constraints); // TEMP
+
+        constraints.gridy = 4;
+        mainPanel.add(profileTemplate(), constraints); // TEMP
+
         return mainPanel;
     }
 
@@ -73,9 +91,31 @@ public final class ConnectionsPage extends JPanel {
         JPanel profileTemplate = new JPanel();
 
         // Panel Properties
+        profileTemplate.setBackground(Color.ORANGE); // TEMP COLOR
         profileTemplate.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
-        profileTemplate.setPreferredSize(new Dimension(getWidth(), 100));
+        profileTemplate.setPreferredSize(new Dimension(800, 100));
+
+        // Profile Temp
+        constraints.insets = new Insets(0, 10, 0, 0);
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+
+        ImageIcon profilePicture = new ImageIcon("src/resources/img/profileFiller.png");
+        Image scaled = profilePicture.getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
+        ImageIcon profileIcon = new ImageIcon(scaled);
+        JLabel profilePictureLabel = new JLabel(profileIcon);
+        profileTemplate.add(profilePictureLabel, constraints);
+
+        // User Name
+        constraints.gridx = 1;
+
+        JLabel userName = new JLabel("getUserName");
+        userName.setFont(FontManager.getCustomFont(12));
+        profileTemplate.add(userName, constraints);
 
         return profileTemplate;
     }

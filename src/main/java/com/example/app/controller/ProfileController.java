@@ -37,10 +37,10 @@ public class ProfileController {
     }
 
     public String displayInterests(){
-        List<String> interests = user.getInterestts();
-        if(interests == null || interests.isEmpty()){
-            return "Pick some interests to display here! :)";
-        }
+        String[]interests = user.getInterests();
+//        if(interests == null || interests.isEmpty()){
+//            return "Pick some interests to display here! :)";
+//        }
         return String.join(", ", interests);
     }
 }

@@ -39,16 +39,28 @@ public class DiscoverController {
             yearMatch = true;
             commonalities++;
         }
-
-        for (int i = 0; i<3; i++){
-            for( int j=0; j<3; j++){
-                if (user1.getInterest(i).equals(user2.getInterest(j))){
-                    interestsMatch++;
-                    commonalities++;
-                    break;
-                }
-            }
+        if (user1.getInterest1().equals(user2.getInterest1()) || user1.getInterest1().equals(user2.getInterest2()) || user1.getInterest1().equals(user2.getInterest3())) {
+            interestsMatch++;
+            commonalities++;
         }
+        if (user1.getInterest2().equals(user2.getInterest1()) || user1.getInterest2().equals(user2.getInterest2()) || user1.getInterest2().equals(user2.getInterest3())) {
+            interestsMatch++;
+            commonalities++;
+        }
+        if (user1.getInterest3().equals(user2.getInterest1()) || user1.getInterest3().equals(user2.getInterest2()) || user1.getInterest3().equals(user2.getInterest3())) {
+            interestsMatch++;
+            commonalities++;
+        }
+
+//        for (int i = 0; i<3; i++){
+//            for( int j=0; j<3; j++){
+//                if (user1.getInterest(i).equals(user2.getInterest(j))){
+//                    interestsMatch++;
+//                    commonalities++;
+//                    break;
+//                }
+//            }
+//        }
 
         ageDiff = Math.abs(user1.getAge() - user2.getAge()); // 0-2 yrs, 2+ yrs
         if (ageDiff <= 2){ commonalities++;}

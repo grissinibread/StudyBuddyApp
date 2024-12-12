@@ -44,7 +44,9 @@ public class EditProfileController {
         user.setLName(lastName);
         user.setYear(year);
         user.setMajor(major);
-        user.setInterests(interest1,interest2,interest3);
+        user.setInterest1(interest1);
+        user.setInterest2(interest2);
+        user.setInterest3(interest3);
 
         // Save updated user info to the database
         updateUserInDatabase();
@@ -66,7 +68,9 @@ public class EditProfileController {
                     .append("age", user.getAge())
                     .append("major", user.getMajor())
                     .append("year", user.getYear())
-                    .append("interests", user.getInterests())
+                    .append("interest1", user.getInterest1())
+                    .append("interest2", user.getInterest2())
+                    .append("interest3", user.getInterest3())
                     .append("bio", user.getBio()));
 
             // update

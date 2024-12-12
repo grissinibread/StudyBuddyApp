@@ -144,7 +144,10 @@ public class SignUpController {
                     .append("major", user.getMajor())           // Major
                     .append("gradYear", user.getYear())         // Year
                     .append("bio", user.getBio())               // Bio
-                    .append("interests", user.getInterestts()); // Interests List
+                    .append("interest1", user.getInterest1())
+                    .append("interest2", user.getInterest2())
+                    .append("interest3", user.getInterest3()); // Interests List
+
 
             usersCollection.insertOne(userDocument);
             System.out.println("User successfully added to the database. :) "+ userDocument);

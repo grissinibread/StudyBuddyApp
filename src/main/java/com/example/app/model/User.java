@@ -11,7 +11,9 @@ public class User {
     private Integer year;
     private String bio;
     private String[] interests;
-    private List<String> interestts;
+    private String interest1;
+    private String interest2;
+    private String interest3;
     private String email;
     private String password;
 
@@ -26,13 +28,12 @@ public class User {
 //        this.email = "";
 //        this.password = "";
         this.bio = "Tell us about yourself here!";
-        this.interests = new String[3];
-        this.interests[0] = "Select Interest";
-        this.interests[1] = "Select Interest";
-        this.interests[2] = "Select Interest";
+        this.interest1 = "Select Interest";
+        this.interest2 = "Select Interest";
+        this.interest3 = "Select Interest";
     }
 
-    public User(String email, String password, String fname, String lname, Integer age, String major, Integer year, String bio/*, List<String> interestts*/) {
+    public User(String email, String password, String fname, String lname, Integer age, String major, Integer year, String bio, String interest1, String interest2, String interest3) {
         this.name = fname + " " + lname;
         this.fname = fname;
         this.lname = lname;
@@ -42,13 +43,13 @@ public class User {
         this.major = major;
         this.year = year;
         this.bio = bio;
-//        this.interests = new String[0];
-        //this.interestts = interestts;
+        this.interest1 = interest1;
+        this.interest2 = interest2;
+        this.interest3 = interest3;
     }
 
     public User(String fname, Integer age, String major, Integer year) { // for matching comparisons, so password of other users isn't shown
         this.fname = fname;
-        this.lname = fname;
         this.age = age;
         this.major = major;
         this.year = year;
@@ -96,23 +97,34 @@ public class User {
     public String getBio() {return bio;}
 
     //interestts functions
-    public List<String> getInterestts(){ return interestts;}
-    public void setInterestts(List<String> interestts){ this.interestts = interestts;}
+    public String[] getInterests(){
+        interests = new String[3];
+        interests[0] = interest1;
+        interests[1] = interest2;
+        interests[2] = interest3;
+        return interests;
+    }
+    public String getInterest1() { return interest1; }
+    public void setInterest1(String interest1) { this.interest1 = interest1; }
+    public String getInterest2() { return interest2; }
+    public void setInterest2(String interest2) { this.interest2 = interest2; }
+    public String getInterest3() { return interest3; }
+    public void setInterest3(String interest3) { this.interest3 = interest3; }
 
     // interest functions
-    public String getInterests() {
-        return interests[0] + ", " + interests[1] + ", " + interests[2];
-    }
-
-    public String getInterest(int pos) {
-        return interests[pos];
-    }
-
-    public void setInterests(String interest1, String interest2, String interest3) {
-        this.interests[0] = interest1;
-        this.interests[1] = interest2;
-        this.interests[2] = interest3;
-    }
+//    public String getInterests() {
+//        return interests[0] + ", " + interests[1] + ", " + interests[2];
+//    }
+//
+//    public String getInterest(int pos) {
+//        return interests[pos];
+//    }
+//
+//    public void setInterests(String interest1, String interest2, String interest3) {
+//        this.interests[0] = interest1;
+//        this.interests[1] = interest2;
+//        this.interests[2] = interest3;
+//    }
     // email functions
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
