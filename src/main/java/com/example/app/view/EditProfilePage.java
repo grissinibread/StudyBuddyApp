@@ -1,6 +1,7 @@
 package com.example.app.view;
 
 import com.example.app.controller.ProfileController;
+import com.example.app.controller.EditProfileController;
 import com.example.app.controller.UserSession;
 import com.example.app.model.User;
 import com.example.app.util.FontManager;
@@ -14,7 +15,7 @@ public class EditProfilePage extends JPanel {
     private static final com.example.app.view.EditProfilePage editProfilePage = new com.example.app.view.EditProfilePage();
     private User user = UserSession.getLoggedInUser();
     private final ProfileController profileController = new ProfileController();
-    //private final EditProfileController editProfileController = new EditProfileController();
+    private final EditProfileController editProfileController = new EditProfileController();
     private String majorArray[] = {"Computer Science", "Software Engineering", "Computer Engineering", "Cyber Security",
             "Computer Information Systems", "Electrical Engineering", "Mathematics", "Applied Physics",
             "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences",
@@ -29,6 +30,12 @@ public class EditProfilePage extends JPanel {
 
     private JComboBox<String> majorComboBox = new JComboBox(majorArray);
     private JComboBox<String> interestComboBox = new JComboBox(interestArray);
+    private JComboBox<Integer> yearComboBox = new JComboBox(yearArray);
+    private JTextField userFname;
+    private JTextField userLname;
+    private JTextField userAge;
+    private JTextField userBio;
+
 
     //Edit Profile Page constructor.
     private EditProfilePage() {
@@ -82,6 +89,7 @@ public class EditProfilePage extends JPanel {
         topPanel.add(saveButton, constraints);
         saveButton.addActionListener(e -> {
             System.out.println("Current user: " + user.getName());
+            saveProfile();
         });
 
         return topPanel;
@@ -117,7 +125,7 @@ public class EditProfilePage extends JPanel {
         constraints.gridx = 1;
         mainPanel.add(fnamelabel, constraints);
         constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
-        JTextField userFname = createEditableTextField("First Name", user.getFName(), constraints, 200, 20);
+        userFname = createEditableTextField("First Name", user.getFName(), constraints, 200, 20);
         mainPanel.add(userFname, constraints);
         topConstraint += 50;
 
@@ -128,19 +136,20 @@ public class EditProfilePage extends JPanel {
         constraints.gridx = 1;
         mainPanel.add(Lnamelabel, constraints);
         constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
-        JTextField userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
+        userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
         mainPanel.add(userLname, constraints);
         topConstraint += 50;
 
         // Age
-        JLabel agelabel = new JLabel("Age");
-        agelabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
+        JLabel yearlabel = new JLabel("Graduation Year");
+        yearlabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
         constraints.insets = new Insets(topConstraint, 0, 0, 0);
         constraints.gridx = 1;
-        mainPanel.add(agelabel, constraints);
+        mainPanel.add(yearlabel, constraints);
         constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
-        JTextField userAge = createEditableTextField("Age", "tempAge", constraints, 200, 20);
-        mainPanel.add(userAge, constraints);
+//        JTextField userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
+        mainPanel.add(yearComboBox, constraints);
+        yearComboBox.setSelectedItem(user.getYear());
         topConstraint += 50;
 
         // Major
@@ -229,26 +238,27 @@ public class EditProfilePage extends JPanel {
 
         return textField;
     }
+
+    private void saveProfile() {
+        // Get values from input fields and combos
+        String firstName = userFname.getText().trim();
+        String lastName = userLname.getText().trim();
+        Integer year = (Integer) yearComboBox.getSelectedItem();
+        String major = (String) majorComboBox.getSelectedItem();
+        String bio = userBio.getText().trim();
+        String interest1 = (String) interestComboBox.getSelectedItem();
+        String interest2 = (String) interestComboBox.getSelectedItem();
+        String interest3 = (String) interestComboBox.getSelectedItem();
+
+        // Call the controller's method to validate and update the profile
+        boolean isUpdated = editProfileController.validateAndUpdateProfile(firstName, lastName, user.getEmail(), year, major, bio, interest1, interest2, interest3);
+
+        // Display success or error message
+        if (isUpdated) {
+            JOptionPane.showMessageDialog(this, "Profile updated successfully!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to update profile. Please check your input.");
+        }
+    }
 }
 
-//    private void createEditableComboBox(String text, String fieldValue, GridBagConstraints constraints, String[] arr, int x, int y) {
-////        JPanel labeledTextFieldPanel = new JPanel(new GridBagLayout());
-////        GridBagConstraints fieldConstraints = new GridBagConstraints();
-////        fieldConstraints.gridx = x;
-////        fieldConstraints.gridy = y;
-////        fieldConstraints.insets = new Insets(0, 250, 5, 0); // Spacing between label and text field
-////
-////        // label
-////        JLabel label = new JLabel(text);
-////        label.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
-////        labeledTextFieldPanel.add(label, fieldConstraints);
-//
-//        // text field
-//        //constraints.gridy++;
-//        JComboBox<String> comboBox = new JComboBox(arr);
-//        comboBox.setSelectedItem(fieldValue);
-//        labeledTextFieldPanel.add(comboBox, fieldConstraints);
-//
-//        return labeledTextFieldPanel;
-//    }
-//}

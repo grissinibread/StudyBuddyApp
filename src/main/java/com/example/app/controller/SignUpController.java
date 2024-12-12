@@ -88,7 +88,7 @@ public class SignUpController {
     }
 
     // VALID NAME
-    private boolean nameValid (String firstName, String lastName){
+    public boolean nameValid (String firstName, String lastName){
         // VALID FORMATS: Name Last, Name Name Last, Name Name Last-Last, Name Name Last Last, etc.
         int firstlength = firstName.length();
         int lastlength = lastName.length();
@@ -118,7 +118,7 @@ public class SignUpController {
     }
 
     //VALID AGE
-    private boolean ageValid (Integer age){
+    public boolean ageValid (Integer age){
         if (age < 16 || age > 100){
             JOptionPane.showMessageDialog(null, "Age Invalid");
             return false;
@@ -209,13 +209,12 @@ public class SignUpController {
             UserSession.setLoggedInUser(user);
             System.out.println("user about to be stored: " + user + " " + user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getAge() + " " + user.getMajor() + " " + user.getYear());
             System.out.println("User instance in SignUpController: " + user);
-            //storeUser();
+            storeUser();
             return true;
         } else if (verifyEmail_DB(email)) {
             JOptionPane.showMessageDialog(null, "This email address is already taken. Please try another.");
         }
         return false;
-//        return verifyLogin(email, password) && nameValid(firstName, lastName) && ageValid(age);
     }
 
     //Takes the user to the SignUp Page.
