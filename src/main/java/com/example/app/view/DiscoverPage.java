@@ -190,7 +190,7 @@ public final class DiscoverPage extends JPanel {
         JPanel profileCard = new RoundedPanel(20);
         profileCard.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
-        profileCard.setPreferredSize(new Dimension(350, 200));
+        profileCard.setPreferredSize(new Dimension(375, 200));
         profileCard.setBackground(Color.decode("#87CEFA"));
 
         // Addition of Image (Bread Image Temp)

@@ -31,7 +31,6 @@ public final class AppWindow extends JFrame {
         // Layout settings
         setLayout(new BorderLayout());
 
-
         // Temp add
         // add(ProfilePage.getProfilePage(), BorderLayout.CENTER);
 
