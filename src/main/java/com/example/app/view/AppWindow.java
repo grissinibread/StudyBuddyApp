@@ -35,6 +35,9 @@ public final class AppWindow extends JFrame {
         // Temp add
         // add(ProfilePage.getProfilePage(), BorderLayout.CENTER);
 
+        // Temp add
+        // add(DiscoverPage.getDiscoverPage(), BorderLayout.CENTER);
+
         // Add the Login page by default
         add(LoginPage.getLoginPage(), BorderLayout.CENTER);
     }

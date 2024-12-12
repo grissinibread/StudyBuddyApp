@@ -15,7 +15,7 @@ public final class ProfilePage extends JPanel {
     private User user = User.getUser();
     private final ProfileController profileController = new ProfileController();
     private final DiscoverController discoverController = new DiscoverController();
-    private final EditProfileController editProfileController = new EditProfileController();
+    private final EditProfileController editprofileController = new EditProfileController();
 
     //Profile Page constructor.
     private ProfilePage() {
@@ -66,7 +66,7 @@ public final class ProfilePage extends JPanel {
         constraints.anchor = GridBagConstraints.EAST;
         topPanel.add(editProfileButton, constraints);
         editProfileButton.addActionListener(e -> {
-            editProfileController.goToEditProfilePage();});
+            editprofileController.goToEditProfilePage();});
 
         return topPanel;
     }
@@ -127,6 +127,19 @@ public final class ProfilePage extends JPanel {
         majorText.setFont(FontManager.getCustomFont(14));
         constraints.insets = new Insets(180, 0, 0, 0);
         mainPanel.add(majorText, constraints);
+
+        //Grad Year
+        JLabel gradLabel = new JLabel("Expected Graduation Year");
+        gradLabel.setFont(FontManager.getCustomFont(16).deriveFont(Font.BOLD));
+        constraints.insets = new Insets(210, 0, 0, 0); // TEMPORARY SOLUTION
+        mainPanel.add(gradLabel, constraints);
+
+        //Grad Year text
+        //                      profileController.displayGradYear();
+        JLabel gradText = new JLabel("insert year"); // TODO: Allow year INTEGER variable to pass
+        gradText.setFont(FontManager.getCustomFont(14));
+        constraints.insets = new Insets(240, 0, 0, 0); // TEMPORARY SOLUTION
+        mainPanel.add(gradText, constraints);
 
         // Interests
         JLabel interestsLabel = new JLabel("Interests");

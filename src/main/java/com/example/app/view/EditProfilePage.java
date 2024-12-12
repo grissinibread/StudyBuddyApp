@@ -14,7 +14,7 @@ public class EditProfilePage extends JPanel {
     private static final com.example.app.view.EditProfilePage editProfilePage = new com.example.app.view.EditProfilePage();
     private User user = UserSession.getLoggedInUser();
     private final ProfileController profileController = new ProfileController();
-    //private final EditProfileController editProfileController = new EditProfileController();
+    // private final EditProfileController editProfileController = new EditProfileController();
 
     //Edit Profile Page constructor.
     private EditProfilePage() {

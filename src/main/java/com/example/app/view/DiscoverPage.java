@@ -141,8 +141,9 @@ public final class DiscoverPage extends JPanel {
         messagesIcon.addActionListener(e -> inboxController.goToInboxPage());
 
         // Matching button
-        JButton matchButton = new JButton("Get Matches");
+        JButton matchButton = new JButton("Get More Matches");
         matchButton.setFont(FontManager.getCustomFont(12));
+        constraints.insets = new Insets(0, 0, 20, 60);
         bottomNav.add(matchButton, constraints);
         matchButton.addActionListener(e -> discoverController.getMatches());
         return bottomNav;
@@ -154,7 +155,7 @@ public final class DiscoverPage extends JPanel {
         mainContent.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
 
-        // TODO: CONNECT TO BACKEND (PROFILE IMAGE, RELEVANT USER INFO OTHERS WOULD PROBABLY LIKE TO KNOW)
+        // TODO: CONNECT TO BACKEND (RELEVANT USER INFO OTHERS WOULD PROBABLY LIKE TO KNOW)
 
         int cols = 1;
         int rows = 1;
@@ -190,25 +191,53 @@ public final class DiscoverPage extends JPanel {
         profileCard.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         profileCard.setPreferredSize(new Dimension(350, 200));
-        profileCard.setBackground(Color.ORANGE);
+        profileCard.setBackground(Color.decode("#87CEFA"));
 
         // Addition of Image (Bread Image Temp)
-        // TODO: GET IMAGE FROM DATABASE
-        ImageIcon originalIcon = new ImageIcon("src/resources/img/bread.png");
-        Image scaledImage = originalIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-        ImageIcon profileIcon = new ImageIcon(scaledImage);
-        JButton profileIconButton = new JButton(profileIcon);
-        profileIconButton.setPreferredSize(new Dimension(40,40));
-        profileIconButton.setBorderPainted(false);
+        ImageIcon profilePicture = new ImageIcon("src/resources/img/profileFiller.png");
+        Image scaled = profilePicture.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        ImageIcon profileIcon = new ImageIcon(scaled);
+        JLabel profilePictureLabel = new JLabel(profileIcon);
+        constraints.anchor = GridBagConstraints.NORTHWEST;
         constraints.gridx = 0;
         constraints.gridy = 0;
-        profileCard.add(profileIconButton, constraints);
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        constraints.insets = new Insets(30, 30, 0, 0);
+        profileCard.add(profilePictureLabel, constraints);
 
-        // TODO: GET ACCOUNT INFO FROM DATABASE
+        // TODO: GET ACCOUNT INFO FROM DATABASE FOR ALL OF THE FOLLOWING SECTIONS
 
-        JLabel bread = new JLabel("Bread");
-        bread.setForeground(Color.WHITE); // To make text visible against the black background
-        profileCard.add(bread);
+        // Name of the user
+        JLabel userName = new JLabel("REPLACE WITH NAME");
+        userName.setFont(FontManager.getCustomFont(15).deriveFont(Font.BOLD));
+        userName.setForeground(Color.WHITE); // To make text visible against the black background
+        constraints.insets = new Insets(30, 150, 0, 0);
+        profileCard.add(userName, constraints);
+
+        // Graduation Year
+        JLabel graduationYear = new JLabel("Graduation Year: ");
+        graduationYear.setFont(FontManager.getCustomFont(12).deriveFont(Font.BOLD));
+        constraints.insets = new Insets(60, 150, 0, 0);
+        graduationYear.setForeground(Color.WHITE);
+        profileCard.add(graduationYear, constraints);
+
+        // Major of user
+        JLabel major = new JLabel("REPLACE WITH MAJOR");
+        major.setFont(FontManager.getCustomFont(15).deriveFont(Font.BOLD));
+        major.setForeground(Color.WHITE);
+        constraints.insets = new Insets(0, 30, 0, 0);
+        constraints.gridy = 1;
+        profileCard.add(major, constraints);
+
+        // TODO: BACKEND OF BUTTON
+        // Connect button
+        JButton connectButton = new JButton("Connect");
+        connectButton.setFont(FontManager.getCustomFont(12));
+        constraints.insets = new Insets(-10, 0, 0, 30);
+        connectButton.setForeground(Color.BLACK);
+        constraints.anchor = GridBagConstraints.EAST;
+        profileCard.add(connectButton, constraints);
 
         return profileCard;
     }
