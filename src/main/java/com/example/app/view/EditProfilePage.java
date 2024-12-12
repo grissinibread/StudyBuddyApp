@@ -2,6 +2,7 @@ package com.example.app.view;
 
 import com.example.app.controller.ProfileController;
 import com.example.app.controller.EditProfileController;
+import com.example.app.controller.DiscoverController;
 import com.example.app.controller.UserSession;
 import com.example.app.model.User;
 import com.example.app.util.FontManager;
@@ -16,6 +17,8 @@ public final class EditProfilePage extends JPanel {
     private User user = UserSession.getLoggedInUser();
     private final ProfileController profileController = new ProfileController();
     private final EditProfileController editProfileController = new EditProfileController();
+    private final DiscoverController discoverController = new DiscoverController();
+
     private String majorArray[] = {"Computer Science", "Software Engineering", "Computer Engineering", "Cyber Security",
             "Computer Information Systems", "Electrical Engineering", "Mathematics", "Applied Physics",
             "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences",
@@ -256,6 +259,7 @@ public final class EditProfilePage extends JPanel {
         // Display success or error message
         if (isUpdated) {
             JOptionPane.showMessageDialog(this, "Profile updated successfully!");
+            discoverController.goToDiscoverPage();
         } else {
             JOptionPane.showMessageDialog(this, "Failed to update profile. Please check your input.");
         }

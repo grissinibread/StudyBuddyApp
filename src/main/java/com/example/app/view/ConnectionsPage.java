@@ -2,10 +2,13 @@ package com.example.app.view;
 
 import javax.swing.*;
 import java.awt.*;
+import com.example.app.controller.DiscoverController;
 
 public final class ConnectionsPage extends JPanel {
     //Initializes the one instance of an Inbox Page to be used by the rest of the program.
     private static final ConnectionsPage CONNECTIONS_PAGE = new ConnectionsPage();
+
+    private final DiscoverController discoverController = new DiscoverController();
 
     //Inbox Page constructor.
     private ConnectionsPage() {
@@ -34,6 +37,7 @@ public final class ConnectionsPage extends JPanel {
         constraints.anchor = GridBagConstraints.WEST;
         constraints.weightx = 1;
         topPanel.add(backButton, constraints);
+        backButton.addActionListener(e -> { discoverController.goToDiscoverPage(); });
 
         // Properties
         topPanel.setPreferredSize(new Dimension(getWidth(), 100));
