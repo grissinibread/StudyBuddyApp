@@ -140,7 +140,7 @@ public class DiscoverController {
                 }
                 User userCompared = new User(
                         otherUsers.getString("name"), otherUsers.getInteger("age"),
-                        otherUsers.getString("major"), otherUsers.getInteger("year")
+                        otherUsers.getString("major"), otherUsers.getInteger("year"), otherUsers.getString("interest1"), otherUsers.getString("interest2"),otherUsers.getString("interest3")
                 );
                 int rank = matchRank(mainUser, userCompared);
                 if (rank > 0){

@@ -49,16 +49,6 @@ public final class DiscoverPage extends JPanel {
         // Left Nav Bar;
         add(bottomNav(), BorderLayout.SOUTH);
 
-        // TESTING MATCH (does not work atm)
-//        User user1 = new User("Adria", 21, "Software", 3, "Beach", "Coding", "Music");
-//        User user2 = new User("John", 20, "Software", 3, "Beach", "Coding", "Music");
-//        settingsIcon.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                //loginApproved = Lcontrol.verifySignUp(emailTextBox.getText(), passwordTextBox.getText());
-//                discoverController.matchStudents(user1, user2);
-//            }
-//        });
 
     }
 

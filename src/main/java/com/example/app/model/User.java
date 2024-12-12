@@ -48,12 +48,14 @@ public class User {
         this.interest3 = interest3;
     }
 
-    public User(String fname, Integer age, String major, Integer year) { // for matching comparisons, so password of other users isn't shown
+    public User(String fname, Integer age, String major, Integer year, String i1, String i2, String i3) { // for matching comparisons, so password of other users isn't shown
         this.fname = fname;
         this.age = age;
         this.major = major;
         this.year = year;
-        //this.interestts = interestts<0>;
+        this.interest1 = i1;
+        this.interest2 = i2;
+        this.interest3 = i3;
     }
 
     //public static void setUser(User user) {currentUser = user;}
