@@ -34,9 +34,14 @@ public final class EditProfilePage extends JPanel {
     private JComboBox<String> majorComboBox = new JComboBox(majorArray);
     private JComboBox<String> interestComboBox = new JComboBox(interestArray);
     private JComboBox<Integer> yearComboBox = new JComboBox(yearArray);
+
+    private JComboBox<String> firstComboBox;
+    private JComboBox<String> secondComboBox;
+    private JComboBox<String> thirdComboBox;
+
     private JTextField userFname;
     private JTextField userLname;
-    private JTextField userAge;
+    //private JTextField userAge;
     private JTextField userBio;
 
 
@@ -174,12 +179,11 @@ public final class EditProfilePage extends JPanel {
         constraints.gridx = 1;
         mainPanel.add(biolabel, constraints);
         constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
-        userBio = createEditableTextField("Age", user.getBio(), constraints, 400, 100);
+        userBio = createEditableTextField("Bio", user.getBio(), constraints, 400, 100);
         mainPanel.add(userBio, constraints);
         topConstraint += 150;
 
         // Interests
-
         // TODO: BACKEND
 
         // Interest 1
@@ -190,9 +194,10 @@ public final class EditProfilePage extends JPanel {
         mainPanel.add(firstInterest, constraints);
 
         constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
-        JComboBox<String> firstComboBox = new JComboBox<>(interestArray);
+
+        firstComboBox = new JComboBox<>(interestArray);
         mainPanel.add(firstComboBox, constraints);
-        interestComboBox.setSelectedItem(interestArray[0]);
+//        interestComboBox.setSelectedItem(interestArray[0]);
 
         //interest 2
         JLabel secondInterest = new JLabel("Interest 2");
@@ -201,9 +206,9 @@ public final class EditProfilePage extends JPanel {
         mainPanel.add(secondInterest, constraints);
 
         constraints.insets = new Insets(topConstraint + 20, 150, 0, 0);
-        JComboBox<String> secondComboBox = new JComboBox<>(interestArray);
+        secondComboBox = new JComboBox<>(interestArray);
         mainPanel.add(secondComboBox, constraints);
-        interestComboBox.setSelectedItem(interestArray[0]);
+//        interestComboBox.setSelectedItem(interestArray[0]);
 
         //interest 3
         JLabel thirdInterest = new JLabel("Interest 3");
@@ -212,9 +217,9 @@ public final class EditProfilePage extends JPanel {
         mainPanel.add(thirdInterest, constraints);
 
         constraints.insets = new Insets(topConstraint + 20, 300, 0, 0);
-        JComboBox<String> thirdComboBox = new JComboBox<>(interestArray);
+        thirdComboBox = new JComboBox<>(interestArray);
         mainPanel.add(thirdComboBox, constraints);
-        interestComboBox.setSelectedItem(interestArray[0]);
+//        interestComboBox.setSelectedItem(interestArray[0]);
 
         return mainPanel;
     }
@@ -249,9 +254,9 @@ public final class EditProfilePage extends JPanel {
         Integer year = (Integer) yearComboBox.getSelectedItem();
         String major = (String) majorComboBox.getSelectedItem();
         String bio = userBio.getText().trim();
-        String interest1 = (String) interestComboBox.getSelectedItem();
-        String interest2 = (String) interestComboBox.getSelectedItem();
-        String interest3 = (String) interestComboBox.getSelectedItem();
+        String interest1 = (String) firstComboBox.getSelectedItem();
+        String interest2 = (String) secondComboBox.getSelectedItem();
+        String interest3 = (String) thirdComboBox.getSelectedItem();
         System.out.println(interest1);
         System.out.println(interest2);
         System.out.println(interest3);
