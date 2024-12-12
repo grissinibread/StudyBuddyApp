@@ -24,7 +24,7 @@ public class LoginController {
 
     public static User getCurrentUser(String email, String password) { // pull user from database
         MongoDatabase database = MongoDBConnector.getDatabase();
-        MongoCollection<Document> usersCollection = database.getCollection("SB_users");
+        MongoCollection<Document> usersCollection = database.getCollection("StudyBuddy2.0");
         Document query = new Document("email", email).append("password", password);
         Document user = usersCollection.find(query).first();
         if (user != null) {

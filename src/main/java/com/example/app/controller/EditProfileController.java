@@ -25,10 +25,6 @@ public class EditProfileController {
             JOptionPane.showMessageDialog(null, "Invalid first name or last name");
             return false;
         }
-        if (!signUpController.ageValid(year)) {
-            JOptionPane.showMessageDialog(null, "Invalid Age");
-            return false;
-        }
         if (bio.length() > 400) {
             JOptionPane.showMessageDialog(null, "Description must be less than 400 characters");
             return false;
@@ -58,7 +54,7 @@ public class EditProfileController {
     private void updateUserInDatabase() {
         try {
             MongoDatabase database = MongoDBConnector.getDatabase();
-            MongoCollection<Document> usersCollection = database.getCollection("SB_users");
+            MongoCollection<Document> usersCollection = database.getCollection("StudyBuddy2.0");
             Document query = new Document("email", user.getEmail());
 
             // update document with all updated fields

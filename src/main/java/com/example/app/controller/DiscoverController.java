@@ -117,7 +117,7 @@ public class DiscoverController {
     }
 
     public ArrayList<User> getMatches(){
-        MongoCollection<Document> usersCollection = database.getCollection("SB_users"); // grabs the entirety of the users database
+        MongoCollection<Document> usersCollection = database.getCollection("StudyBuddy2.0"); // grabs the entirety of the users database
         ArrayList<User> matches = new ArrayList<>();
 
         try(MongoCursor<Document> cursor = usersCollection.find().iterator()){ // cursor to go through all the users

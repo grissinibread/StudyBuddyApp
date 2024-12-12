@@ -132,7 +132,7 @@ public class SignUpController {
     public void storeUser() {
         try {
             MongoDatabase database = MongoDBConnector.getDatabase();
-            MongoCollection<Document> usersCollection = database.getCollection("SB_users");
+            MongoCollection<Document> usersCollection = database.getCollection("StudyBuddy2.0");
 
             Document userDocument = new Document()
                     .append("name", user.getName())             // Full name
@@ -158,7 +158,7 @@ public class SignUpController {
     // Check for existing email in DB
     public boolean verifyEmail_DB(String email){
         MongoDatabase database = MongoDBConnector.getDatabase();
-        MongoCollection<Document> usersCollection = database.getCollection("SB_users");
+        MongoCollection<Document> usersCollection = database.getCollection("StudyBuddy2.0");
         Document query = new Document("email", email);
         Document user = usersCollection.find(query).first();
         return user != null; // Return true if email exists
@@ -167,7 +167,7 @@ public class SignUpController {
     // Check for matching password in DB
     public boolean verifyPassword_DB(String email, String password){
         MongoDatabase database = MongoDBConnector.getDatabase();
-        MongoCollection<Document> usersCollection = database.getCollection("SB_users");
+        MongoCollection<Document> usersCollection = database.getCollection("StudyBuddy2.0");
         Document query = new Document("email", email).append("password", password);
         Document user = usersCollection.find(query).first();
         return user != null; // Return true if email and password match
