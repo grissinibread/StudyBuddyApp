@@ -15,7 +15,7 @@ public final class SignUpPage extends JPanel {
     //Initializes the login controller to be used by the class.
     private final LoginController loginController;
     //Initializes the profile controller to be used by the class.
-    private final ProfileController profileController;
+    private final EditProfileController editProfileController;
     //Initializes the discover controller to be used by the class.
     private final DiscoverController discoverController;
     private User user = UserSession.getLoggedInUser();
@@ -34,6 +34,8 @@ public final class SignUpPage extends JPanel {
             "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences",
             "Wildfire Science & the Urban Interface"};
 
+    //public static String[] getMajorArray { return majorArray;}
+
     Integer yearArray[] = {2024, 2025, 2026, 2027, 2028};
 
     private JComboBox<String> majorComboBox = new JComboBox(majorArray);
@@ -48,7 +50,7 @@ public final class SignUpPage extends JPanel {
         //Initializes the login controller to be used by the class.
         this.loginController = new LoginController();
         //Initializes the profile controller to be used by the class.
-        this.profileController = new ProfileController();
+        this.editProfileController = new EditProfileController();
         //Initializes the discover controller to be used by the class.
         this.discoverController = new DiscoverController();
 
@@ -174,7 +176,7 @@ public final class SignUpPage extends JPanel {
             // Navigate to the next page
             System.out.println("SignUp successful");
             System.out.println("User after: " + user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getAge() + " " + user.getMajor() + " " + user.getYear());
-            profileController.goToProfilePage();
+            editProfileController.goToEditProfilePage();
             //TODO: Might have to double check this but most likely not.
             clearSignUpChoice();
             //discoverController.goToDiscoverPage();

@@ -1,5 +1,6 @@
 package com.example.app.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -26,6 +27,10 @@ public class User {
 //        this.email = "";
 //        this.password = "";
         this.bio = "Tell us about yourself here!";
+        this.interests = new String[3];
+        this.interests[0] = "Select Interest";
+        this.interests[1] = "Select Interest";
+        this.interests[2] = "Select Interest";
     }
 
     public User(String email, String password, String fname, String lname, Integer age, String major, Integer year, String bio/*, List<String> interestts*/) {

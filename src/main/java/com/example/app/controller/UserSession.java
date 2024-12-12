@@ -7,5 +7,10 @@ public class UserSession {
     // allow user to be passed from both log in and sign up
     private static User loggedInUser;
     public static void setLoggedInUser(User user) {loggedInUser = user;}
-    public static User getLoggedInUser() {return loggedInUser;}
+    public static User getLoggedInUser() {
+        if (loggedInUser == null) {
+            loggedInUser = new User();
+        }
+        return loggedInUser;
+    }
 }

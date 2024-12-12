@@ -209,7 +209,7 @@ public class SignUpController {
             UserSession.setLoggedInUser(user);
             System.out.println("user about to be stored: " + user + " " + user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getAge() + " " + user.getMajor() + " " + user.getYear());
             System.out.println("User instance in SignUpController: " + user);
-            storeUser();
+            //storeUser();
             return true;
         } else if (verifyEmail_DB(email)) {
             JOptionPane.showMessageDialog(null, "This email address is already taken. Please try another.");
