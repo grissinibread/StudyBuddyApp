@@ -11,4 +11,7 @@ public class EditProfileController {
     public void goToEditProfilePage(){
         AppWindow.getAppWindow().openPage(EditProfilePage.geteditProfilePage());
     }
+    public void saveChanges(){
+
+    }
 }

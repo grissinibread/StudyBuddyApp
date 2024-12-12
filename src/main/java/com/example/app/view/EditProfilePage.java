@@ -20,12 +20,15 @@ public class EditProfilePage extends JPanel {
             "Electronics", "Biochemistry", "Chemistry", "Biotechnology", "Biological Sciences",
             "Wildfire Science & the Urban Interface"};
     private Integer yearArray[] = {2024, 2025, 2026, 2027, 2028};
-    private String interestArray[] = {"Select Interest","Anime", "Art", "Baking", "Basketball", "Beach", "Bowling", "Camping", "Chess",
+    private String interestArray[] = {"Select Interest", "Anime", "Art", "Baking", "Basketball", "Beach", "Bowling", "Camping", "Chess",
             "Coding", "Concerts", "Cooking", "Cybersecurity", "Digital Art", "E-sports", "Fishing", "Football", "Gardening",
-            "Graphic Design", "Gym", "Hiking", "Karate", "K-pop", "Makeup", "Math", "Meditation",  "Movies", "Music",
+            "Graphic Design", "Gym", "Hiking", "Karate", "K-pop", "Makeup", "Math", "Meditation", "Movies", "Music",
             "Photography", "Reading", "Rock Climbing", "Running", "Science", "Sewing", "Shopping", "Singing", "Skiing",
             "Soccer", "Sports", "Surfing", "Swimming", "Tennis", "Theater", "Thrifting", "Traveling", "Video Games",
             "Vollleyball", "Web Development", "Yoga"};
+
+    private JComboBox<String> majorComboBox = new JComboBox(majorArray);
+    private JComboBox<String> interestComboBox = new JComboBox(interestArray);
 
     //Edit Profile Page constructor.
     private EditProfilePage() {
@@ -69,7 +72,8 @@ public class EditProfilePage extends JPanel {
         constraints.weightx = 1;
         topPanel.add(backButton, constraints);
         backButton.addActionListener(e -> {
-            profileController.goToProfilePage();});
+            profileController.goToProfilePage();
+        });
 
         // Edit profile button
         JButton saveButton = new JButton("Save");
@@ -77,7 +81,8 @@ public class EditProfilePage extends JPanel {
         constraints.anchor = GridBagConstraints.EAST;
         topPanel.add(saveButton, constraints);
         saveButton.addActionListener(e -> {
-            System.out.println("Current user: " + user.getName());});
+            System.out.println("Current user: " + user.getName());
+        });
 
         return topPanel;
     }
@@ -106,47 +111,83 @@ public class EditProfilePage extends JPanel {
         // default contraints
         int topConstraint = 25;
         // first name
+        JLabel fnamelabel = new JLabel("First Name");
+        fnamelabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
         constraints.insets = new Insets(topConstraint, 0, 0, 0);
-        JPanel userFname = createEditableTextField("First Name", user.getFName(), constraints, 200, 20);
+        constraints.gridx = 1;
+        mainPanel.add(fnamelabel, constraints);
+        constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
+        JTextField userFname = createEditableTextField("First Name", user.getFName(), constraints, 200, 20);
         mainPanel.add(userFname, constraints);
         topConstraint += 50;
 
         // last name
+        JLabel Lnamelabel = new JLabel("First Name");
+        Lnamelabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
         constraints.insets = new Insets(topConstraint, 0, 0, 0);
-        JPanel userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
+        constraints.gridx = 1;
+        mainPanel.add(Lnamelabel, constraints);
+        constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
+        JTextField userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
         mainPanel.add(userLname, constraints);
         topConstraint += 50;
 
         // Age
+        JLabel agelabel = new JLabel("Age");
+        agelabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
         constraints.insets = new Insets(topConstraint, 0, 0, 0);
-        JPanel userAge = createEditableTextField("Age", "temp age", constraints, 200, 20);
+        constraints.gridx = 1;
+        mainPanel.add(agelabel, constraints);
+        constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
+        JTextField userAge = createEditableTextField("Age", "tempAge", constraints, 200, 20);
         mainPanel.add(userAge, constraints);
         topConstraint += 50;
 
         // Major
+        JLabel majorlabel = new JLabel("Major");
+        majorlabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
         constraints.insets = new Insets(topConstraint, 0, 0, 0);
-        JPanel userMajor = createEditableComboBox("Major", user.getMajor(), constraints, majorArray, 0 ,0);
-        mainPanel.add(userMajor, constraints);
-        topConstraint += 60;
+        constraints.gridx = 1;
+        mainPanel.add(majorlabel, constraints);
+        constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
+//        JTextField userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
+        mainPanel.add(majorComboBox, constraints);
+        majorComboBox.setSelectedItem(user.getMajor());
+        topConstraint += 50;
 
         // Description
+        JLabel biolabel = new JLabel("Bio");
+        biolabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
         constraints.insets = new Insets(topConstraint, 0, 0, 0);
-        JPanel userBio = createEditableTextField("Description", user.getBio(), constraints, 400, 100);
+        constraints.gridx = 1;
+        mainPanel.add(biolabel, constraints);
+        constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
+        JTextField userBio = createEditableTextField("Age", user.getBio(), constraints, 400, 100);
         mainPanel.add(userBio, constraints);
         topConstraint += 50;
 
 
-        // Interests
-        // interest 1
+//        // Interests
+        JLabel interestlabel = new JLabel("Interest");
+        interestlabel.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
         constraints.insets = new Insets(topConstraint, 0, 0, 0);
-        JPanel userInt1 = createEditableComboBox("Interest", interestArray[0]/*user.getInterest(0)*/, constraints, interestArray, 0, 2);
-        mainPanel.add(userInt1, constraints);
-        topConstraint += 80;
-        //interest 2
-        constraints.insets = new Insets(topConstraint, 0, 0, 0);
-        JPanel userInt2 = createEditableComboBox("Interest", interestArray[0]/*user.getInterest(1)*/, constraints, interestArray, 2, 2);
-        mainPanel.add(userInt2, constraints);
-        topConstraint += 60;
+        constraints.gridx = 1;
+        mainPanel.add(interestlabel, constraints);
+        constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
+//        JTextField userLname = createEditableTextField("Last Name", user.getLName(), constraints, 200, 20);
+        mainPanel.add(interestComboBox, constraints);
+        interestComboBox.setSelectedItem(interestArray[0]);
+        topConstraint += 50;
+//        // interest 1
+//        constraints.insets = new Insets(topConstraint, 0, 0, 0);
+//        JPanel userInt1 = createEditableComboBox("Interest", interestArray[0]/*user.getInterest(0)*/, constraints, interestArray, 0, 2);
+//        mainPanel.add(userInt1, constraints);
+//        topConstraint += 80;
+//        //interest 2
+//        constraints.insets = new Insets(topConstraint, 0, 0, 0);
+//        JPanel userInt2 = createEditableComboBox("Interest", interestArray[0]/*user.getInterest(1)*/, constraints, interestArray, 2, 2);
+//        mainPanel.add(userInt2, constraints);
+//        topConstraint += 60;
 //        //interest 3
 //        constraints.insets = new Insets(topConstraint,500 , 0, 0);
 //        JPanel userInt3 = createEditableComboBox("Interest", interestArray[0]/*user.getInterest(2)*/, constraints, interestArray);
@@ -154,47 +195,49 @@ public class EditProfilePage extends JPanel {
 
         return mainPanel;
     }
-    private JPanel createEditableTextField(String text, String fieldValue, GridBagConstraints constraints, int width, int height) {
-        JPanel labeledTextFieldPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints fieldConstraints = new GridBagConstraints();
-        fieldConstraints.gridx = 0;
-        fieldConstraints.gridy = 0;
-        fieldConstraints.insets = new Insets(0, 250, 5, 0); // Spacing between label and text field
 
-        // label
-        JLabel label = new JLabel(text);
-        label.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
-        labeledTextFieldPanel.add(label, fieldConstraints);
+    private JTextField createEditableTextField(String text, String fieldValue, GridBagConstraints constraints, int width, int height) {
+//        JPanel editableTextFieldPanel = new JPanel(new GridBagLayout());
+//        GridBagConstraints fieldConstraints = new GridBagConstraints();
+//        fieldConstraints.gridx = 0;
+//        fieldConstraints.gridy = 0;
+//        fieldConstraints.insets = new Insets(0, 250, 5, 0); // Spacing between label and text field
+//
+//        // label
+//        JLabel label = new JLabel(text);
+//        label.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
+//        editableTextFieldPanel.add(label, fieldConstraints);
 
         // text field
-        fieldConstraints.gridy++;
+        //constraints.gridy++;
         JTextField textField = new JTextField(); // width of box
         textField.setPreferredSize(new Dimension(width, height));
         textField.setText(fieldValue);
         textField.setFont(FontManager.getCustomFont(12));
-        labeledTextFieldPanel.add(textField, fieldConstraints);
+//        editableTextFieldPanel.add(textField, fieldConstraints);
 
-        return labeledTextFieldPanel;
-    }
-
-    private JPanel createEditableComboBox(String text, String fieldValue, GridBagConstraints constraints, String[] arr, int x, int y) {
-        JPanel labeledTextFieldPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints fieldConstraints = new GridBagConstraints();
-        fieldConstraints.gridx = x;
-        fieldConstraints.gridy = y;
-        fieldConstraints.insets = new Insets(0, 250, 5, 0); // Spacing between label and text field
-
-        // label
-        JLabel label = new JLabel(text);
-        label.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
-        labeledTextFieldPanel.add(label, fieldConstraints);
-
-        // text field
-        fieldConstraints.gridy++;
-        JComboBox<String> comboBox = new JComboBox(arr);
-        comboBox.setSelectedItem(fieldValue);
-        labeledTextFieldPanel.add(comboBox, fieldConstraints);
-
-        return labeledTextFieldPanel;
+        return textField;
     }
 }
+
+//    private void createEditableComboBox(String text, String fieldValue, GridBagConstraints constraints, String[] arr, int x, int y) {
+////        JPanel labeledTextFieldPanel = new JPanel(new GridBagLayout());
+////        GridBagConstraints fieldConstraints = new GridBagConstraints();
+////        fieldConstraints.gridx = x;
+////        fieldConstraints.gridy = y;
+////        fieldConstraints.insets = new Insets(0, 250, 5, 0); // Spacing between label and text field
+////
+////        // label
+////        JLabel label = new JLabel(text);
+////        label.setFont(FontManager.getCustomFont(14).deriveFont(Font.BOLD));
+////        labeledTextFieldPanel.add(label, fieldConstraints);
+//
+//        // text field
+//        //constraints.gridy++;
+//        JComboBox<String> comboBox = new JComboBox(arr);
+//        comboBox.setSelectedItem(fieldValue);
+//        labeledTextFieldPanel.add(comboBox, fieldConstraints);
+//
+//        return labeledTextFieldPanel;
+//    }
+//}
