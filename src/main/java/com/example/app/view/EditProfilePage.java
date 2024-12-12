@@ -9,10 +9,10 @@ import com.example.app.util.FontManager;
 import javax.swing.*;
 import java.awt.*;
 
-public class EditProfilePage extends JPanel {
+public final class EditProfilePage extends JPanel {
 
     //Initializes the one instance of a EditProfile Page to be used by the rest of the program.
-    private static final com.example.app.view.EditProfilePage editProfilePage = new com.example.app.view.EditProfilePage();
+    private static final EditProfilePage editProfilePage = new EditProfilePage();
     private User user = UserSession.getLoggedInUser();
     private final ProfileController profileController = new ProfileController();
     private final EditProfileController editProfileController = new EditProfileController();
@@ -49,7 +49,7 @@ public class EditProfilePage extends JPanel {
     }
 
     //Returns the one instance of the profilePage.
-    public static com.example.app.view.EditProfilePage geteditProfilePage() {
+    public static EditProfilePage getEditProfilePage() {
         return editProfilePage;
     }
 

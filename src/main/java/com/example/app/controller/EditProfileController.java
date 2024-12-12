@@ -15,7 +15,7 @@ public class EditProfileController {
 
     //Takes the user to the EditProfile Page.
     public void goToEditProfilePage(){
-        AppWindow.getAppWindow().openPage(EditProfilePage.geteditProfilePage());
+        AppWindow.getAppWindow().openPage(EditProfilePage.getEditProfilePage());
     }
     private final SignUpController signUpController = new SignUpController();
 
