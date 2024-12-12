@@ -1,6 +1,5 @@
 package com.example.app.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -93,8 +92,9 @@ public class User {
     }
     public void setYear(int year) {this.year = year;}
     //bio functions
+    public void setBio(String bio) { this.bio = bio;}
     public String getBio() {return bio;}
-    //public String setBio(String bio) {this.bio = bio;}
+
     //interestts functions
     public List<String> getInterestts(){ return interestts;}
     public void setInterestts(List<String> interestts){ this.interestts = interestts;}

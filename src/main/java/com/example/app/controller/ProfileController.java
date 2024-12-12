@@ -22,7 +22,8 @@ public class ProfileController {
     public String displayBio(){
         String bio = user.getBio();
         if(bio == null || bio.length() == 0){
-            return "Talk about how awesome you are here!";
+            bio = "Talk about how awesome you are here!";
+            user.setBio(bio);
         }
         return bio;
     }

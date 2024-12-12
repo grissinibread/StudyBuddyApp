@@ -174,7 +174,7 @@ public final class EditProfilePage extends JPanel {
         constraints.gridx = 1;
         mainPanel.add(biolabel, constraints);
         constraints.insets = new Insets(topConstraint + 20, 0, 0, 0);
-        JTextField userBio = createEditableTextField("Age", user.getBio(), constraints, 400, 100);
+        userBio = createEditableTextField("Age", user.getBio(), constraints, 400, 100);
         mainPanel.add(userBio, constraints);
         topConstraint += 150;
 
@@ -252,6 +252,15 @@ public final class EditProfilePage extends JPanel {
         String interest1 = (String) interestComboBox.getSelectedItem();
         String interest2 = (String) interestComboBox.getSelectedItem();
         String interest3 = (String) interestComboBox.getSelectedItem();
+        System.out.println(interest1);
+        System.out.println(interest2);
+        System.out.println(interest3);
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(year);
+        System.out.println(major);
+        System.out.println(bio);
+
 
         // Call the controller's method to validate and update the profile
         boolean isUpdated = editProfileController.validateAndUpdateProfile(firstName, lastName, user.getEmail(), year, major, bio, interest1, interest2, interest3);

@@ -157,10 +157,4 @@ public class DiscoverController {
         }
     }
 
-//    private List<User> findMatches(){
-//        List<User> matchedUsers = new ArrayList<>();
-//
-//    }
-//    return matchedUsers;
-//    }
 }
