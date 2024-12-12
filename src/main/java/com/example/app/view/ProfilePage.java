@@ -60,6 +60,14 @@ public final class ProfilePage extends JPanel {
         topPanel.add(backButton, constraints);
         backButton.addActionListener(e -> {discoverController.goToDiscoverPage();});
 
+        // Title
+        JLabel titleLabel = new JLabel("Profile");
+        titleLabel.setFont(FontManager.getCustomFont(25).deriveFont(Font.BOLD));
+        titleLabel.setForeground(Color.decode("#87CEFA"));
+        constraints.weightx = 0;
+        constraints.anchor = GridBagConstraints.CENTER;
+        topPanel.add(titleLabel, constraints);
+
         // Edit profile button
         JButton editProfileButton = new JButton("Edit Profile");
         constraints.insets = new Insets(0, 0, 0, 10);
