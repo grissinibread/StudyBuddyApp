@@ -9,11 +9,13 @@ public final class ConnectionsPage extends JPanel {
 
     //Inbox Page constructor.
     private ConnectionsPage() {
-        setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
+        setLayout(new BorderLayout());
 
-        //IDK
-        add(addTitleLabel("This is the inbox page.", constraints));
+        // Top Nav
+        add(topPanel(), BorderLayout.NORTH);
+
+        // Main Content
+        add(mainPanel(), BorderLayout.CENTER);
     }
 
     //Returns the one instance of the inboxPage.
@@ -21,11 +23,30 @@ public final class ConnectionsPage extends JPanel {
         return CONNECTIONS_PAGE;
     }
 
-    // TODO: Setup Inbox Page entirely. Anything below this can be deleted when doing the TODO.
-    private JLabel addTitleLabel(String text, GridBagConstraints constraints) {
-        JLabel label = new JLabel();
-        label.setText(text);
-        add(label, constraints);
-        return label;
+    public JPanel topPanel() {
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        // Back button
+        JButton backButton = new JButton("Back");
+        constraints.insets = new Insets(0, 10, 0, 0);
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.weightx = 1;
+        topPanel.add(backButton, constraints);
+
+        // Properties
+        topPanel.setPreferredSize(new Dimension(getWidth(), 100));
+
+        return topPanel;
+    }
+
+    public JPanel mainPanel() {
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+
+        return mainPanel;
     }
 }
