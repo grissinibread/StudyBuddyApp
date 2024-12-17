@@ -1,55 +1,35 @@
 package com.example.app.view;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
-public final class AppWindow extends JFrame {
+import java.util.Objects;
 
-    private static final AppWindow appWindow = new AppWindow();
+public final class AppWindow extends Application {
 
-    private AppWindow() {
-        // Setting the title of the application
-        setTitle("Study Buddy");
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // Layout Manager
+        StackPane root = new StackPane();
 
-        // Removing the default title bar
-        setUndecorated(true);
+        // Sets the default application size
+        primaryStage.setScene(new Scene(root, 400, 300));
 
-        // Setting default size of the window
-        setSize(800, 600);
-
-        // Closes application
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Opens the window in the center of the screen
-        setLocationRelativeTo(null);
-
-        // Rounds the corners of the frame
-        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
-        setIconImage(new ImageIcon("src/resources/img/logo.png").getImage());
-
-        // Layout settings
-        setLayout(new BorderLayout());
-
-        // Temp add
-        // add(ProfilePage.getProfilePage(), BorderLayout.CENTER);
-
-        // Temp add
-        // add(DiscoverPage.getDiscoverPage(), BorderLayout.CENTER);
-
-        // Add the Login page by default
-        add(LoginPage.getLoginPage(), BorderLayout.CENTER);
-    }
-
-    //Returns the one instance of the AppWindow.
-    public static AppWindow getAppWindow() {
-        return appWindow;
-    }
-
-    // Open a specific page inside the window
-    public void openPage(JPanel page) {
-        setContentPane(page);
-        revalidate();
-        repaint();
+        // Displays the application
+        primaryStage.show();
     }
 }
+    //Returns the one instance of the AppWindow.
+    // public static AppWindow getAppWindow() {
+        //return appWindow;
+    // }
+
+//    // Open a specific page inside the window
+//    public void openPage(JPanel page) {
+//        setContentPane(page);
+//        revalidate();
+//        repaint();
+//    }
+//}
