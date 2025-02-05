@@ -1,6 +1,7 @@
 module com.studybuddy {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.studybuddy to javafx.fxml;
