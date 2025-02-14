@@ -5,32 +5,23 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.text.ViewFactory;
-
 public class viewFactory {
-
-    private AnchorPane signUpView;
+    private AnchorPane dashboardView;
 
     public viewFactory(){};
-
-    public AnchorPane getSignUpView() {
-        if (signUpView == null) {
-            try {
-                signUpView = new FXMLLoader(getClass().getResource("/fxml/signUp.fxml")).load();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return signUpView;
-    }
 
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         createStage(loader);
     }
 
-    public void showSignUpWindow() {
-        FXMLLoader loader = new FXMLLoader((getClass().getResource("/fxml/signUp.fxml")));
+    public void showDashboard() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashBoard.fxml"));
+        createStage(loader);
+    }
+
+    public void showSignUp() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/signUp.fxml"));
         createStage(loader);
     }
 
@@ -44,8 +35,7 @@ public class viewFactory {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Study Buddy");
+        stage.centerOnScreen();
         stage.show();
     }
-
-
 }
