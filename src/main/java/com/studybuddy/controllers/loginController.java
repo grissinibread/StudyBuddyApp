@@ -15,9 +15,12 @@ public class loginController implements Initializable {
     @FXML
     public Button signUp_btn;
 
-    //@Override
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        login_btn.setOnAction(actionEvent -> Model.getInstance().getViewFactory().showSignUpWindow());
+        // Opens new stage for dashboard
+        // TODO: Should close the login/signup window when dashboard opens
+        login_btn.setOnAction(actionEvent -> Model.getInstance().getViewFactory().showDashboard());
+        // TODO: Sign up should open up on the same stage
+        signUp_btn.setOnAction(actionEvent -> Model.getInstance().getViewFactory().showSignUp());
     }
 }
-

@@ -6,9 +6,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="178.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is the sign up page.">
+      <Text layoutX="193.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is the DASHBOARD page :)">
          <font>
-            <Font name="BM JUA OTF" size="44.0" />
+            <Font name="BM JUA OTF" size="33.0" />
          </font></Text>
    </children>
 </AnchorPane>
