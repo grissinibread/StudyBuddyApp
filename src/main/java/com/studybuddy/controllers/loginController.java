@@ -19,8 +19,7 @@ public class loginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Opens new stage for dashboard
         // TODO: Should close the login/signup window when dashboard opens
-        login_btn.setOnAction(actionEvent -> Model.getInstance().getViewFactory().showDashboard());
-        // TODO: Sign up should open up on the same stage
+        // login_btn.setOnAction(actionEvent -> Model.getInstance().getViewFactory().showDashboard());
         signUp_btn.setOnAction(actionEvent -> Model.getInstance().getViewFactory().showSignUp());
     }
 }
