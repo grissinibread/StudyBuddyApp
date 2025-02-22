@@ -3,19 +3,24 @@
     -fx-background-color: white;
 }
 
-#welcomeBackText {
+#welcomeText {
     -fx-font-weight: bold;
-    -fx-font-size: 2em;
+    -fx-font-size: 2.5em;
 }
 
-#loginButton {
-    -fx-background-color: #87CEFA;
+#signUpButton {
+    -fx-background-color: #C792E9;
     -fx-text-fill: white;
+}
+
+#textBoxText {
+    -fx-font-weight: bold;
+    -fx-font-size: 1.2em;
 }
 
 /*Logo Container Styles*/
 .login_logo_container {
-    -fx-background-color: linear-gradient(to right, #87CEFA, white);
+    -fx-background-color: linear-gradient(to right, white, #C792E9);
     -fx-alignment: center;
 }
 
