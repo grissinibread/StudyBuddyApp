@@ -8,6 +8,6 @@ import javafx.stage.Stage;
 public class app extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().getViewFactory().showLogin(stage);
     }
 }

@@ -2,40 +2,51 @@ package com.studybuddy.views;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class viewFactory {
-    private AnchorPane dashboardView;
+    private Stage primaryStage;
 
     public viewFactory(){};
 
-    public void showLoginWindow() {
+    // shows the loginWindow
+    public void showLogin(Stage stage) {
+        this.primaryStage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
-        createStage(loader);
+        Scene loginScene = sceneCreator(loader);
+        stageChange(loginScene);
+        stage.show();
     }
 
-    public void showDashboard() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashBoard.fxml"));
-        createStage(loader);
-    }
-
+    // shows the sign-up window
     public void showSignUp() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/signUp.fxml"));
-        createStage(loader);
+        Scene signUpScene = sceneCreator(loader);
+        stageChange(signUpScene);
     }
 
-    public void createStage(FXMLLoader loader) {
+    // creates a new scene
+    private Scene sceneCreator(FXMLLoader loader) {
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return scene;
+    }
+
+    // creates a new stage
+    private Stage stageCreator(Scene scene) {
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setTitle("Study Buddy");
-        stage.centerOnScreen();
-        stage.show();
+
+        return stage;
+    }
+
+    // changes the scene on the stage
+    private void stageChange(Scene scene) {
+        this.primaryStage.setScene(scene);
     }
 }
