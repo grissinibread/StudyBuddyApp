@@ -9,7 +9,7 @@ public class viewFactory {
 
     public viewFactory(){};
 
-    // shows the loginWindow
+    // shows the login view
     public void showLogin(Stage stage) {
         this.primaryStage = stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
@@ -18,11 +18,19 @@ public class viewFactory {
         stage.show();
     }
 
-    // shows the sign-up window
+    // shows the sign-up view
     public void showSignUp() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/signUp.fxml"));
         Scene signUpScene = sceneCreator(loader);
         stageChange(signUpScene);
+    }
+
+    // shows the dashBoard view
+    public void showDashboard(Stage currentStage) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashBoard.fxml"));
+        Scene dashBoardScene = sceneCreator(loader);
+        createNewStage(dashBoardScene).show();
+        currentStage.close();
     }
 
     // creates a new scene
@@ -38,7 +46,7 @@ public class viewFactory {
     }
 
     // creates a new stage
-    private Stage stageCreator(Scene scene) {
+    private Stage createNewStage(Scene scene) {
         Stage stage = new Stage();
         stage.setScene(scene);
 
