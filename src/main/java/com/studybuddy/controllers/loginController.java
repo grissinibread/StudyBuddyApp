@@ -19,13 +19,17 @@ public class loginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Login controller Initialized!");
         // Opens new stage for dashboard
         login_btn.setOnAction(actionEvent -> {
+            System.out.println("Login button clicked!");
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Model.getInstance().getViewFactory().showDashboard(currentStage);
         });
 
         // Shows the sign-up page
-        signUp_btn.setOnAction(actionEvent -> Model.getInstance().getViewFactory().showSignUp());
+        signUp_btn.setOnAction(actionEvent -> {
+            System.out.println("Sign-up button clicked!");
+            Model.getInstance().getViewFactory().showSignUp();});
     }
 }
