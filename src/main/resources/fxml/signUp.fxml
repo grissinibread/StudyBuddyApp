@@ -8,10 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/signUp.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="BASELINE_LEFT" prefHeight="400.0" prefWidth="300.0" styleClass="login_container" stylesheets="@../styles/signUp.css">
+      <VBox alignment="BASELINE_LEFT" prefHeight="400.0" prefWidth="300.0" styleClass="signUp_container" stylesheets="@../styles/signUp.css">
          <children>
             <Text id="welcomeText" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
                <VBox.margin>
@@ -70,7 +69,7 @@
             </Button>
          </children>
       </VBox>
-      <VBox alignment="BASELINE_RIGHT" prefHeight="600.0" prefWidth="600.0" styleClass="login_logo_container" stylesheets="@../styles/signUp.css">
+      <VBox alignment="BASELINE_RIGHT" prefHeight="600.0" prefWidth="600.0" styleClass="signUp_logo_container" stylesheets="@../styles/signUp.css">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Study Buddy" />
          </children>

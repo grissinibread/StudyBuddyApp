@@ -1,5 +1,5 @@
 /*Credentials Container Styles*/
-.login_container {
+.signUp_container {
     -fx-background-color: white;
 }
 
@@ -19,12 +19,12 @@
 }
 
 /*Logo Container Styles*/
-.login_logo_container {
+.signUp_logo_container {
     -fx-background-color: linear-gradient(to right, white, #C792E9);
     -fx-alignment: center;
 }
 
-.login_logo_container Text {
+.signUp_logo_container Text {
     -fx-font-weight: bold;
     -fx-font-size: 4em;
     -fx-fill: black;

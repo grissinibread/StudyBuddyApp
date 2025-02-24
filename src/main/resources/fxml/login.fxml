@@ -22,14 +22,24 @@
                   <Insets left="10.0" top="100.0" />
                </VBox.margin>
             </Text>
+            <Text id="textBoxText" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
             <TextField promptText="Email">
                <VBox.margin>
-                  <Insets left="10.0" right="25.0" top="15.0" />
+                  <Insets left="10.0" right="25.0" />
                </VBox.margin>
             </TextField>
+            <Text id="textBoxText" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
             <PasswordField promptText="Password">
                <VBox.margin>
-                  <Insets left="10.0" right="25.0" top="15.0" />
+                  <Insets left="10.0" right="25.0" />
                </VBox.margin>
             </PasswordField>
             <Button id="loginButton" fx:id="login_btn" alignment="TOP_LEFT" mnemonicParsing="false" prefWidth="265.0" text="Login" textAlignment="CENTER">

@@ -13,6 +13,11 @@
     -fx-text-fill: white;
 }
 
+#textBoxText {
+    -fx-font-weight: bold;
+    -fx-font-size: 1.2em;
+}
+
 /*Logo Container Styles*/
 .login_logo_container {
     -fx-background-color: linear-gradient(to right, #87CEFA, white);
