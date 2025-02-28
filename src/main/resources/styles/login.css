@@ -8,7 +8,7 @@
     -fx-font-size: 2em;
 }
 
-#loginButton {
+#login_loginButton {
     -fx-background-color: #87CEFA;
     -fx-text-fill: white;
 }

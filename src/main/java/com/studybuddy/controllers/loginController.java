@@ -12,23 +12,23 @@ import java.util.ResourceBundle;
 
 public class loginController implements Initializable {
     @FXML
-    public Button login_btn;
+    public Button login_loginButton;
 
     @FXML
-    public Button signUp_btn;
+    public Button login_signUpButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Login controller Initialized!");
         // Opens new stage for dashboard
-        login_btn.setOnAction(actionEvent -> {
+        login_loginButton.setOnAction(actionEvent -> {
             System.out.println("Login button clicked!");
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Model.getInstance().getViewFactory().showDashboard(currentStage);
         });
 
         // Shows the sign-up page
-        signUp_btn.setOnAction(actionEvent -> {
+        login_signUpButton.setOnAction(actionEvent -> {
             System.out.println("Sign-up button clicked!");
             Model.getInstance().getViewFactory().showSignUp();});
     }
