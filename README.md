@@ -1,4 +1,4 @@
-**Study Buddy Application**
+# **Study Buddy Application**
 
 **Techstack**
 - Java
