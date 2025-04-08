@@ -10,6 +10,7 @@ public class Model {
         this.ViewFactory = new viewFactory();
     }
 
+    // TODO: Fix Singleton
     public static synchronized Model getInstance() {
         if (model == null) {
             model = new Model();
