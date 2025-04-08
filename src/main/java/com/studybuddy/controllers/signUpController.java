@@ -2,9 +2,12 @@ package com.studybuddy.controllers;
 import javax.swing.*;
 import java.util.Set;
 
+import com.studybuddy.models.Model;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,6 +15,8 @@ import java.util.ResourceBundle;
 public class signUpController implements Initializable {
     @FXML
     public Button signUp_signUpButton;
+    @FXML
+    public Button signUp_LoginButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -25,6 +30,11 @@ public class signUpController implements Initializable {
 //              Stage currentStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 //              Model.getInstance().getViewFactory().showDashboard(currentStage);
 //          }
+         });
+
+         signUp_LoginButton.setOnAction(actionEvent -> {
+             System.out.println("Login button pressed!");
+             Model.getInstance().getViewFactory().showLogin((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
          });
     }
 
