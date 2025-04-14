@@ -12,15 +12,15 @@ import java.util.ResourceBundle;
 
 public class dashboardController implements Initializable {
 
-    @FXML
-    public Button dashboardLogOutButton;
+     @FXML
+    public Button dashboard_LogoutButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Dashboard controller initialized!");
 
         // Revert to Login page
-        dashboardLogOutButton.setOnAction(event -> {});
+        dashboard_LogoutButton.setOnAction(event -> {});
         System.out.println("Dashboard Log Out Button Clicked!");
     }
 }
