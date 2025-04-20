@@ -23,7 +23,7 @@ public class loginController implements Initializable {
         // Opens new stage for dashboard
         login_loginButton.setOnAction(actionEvent -> {
             System.out.println("Login button clicked!");
-            Model.getInstance().getViewFactory().showDashboard((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+            Model.getInstance().getViewFactory().showDashboard();
         });
 
         // Shows the sign-up page

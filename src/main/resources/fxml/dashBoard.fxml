@@ -17,6 +17,6 @@
       <Button layoutX="19.0" layoutY="361.0" mnemonicParsing="false" text="Inbox" />
       <Button layoutX="248.0" layoutY="361.0" mnemonicParsing="false" text="Refresh Matches" />
       <Button fx:id="dashboard_LogoutButton" layoutX="528.0" layoutY="20.0" mnemonicParsing="false" text="Logout" />
-      <FlowPane fx:id="dashboard_cardContainer" id="cardContainer" fx:id="dashboard_CardContainer" layoutX="22.0" layoutY="62.0" prefHeight="281.0" prefWidth="559.0" />
+      <FlowPane fx:id="dashboard_cardContainer" layoutX="22.0" layoutY="62.0" prefHeight="281.0" prefWidth="559.0" />
    </children>
 </AnchorPane>

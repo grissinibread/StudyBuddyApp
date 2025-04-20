@@ -14,15 +14,12 @@ public class userCardController {
 
     //TODO: finish up these functions
     public void setUserCardName() {
-
     }
 
     public void setUserCardMajor() {
-
     }
 
     public void setUserCardGraduationYear() {
-
     }
 
 }

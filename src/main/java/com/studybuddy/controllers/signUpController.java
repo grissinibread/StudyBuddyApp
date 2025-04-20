@@ -39,8 +39,7 @@ public class signUpController implements Initializable {
            password = passwordTxt.getText();
            repeatPassword = repeatPasswordTxt.getText();
           if(isValidEmail(email) && isValidPassword(password) && repeatPassword.equals(password)) { //all valid open dashboard
-              Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-              Model.getInstance().getViewFactory().showDashboard(currentStage);
+              Model.getInstance().getViewFactory().showDashboard();
               // TODO: STORE IN DATABASE
           }
           else { //pop-ups if not valid
@@ -58,7 +57,7 @@ public class signUpController implements Initializable {
 
          signUp_LoginButton.setOnAction(actionEvent -> {
              System.out.println("Login button pressed!");
-             Model.getInstance().getViewFactory().showLogin((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+             Model.getInstance().getViewFactory().showLogin();
          });
     }
 
