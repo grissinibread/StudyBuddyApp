@@ -12,7 +12,7 @@
    <children>
       <HBox id="header" prefHeight="75.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button id="profileButton" mnemonicParsing="false" text="Profile">
+            <Button fx:id="dashboard_profileButton" id="profileButton" mnemonicParsing="false" text="Profile">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></Button>

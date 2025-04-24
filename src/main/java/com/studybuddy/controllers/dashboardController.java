@@ -1,5 +1,6 @@
 package com.studybuddy.controllers;
 
+import com.studybuddy.models.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,12 +13,21 @@ public class dashboardController implements Initializable {
      @FXML
     public Button dashboard_LogoutButton;
 
+     @FXML
+     public Button dashboard_profileButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Dashboard controller initialized!");
 
         // Revert to Login page
-        dashboard_LogoutButton.setOnAction(event -> {});
-        System.out.println("Dashboard Log Out Button Clicked!");
+        dashboard_LogoutButton.setOnAction(event -> {
+            //TODO: Disconnect from database
+            Model.getInstance().getViewFactory().showLogin();
+        });
+
+        dashboard_profileButton.setOnAction(actionEvent -> {
+            Model.getInstance().getViewFactory().showProfile();
+        });
     }
 }

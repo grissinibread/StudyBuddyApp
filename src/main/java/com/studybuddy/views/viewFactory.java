@@ -28,6 +28,11 @@ public class viewFactory {
         loadScene("/fxml/signUp.fxml");
     }
 
+    // shows the profile view
+    public void showProfile() {
+        loadScene("/fxml/profile.fxml");
+    }
+
     // shows the dashBoard view
     public void showDashboard() {
         loadScene("/fxml/dashBoard.fxml");
