@@ -5,6 +5,7 @@ module com.studybuddy {
 
 
     opens com.studybuddy to javafx.fxml;
+    opens com.studybuddy.controllers to javafx.fxml;
     exports com.studybuddy.controllers;
     exports com.studybuddy.models;
     exports com.studybuddy.views;

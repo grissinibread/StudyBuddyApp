@@ -6,33 +6,43 @@ import javafx.stage.Stage;
 
 public class viewFactory {
     private Stage primaryStage;
+    boolean loggedIn = false; // TODO: this is a placeholder, change later on if possible
 
-    public viewFactory(){};
+    //TODO: idk if this could use a singleton too? we only really need one stage for most if not all content.
+    public viewFactory(){
+        if(!loggedIn) {
+            primaryStage = new Stage();
+            showLogin();
+        }
 
-    // TODO: Fix structure
+        primaryStage.show();
+    };
 
     // shows the login view
-    public void showLogin(Stage stage) {
-        this.primaryStage = stage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
-        Scene loginScene = createScene(loader);
-        changeStage(loginScene);
-        stage.show();
+    public void showLogin() {
+        loadScene("/fxml/login.fxml");
     }
 
     // shows the sign-up view
     public void showSignUp() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/signUp.fxml"));
-        Scene signUpScene = createScene(loader);
-        changeStage(signUpScene);
+        loadScene("/fxml/signUp.fxml");
+    }
+
+    // shows the profile view
+    public void showProfile() {
+        loadScene("/fxml/profile.fxml");
     }
 
     // shows the dashBoard view
-    public void showDashboard(Stage currentStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashBoard.fxml"));
-        Scene dashBoardScene = createScene(loader);
-        createNewStage(dashBoardScene).show();
-        currentStage.close();
+    public void showDashboard() {
+        loadScene("/fxml/dashBoard.fxml");
+    }
+
+    // loads the fxml onto the Scene
+    private void loadScene(String name) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(name));
+        Scene loginScene = createScene(loader);
+        changeScene(loginScene);
     }
 
     // creates a new scene
@@ -56,7 +66,7 @@ public class viewFactory {
     }
 
     // changes the scene on the stage
-    private void changeStage(Scene scene) {
+    private void changeScene(Scene scene) {
         this.primaryStage.setScene(scene);
     }
 }

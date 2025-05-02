@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.profileController">
+   <children>
+      <Text layoutX="476.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Page" />
+   </children>
+</AnchorPane>

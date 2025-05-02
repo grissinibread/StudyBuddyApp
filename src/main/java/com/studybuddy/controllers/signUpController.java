@@ -5,9 +5,11 @@ import java.util.Set;
 import com.studybuddy.models.Model;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import javafx.scene.control.TextField; // to pull text from boxes
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +20,14 @@ public class signUpController implements Initializable {
     @FXML
     public Button signUp_LoginButton;
 
+    @FXML private TextField emailTxt;
+    @FXML private TextField passwordTxt;
+    @FXML private TextField repeatPasswordTxt;
+
+    private String email; // holds email from text box
+    private String password; // holds pass
+    private String repeatPassword; // holds pass
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Sign Up controller Initialized!");
@@ -25,16 +35,29 @@ public class signUpController implements Initializable {
          signUp_signUpButton.setOnAction(actionEvent -> {
            System.out.println("Sign Up Button pressed!");
 
-          // TODO: pull email and password from text boxes and update if accordingly
-//          if(){
-//              Stage currentStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-//              Model.getInstance().getViewFactory().showDashboard(currentStage);
-//          }
+           email = emailTxt.getText();
+           password = passwordTxt.getText();
+           repeatPassword = repeatPasswordTxt.getText();
+          if(isValidEmail(email) && isValidPassword(password) && repeatPassword.equals(password)) { //all valid open dashboard
+              Model.getInstance().getViewFactory().showDashboard();
+              // TODO: STORE IN DATABASE
+          }
+          else { //pop-ups if not valid
+              System.out.println("Invalid email or password!");
+              Alert alert = new Alert(Alert.AlertType.ERROR);
+              if(!isValidEmail(email)) {
+                  createErrorAlert("Invalid Email", "Please enter a valid email address");
+              } else if(!isValidPassword(password)) {
+                  createErrorAlert("Invalid Password", "Please enter a valid password");
+              } else if(!repeatPassword.equals(password)) {
+                  createErrorAlert("Invalid Passwords", "Passwords do not match");
+              }
+          }
          });
 
          signUp_LoginButton.setOnAction(actionEvent -> {
              System.out.println("Login button pressed!");
-             Model.getInstance().getViewFactory().showLogin((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+             Model.getInstance().getViewFactory().showLogin();
          });
     }
 
@@ -62,13 +85,23 @@ public class signUpController implements Initializable {
                 }
             }
             if (lowers == 0 || uppers == 0 || numbers == 0 || characters == 0) {
-                JOptionPane.showMessageDialog(null, "Password: Does not meet requirements");
+                //JOptionPane.showMessageDialog(null, "Password: Does not meet requirements");
                 return false;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Password: Contains invalid characters");
+            //JOptionPane.showMessageDialog(null, "Password: Contains invalid characters");
             return false;
         }
         return true;
     }
+
+    public void createErrorAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+    }
 }
+
+
