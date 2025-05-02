@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.profileController">
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.profileController">
    <children>
-      <Text layoutX="476.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Page" />
+      <HBox layoutX="437.0" layoutY="22.0" prefHeight="32.0" prefWidth="146.0">
+         <children>
+            <Text fill="#8bd1ff" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Page" textAlignment="CENTER" wrappingWidth="150.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Button layoutX="47.0" layoutY="28.0" mnemonicParsing="false" text="Back" />
    </children>
 </AnchorPane>
