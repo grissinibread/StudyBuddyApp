@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.editProfileController">
+   <children>
+      <SplitPane dividerPositions="0.29112271540469975" layoutX="45.0" layoutY="103.0" prefHeight="600.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="597.0" prefWidth="350.0">
+               <children>
+                  <ImageView fitHeight="232.0" fitWidth="252.0" layoutX="21.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox layoutX="121.0" layoutY="12.0" prefHeight="541.0" prefWidth="704.0" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField id="UfnameTxtF" promptText="ex: John">
+                           <VBox.margin>
+                              <Insets right="400.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Text layoutX="10.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField id="UlnameTxtF" layoutX="10.0" layoutY="29.0" promptText="ex: John">
+                           <VBox.margin>
+                              <Insets right="400.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Text layoutX="10.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Major:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <ChoiceBox layoutX="10.0" layoutY="163.0" prefWidth="150.0" />
+                        <Text layoutX="10.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grad Year:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <ChoiceBox layoutX="10.0" layoutY="387.0" prefWidth="150.0" />
+                        <Text layoutX="10.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField id="UageTxtF" layoutX="10.0" layoutY="73.0" promptText="ex: 22">
+                           <VBox.margin>
+                              <Insets right="500.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField id="UemailTxtF" layoutX="10.0" layoutY="154.0" promptText="ex: example@csusm.edu">
+                           <VBox.margin>
+                              <Insets right="400.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Text layoutX="10.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <PasswordField id="UpassTextF">
+                           <VBox.margin>
+                              <Insets right="400.0" />
+                           </VBox.margin>
+                        </PasswordField>
+                        <Text layoutX="10.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interests:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <ChoiceBox prefWidth="150.0" />
+                        <Text layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bio:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextArea prefHeight="200.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </TextArea>
+                     </children>
+                  </VBox>
+                  <Button layoutX="14.0" layoutY="557.0" mnemonicParsing="false" text="SAVE" />
+                  <Button layoutX="638.0" layoutY="557.0" mnemonicParsing="false" text="CANCEL" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
