@@ -1,34 +1,173 @@
+/* MAIN BACKGROUND */
 #body {
-    -fx-background-color: white;
+    -fx-background-color: linear-gradient(to top, #f7f7f7, white);
 }
 
-
-/* all header content*/
-
+/* ===== HEADER STYLING ===== */
 #header {
+    -fx-background-color: linear-gradient(to right, #87CEFA, white);
     -fx-alignment: center;
-    -fx-padding: 1em;
-    -fx-spacing: 1em;
+    -fx-padding: 1.5em;
+    -fx-spacing: 2em;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1px 0;
 }
 
-#profileButton {
-}
-
+/* TITLE TEXT IN HEADER */
 #title {
-    -fx-font-family: 'NeueRegular', sans-serif;
+    -fx-font-family: 'Segoe UI', sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 30px;
+    -fx-font-size: 32px;
+    -fx-text-fill: #234959;
+    -fx-text-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 2, 0.5, 0, 1);
 }
 
-#logoutButton {
+/* PROFILE BUTTON */
+#profileButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #234959;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-border-color: #39728d;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-padding: 0.5em 1em;
+    -fx-transition: background-color 0.3s ease;
 }
 
-/* end of all header content*/
+#profileButton:hover {
+    -fx-background-color: #f0f8ff;
+    -fx-text-fill: #87CEFA;
+    -fx-border-color: #39728d;
+
+    /* LOGOUT BUTTON */
+
+    #logoutButton {
+        -fx-background-color: transparent;
+        -fx-text-fill: #333;
+        -fx-font-size: 14px;
+        -fx-font-weight: bold;
+        -fx-border-radius: 5px;
+        -fx-border-color: #333333;
+        -fx-border-width: 2px;
+        -fx-cursor: hand;
+        -fx-padding: 0.5em 1em;
+        -fx-transition: background-color 0.3s ease;
+    }
+
+    #logoutButton:hover {
+        -fx-background-color: #f0f8ff;
+        -fx-text-fill: #87CEFA;
+        -fx-border-color: #6bb8e0;
+    }
 
 
-/* all footer content */
-#footer {
-    -fx-alignment: center;
-    -fx-padding: 1em;
+    #footer {
+        -fx-background-color: #f5f5f5;
+        -fx-alignment: center;
+        -fx-padding: 1.5em;
+        -fx-border-color: #e0e0e0;
+        -fx-border-width: 1px 0 0 0;
+    }
+
+    #footer Button {
+        -fx-background-color: transparent;
+        -fx-text-fill: #333;
+        -fx-font-size: 14px;
+        -fx-font-weight: bold;
+        -fx-padding: 0.75em 1.5em;
+        -fx-border-radius: 5px;
+        -fx-cursor: hand;
+        -fx-transition: background-color 0.3s ease;
+    }
+
+    #footer Button:hover {
+        -fx-background-color: #87CEFA;
+        -fx-text-fill: white;
+    }
+
+    /* Footer text */
+
+    #footer Text {
+        -fx-font-size: 14px;
+        -fx-text-fill: #888888;
+        -fx-font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* User Cards */
+
+    /* User Cards Container */
+    Pane {
+        -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.5, 0, 3); /* Subtle shadow for depth */
+        -fx-border-radius: 15px;
+        -fx-background-color: white;
+        -fx-padding: 1.5em;
+        -fx-border-color: #e0e0e0;
+        -fx-border-width: 1px;
+        -fx-min-width: 180px;
+        -fx-max-width: 200px;
+        -fx-min-height: 250px;
+        -fx-max-height: 280px;
+        -fx-cursor: hand;
+        -fx-alignment: center;
+        -fx-spacing: 1em;
+    }
+
+    /* User Info inside the Card */
+    .user-info {
+        -fx-font-family: 'Segoe UI', sans-serif; /* Refined font */
+        -fx-font-size: 14px;
+        -fx-text-fill: #333333; /* Text color */
+        -fx-alignment: center;
+    }
+
+    /* Name in the User Card */
+    .user-name {
+        -fx-font-weight: bold;
+        -fx-font-size: 18px;
+        -fx-text-fill: #2E3B4E; /* Darker text for name */
+        -fx-margin-bottom: 0.5em; /* Space between name and other details */
+    }
+
+
+    .user-description {
+        -fx-font-size: 12px;
+        -fx-text-fill: #666666;
+        -fx-line-spacing: 1.5;
+    }
+
+
+    Pane:hover {
+        -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 12, 0.6, 0, 4); /* Darker shadow on hover */
+        -fx-background-color: #f9f9f9; /* Light background on hover */
+        -fx-border-color: #87CEFA; /* Border color changes on hover */
+    }
+
+
+    .user-card-button {
+        -fx-background-color: #87CEFA;
+        -fx-text-fill: white;
+        -fx-font-weight: bold;
+        -fx-border-radius: 5px;
+        -fx-padding: 0.5em 1.2em;
+        -fx-cursor: hand;
+        -fx-transition: background-color 0.3s ease;
+    }
+
+    /
+    .user-card-button:hover {
+        -fx-background-color: #6bb8e0;
+    }
+
+
+    AnchorPane {
+        -fx-spacing: 1.5em;
+    }
+
+
+    AnchorPane {
+        -fx-alignment: center;
+    }
+
 }
-/* end of all footer content */

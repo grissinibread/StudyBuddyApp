@@ -45,22 +45,22 @@
          <children>
             <Pane layoutX="90.0" layoutY="25.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.leftAnchor="90.0">
                 <children>
-                    <fx:include source="userCard.fxml" />
+                    <fx:include source="userCardDash.fxml" />
                 </children>
             </Pane>
             <Pane layoutX="523.0" layoutY="25.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.rightAnchor="90.0">
                 <children>
-                    <fx:include source="userCard.fxml" />
+                    <fx:include source="userCardDash.fxml" />
                 </children>
             </Pane>
             <Pane layoutX="523.0" layoutY="236.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.rightAnchor="90.0">
                 <children>
-                    <fx:include source="userCard.fxml" />
+                    <fx:include source="userCardDash.fxml" />
                 </children>
             </Pane>
             <Pane layoutX="91.0" layoutY="236.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.leftAnchor="90.0">
                <children>
-                  <fx:include source="userCard.fxml" />
+                  <fx:include source="userCardDash.fxml" />
                </children>
             </Pane>
          </children>
