@@ -22,12 +22,22 @@
                   <Insets left="25.0" top="10.0" />
                </VBox.margin>
             </Text>
+            <Text id="textBoxText" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name">
+               <VBox.margin>
+                  <Insets left="25.0" top="10.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="emailTxt1" promptText="Full Name">
+               <VBox.margin>
+                  <Insets left="25.0" right="10.0" />
+               </VBox.margin>
+            </TextField>
             <Text id="textBoxText" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                <VBox.margin>
                   <Insets left="25.0" top="10.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id = "emailTxt" promptText="Email">
+            <TextField fx:id="emailTxt" promptText="Email">
                <VBox.margin>
                   <Insets left="25.0" right="10.0" />
                </VBox.margin>
@@ -37,7 +47,7 @@
                   <Insets left="25.0" top="20.0" />
                </VBox.margin>
             </Text>
-            <PasswordField fx:id = "passwordTxt" promptText="Password">
+            <PasswordField fx:id="passwordTxt" promptText="Password">
                <VBox.margin>
                   <Insets left="25.0" right="10.0" />
                </VBox.margin>
@@ -47,7 +57,7 @@
                   <Insets left="25.0" top="20.0" />
                </VBox.margin>
             </Text>
-            <PasswordField fx:id = "repeatPasswordTxt" promptText="Repeat Password">
+            <PasswordField fx:id="repeatPasswordTxt" promptText="Repeat Password">
                <VBox.margin>
                   <Insets left="25.0" right="10.0" />
                </VBox.margin>
