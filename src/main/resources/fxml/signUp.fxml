@@ -27,7 +27,7 @@
                   <Insets left="25.0" top="10.0" />
                </VBox.margin>
             </Text>
-            <TextField fx:id="emailTxt1" promptText="Full Name">
+            <TextField fx:id="fullNameTxt" promptText="Full Name">
                <VBox.margin>
                   <Insets left="25.0" right="10.0" />
                </VBox.margin>

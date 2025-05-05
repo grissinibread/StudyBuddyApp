@@ -20,10 +20,12 @@ public class signUpController implements Initializable {
     @FXML
     public Button signUp_LoginButton;
 
+    @FXML private TextField fullNameTxt;
     @FXML private TextField emailTxt;
     @FXML private TextField passwordTxt;
     @FXML private TextField repeatPasswordTxt;
 
+    private String fullName; // holds full name from text box
     private String email; // holds email from text box
     private String password; // holds pass
     private String repeatPassword; // holds pass
@@ -35,6 +37,7 @@ public class signUpController implements Initializable {
          signUp_signUpButton.setOnAction(actionEvent -> {
            System.out.println("Sign Up Button pressed!");
 
+           fullName = fullNameTxt.getText();
            email = emailTxt.getText();
            password = passwordTxt.getText();
            repeatPassword = repeatPasswordTxt.getText();
