@@ -18,7 +18,7 @@
                   <Insets left="10.0" />
                </HBox.margin></Button>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Text id="title" fill="#8bd1ff" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discover" textAlignment="CENTER" wrappingWidth="150.0">
+            <Text id="title" fill="black" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discover" textAlignment="CENTER" wrappingWidth="150.0">
                <font>
                   <Font size="25.0" />
                </font>
@@ -45,22 +45,22 @@
          <children>
             <Pane layoutX="90.0" layoutY="25.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.leftAnchor="90.0">
                 <children>
-                    <fx:include source="userCard.fxml" />
+                    <fx:include source="userCardDash.fxml" />
                 </children>
             </Pane>
             <Pane layoutX="523.0" layoutY="25.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.rightAnchor="90.0">
                 <children>
-                    <fx:include source="userCard.fxml" />
+                    <fx:include source="userCardDash.fxml" />
                 </children>
             </Pane>
             <Pane layoutX="523.0" layoutY="236.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.rightAnchor="90.0">
                 <children>
-                    <fx:include source="userCard.fxml" />
+                    <fx:include source="userCardDash.fxml" />
                 </children>
             </Pane>
             <Pane layoutX="91.0" layoutY="236.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.leftAnchor="90.0">
                <children>
-                  <fx:include source="userCard.fxml" />
+                  <fx:include source="userCardDash.fxml" />
                </children>
             </Pane>
          </children>

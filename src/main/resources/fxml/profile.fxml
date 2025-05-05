@@ -1,92 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.profileController">
-   <children>
-    <AnchorPane layoutX="148.0" layoutY="72.0" minHeight="0.0" minWidth="0.0" prefHeight="265.0" prefWidth="296.0">
-         <children>
-            <ImageView fitHeight="241.0" fitWidth="270.0" layoutX="13.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-            <HBox layoutX="-357.0" layoutY="48.0" prefHeight="76.0" prefWidth="977.0" />
-         </children>
-      </AnchorPane>
-      <Button fx:id="profile_editProfButton" layoutX="451.0" layoutY="518.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="139.0" text="Edit Profile" />
-      <Button fx:id="profile_SaveButton" contentDisplay="RIGHT" layoutX="917.0" layoutY="28.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="75.0" text="Save" />
-      <Text fill="#8bd1ff" layoutX="444.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Page" wrappingWidth="192.66665887832642">
-         <font>
-            <Font name="System Bold" size="30.0" />
-         </font>
-      </Text>
-      <Button fx:id="profile_dashboardButton" layoutX="31.0" layoutY="28.0" mnemonicParsing="false" text="Dashboard" />
-      <Text id="UnameTxt" fill="#8bd1ff" layoutX="631.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fname Lname">
-         <font>
-            <Font name="Franklin Gothic Book" size="40.0" />
-         </font>
-      </Text>
-      <Text id="UmajorYrTxt" layoutX="652.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="major &amp; class of gradYr">
-         <font>
-            <Font name="Franklin Gothic Medium" size="20.0" />
-         </font>
-      </Text>
-      <Text id="UemailTxt" layoutX="713.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email:" wrappingWidth="111.33333333333326">
-         <font>
-            <Font name="Franklin Gothic Book" size="18.0" />
-         </font>
-      </Text>
-      <Text id="UageTxt" layoutX="736.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age: ">
-         <font>
-            <Font name="Franklin Gothic Book" size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="432.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Interests:">
-         <font>
-            <Font name="Franklin Gothic Medium" size="16.0" />
-         </font>
-      </Text>
-      <Text id="UemailTxt" layoutX="267.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="it's you!">
-         <font>
-            <Font name="Franklin Gothic Book" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="515.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  About Me: ">
-         <font>
-            <Font name="Franklin Gothic Medium" size="16.0" />
-         </font>
-      </Text>
-      <Text id="Uint1" layoutX="556.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest1">
-         <font>
-            <Font name="Franklin Gothic Book" size="18.0" />
-         </font>
-      </Text>
-      <Text id="Uint2" layoutX="718.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest2">
-         <font>
-            <Font name="Franklin Gothic Book" size="18.0" />
-         </font>
-      </Text>
-      <Text id="Uint3" layoutX="873.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest3">
-         <font>
-            <Font name="Franklin Gothic Book" size="18.0" />
-         </font>
-      </Text>
-      <TextFlow id="UbioTxt" layoutX="504.0" layoutY="353.0" lineSpacing="1.0" prefHeight="141.0" prefWidth="501.0">
-         <children>
-            <VBox prefHeight="141.0" prefWidth="588.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Text>
-               </children>
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.profileController" stylesheets="@../styles/profile.css">
+    <children>
+        <VBox spacing="20" alignment="TOP_LEFT" prefWidth="1024.0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <!-- Header -->
+            <HBox id="header" prefWidth="1024.0" spacing="20">
+                <Button fx:id="profile_dashboardButton" text="Dashboard" HBox.hgrow="NEVER"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Text text="Profile Page" styleClass="titleText" HBox.hgrow="ALWAYS" />
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="profile_SaveButton" text="Save" HBox.hgrow="NEVER"/>
+            </HBox>
+
+            <!-- Profile Section  -->
+            <HBox spacing="30" alignment="TOP_LEFT" prefWidth="1024.0">
+                <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350"> <!-- Fixed width -->
+                    <Text id="UnameTxt" text="Fname Lname" styleClass="nameText" />
+                    <Text id="UmajorYrTxt" text="Major and class of GradYr" />
+                    <Text id="UemailTxt" text="email@example.com" />
+                    <Text id="UageTxt" text="Age: 20" />
+                    <Button fx:id="profile_editProfButton" text="Edit Profile" />
+                </VBox>
+
+                <!-- Interests -->
+                <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350"> <!-- Fixed width for Interests section -->
+                    <Text text="Interests:" styleClass="sectionHeader" />
+
+                    <Text id="Uint1" text="Interest1" />
+                    <Text id="Uint2" text="Interest2" />
+                    <Text id="Uint3" text="Interest3" />
+                </VBox>
+
+                <!-- Spacer -->
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Profile Picture -->
+                <VBox spacing="12" alignment="CENTER" prefWidth="200"> <!-- Fixed width for Profile Picture -->
+                    <ImageView fx:id="profilePic" fitWidth="150" fitHeight="150" preserveRatio="true" />
+                    <Text text="Profile Picture" styleClass="sectionHeader" />
+                </VBox>
+            </HBox>
+
+            <!-- About Me -->
+            <VBox spacing="12" alignment="TOP_LEFT">
+                <Text text="About Me:" styleClass="sectionHeader" />
+                <TextFlow id="UbioTxt" prefWidth="800.0">
+                    <Text text="This is your bio text. Tell us about yourself." wrappingWidth="780.0">
+                        <font>
+                            <Font size="16" />
+                        </font>
+                    </Text>
+                </TextFlow>
             </VBox>
-         </children>
-      </TextFlow>
-   </children>
+        </VBox>
+    </children>
 </AnchorPane>
