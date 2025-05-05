@@ -18,7 +18,7 @@
                   <Insets left="10.0" />
                </HBox.margin></Button>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Text id="title" fill="#8bd1ff" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discover" textAlignment="CENTER" wrappingWidth="150.0">
+            <Text id="title" fill="black" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discover" textAlignment="CENTER" wrappingWidth="150.0">
                <font>
                   <Font size="25.0" />
                </font>
