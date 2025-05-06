@@ -24,7 +24,7 @@
 
             <!-- Profile Section  -->
             <HBox spacing="30" alignment="TOP_LEFT" prefWidth="1024.0">
-                <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350"> <!-- Fixed width -->
+                <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350">
                     <Text id="UnameTxt" text="Fname Lname" styleClass="nameText" />
                     <Text id="UmajorYrTxt" text="Major and class of GradYr" />
                     <Text id="UemailTxt" text="email@example.com" />
@@ -33,19 +33,20 @@
                 </VBox>
 
                 <!-- Interests -->
-                <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350"> <!-- Fixed width for Interests section -->
+                <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350">
                     <Text text="Interests:" styleClass="sectionHeader" />
 
                     <Text id="Uint1" text="Interest1" />
                     <Text id="Uint2" text="Interest2" />
                     <Text id="Uint3" text="Interest3" />
+                    <Text id="Uint4" text="Interest4" />
                 </VBox>
 
                 <!-- Spacer -->
                 <Region HBox.hgrow="ALWAYS"/>
 
                 <!-- Profile Picture -->
-                <VBox spacing="12" alignment="CENTER" prefWidth="200"> <!-- Fixed width for Profile Picture -->
+                <VBox spacing="12" alignment="CENTER" prefWidth="200">
                     <ImageView fx:id="profilePic" fitWidth="150" fitHeight="150" preserveRatio="true" />
                     <Text text="Profile Picture" styleClass="sectionHeader" />
                 </VBox>
