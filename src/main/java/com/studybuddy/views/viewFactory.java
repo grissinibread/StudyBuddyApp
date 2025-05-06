@@ -38,6 +38,11 @@ public class viewFactory {
         loadScene("/fxml/dashBoard.fxml");
     }
 
+    // shows connections page
+    public void showConnections() {
+        loadScene("/fxml/connections.fxml");
+    }
+
     // loads the fxml onto the Scene
     private void loadScene(String name) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(name));
