@@ -14,6 +14,8 @@ import javafx.scene.control.TextField; // to pull text from boxes
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.studybuddy.services.ApiClient.signUp_User;
+
 public class signUpController implements Initializable {
     @FXML
     public Button signUp_signUpButton;
@@ -26,6 +28,8 @@ public class signUpController implements Initializable {
     @FXML private TextField repeatPasswordTxt;
 
     private String fullName; // holds full name from text box
+    private String fname; // holds first name from full name
+    private String lname; // holds last name from full name
     private String email; // holds email from text box
     private String password; // holds pass
     private String repeatPassword; // holds pass
@@ -41,9 +45,12 @@ public class signUpController implements Initializable {
            email = emailTxt.getText();
            password = passwordTxt.getText();
            repeatPassword = repeatPasswordTxt.getText();
+           Full_toFLName(fullName);
+
           if(isValidEmail(email) && isValidPassword(password) && repeatPassword.equals(password)) { //all valid open dashboard
               Model.getInstance().getViewFactory().showDashboard();
-              // TODO: STORE IN DATABASE
+              System.out.println("Passing to API: fName=" + fname + ", lName=" + lname + ", email=" + email + ", password=" + password);
+              signUp_User(fname, lname, email, password);
           }
           else { //pop-ups if not valid
               System.out.println("Invalid email or password!");
@@ -70,6 +77,26 @@ public class signUpController implements Initializable {
         return email.matches(regex);
     }
 
+private void Full_toFLName(String fullName) {
+    if (fullName == null || fullName.trim().isEmpty()) {
+        this.fname = "";
+        this.lname = "";
+        System.out.println("Full name is empty or null.");
+        return;
+    }
+
+    fullName = fullName.trim();
+    int firstSpace = fullName.indexOf(' ');
+    if (firstSpace < 0) {
+        this.fname = fullName;
+        this.lname = "";
+    } else {
+        this.fname = fullName.substring(0, firstSpace);
+        this.lname = fullName.substring(firstSpace + 1).trim();
+    }
+
+    System.out.println("First Name: " + this.fname + ", Last Name: " + this.lname);
+}
     private boolean isValidPassword(String password){
         int length = password.length();
         int uppers = 0, lowers = 0, numbers = 0, characters = 0; // ensures it has one of each
