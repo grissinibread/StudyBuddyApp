@@ -42,24 +42,31 @@ public class profileController implements Initializable {
             profile_bio.setText(currentUser.getBio());
 
             // interests
-            String[] interests = currentUser.getInterests().toArray(new String[0]); // Assuming getInterests() returns a String array
-            if (interests.length > 0) profile_interests1.setText(interests[0]);
-            if (interests.length > 1) profile_interests2.setText(interests[1]);
-            if (interests.length > 2) profile_interests3.setText(interests[2]);
-            if (interests.length > 3) profile_interests4.setText(interests[3]);
-        }
+            if (currentUser.getInterests() != null && !currentUser.getInterests().isEmpty()) {
+                String[] interests = currentUser.getInterests().toArray(new String[0]);
+                if (interests.length > 0) profile_interests1.setText(interests[0]);
+                if (interests.length > 1) profile_interests2.setText(interests[1]);
+                if (interests.length > 2) profile_interests3.setText(interests[2]);
+                if (interests.length > 3) profile_interests4.setText(interests[3]);
+            } else {
+                profile_interests1.setText("");
+                profile_interests2.setText("");
+                profile_interests3.setText("");
+                profile_interests4.setText("");
+            }
 
-        profile_dashboardButton.setOnAction(actionEvent -> {
-            System.out.println("Dashboard button pressed!");
-            Model.getInstance().getViewFactory().showDashboard();
-        });
-        profile_editProfButton.setOnAction(actionEvent -> {
-            System.out.println("Edit Profile button pressed!");
-            // TODO: Implement edit profile functionality
-        });
-        profile_SaveButton.setOnAction(actionEvent -> {
-            System.out.println("Save button pressed!");
-            // TODO: Implement save edited profile functionality
-        });
+            profile_dashboardButton.setOnAction(actionEvent -> {
+                System.out.println("Dashboard button pressed!");
+                Model.getInstance().getViewFactory().showDashboard();
+            });
+            profile_editProfButton.setOnAction(actionEvent -> {
+                System.out.println("Edit Profile button pressed!");
+                // TODO: Implement edit profile functionality
+            });
+            profile_SaveButton.setOnAction(actionEvent -> {
+                System.out.println("Save button pressed!");
+                // TODO: Implement save edited profile functionality
+            });
+        }
     }
 }
