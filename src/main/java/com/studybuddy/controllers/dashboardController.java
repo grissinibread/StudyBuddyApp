@@ -43,10 +43,23 @@ for (int i = 0; i < users.size() && i < userCards.length; i++) {
         userCardController controller = loader.getController();
 
         // Set user information
-        controller.setUserName(new Text(users.get(i).getFirstName() + " " + users.get(i).getLastName()));
-//        controller.setUserCard_Major(users.get(i).getMajor());
-//        controller.setUserCard_GraduationYear(users.get(i).getGradYear());
-//        controller.setUserInterests(users.get(i).getInterests());
+        controller.userName.setText(users.get(i).getFirstName() + " " + users.get(i).getLastName());
+        controller.major.setText(users.get(i).getMajor());
+        controller.gradYear.setText(users.get(i).getGradYear().toString());
+
+        // interests
+        if (users.get(i).getInterests() != null && !users.get(i).getInterests().isEmpty()) {
+            String[] interests = users.get(i).getInterests().toArray(new String[0]);
+            if (interests.length > 0) controller.interest1.setText(interests[0]);
+            if (interests.length > 1) controller.interest2.setText(interests[1]);
+            if (interests.length > 2) controller.interest3.setText(interests[2]);
+
+        } else {
+            controller.interest1.setText("");
+            controller.interest2.setText("");
+            controller.interest3.setText("");
+
+        }
 
 
         // Add the user card to the corresponding AnchorPane
