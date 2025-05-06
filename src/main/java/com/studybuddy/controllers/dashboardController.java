@@ -35,7 +35,7 @@ public class dashboardController implements Initializable {
         });
 
         dashboard_ConnectionsButton.setOnAction(actionEvent -> {
-            System.out.println("profile button pressed");
+            System.out.println("connections button pressed");
             Model.getInstance().getViewFactory().showConnections();
         });
     }
