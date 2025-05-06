@@ -1,0 +1,60 @@
+.titleText {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+.profileText {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.nameText {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #234959;
+}
+
+.subInfoText {
+    -fx-font-size: 18px;
+    -fx-text-fill: #888;
+}
+
+.sectionHeader {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+#header {
+    -fx-background-color: linear-gradient(to right, #87CEFA, white);
+    -fx-alignment: center;
+    -fx-padding: 1.5em;
+    -fx-spacing: 20px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1px 0;
+}
+
+#header Button {
+    -fx-padding: 5px 10px;
+    -fx-font-size: 14px;
+}
+
+
+AnchorPane {
+    -fx-background-color: linear-gradient(to right, #87CEFA, white);
+    -fx-alignment: center;
+    -fx-padding: 1.5em;
+    -fx-spacing: 20px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1px 0;
+}
+/* For each textbox */
+VBox {
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-padding: 1.5em;
+    -fx-spacing: 20px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1px 0;
+}
