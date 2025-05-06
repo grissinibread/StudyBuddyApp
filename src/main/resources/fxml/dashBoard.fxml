@@ -4,66 +4,80 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" stylesheets="@../styles/dashBoard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.dashboardController">
-   <children>
-      <HBox id="header" prefHeight="75.0" prefWidth="1024.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
+<AnchorPane id="body" prefHeight="600.0" prefWidth="1024.0" stylesheets="@../styles/dashBoard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.dashboardController">
+
+    <!-- Header Section -->
+    <HBox id="header" prefHeight="75.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
             <Button id="profileButton" fx:id="dashboard_profileButton" mnemonicParsing="false" text="Profile">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin></Button>
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Text id="title" fill="black" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discover" textAlignment="CENTER" wrappingWidth="150.0">
-               <font>
-                  <Font size="25.0" />
-               </font>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Text>
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button id="logoutButton" fx:id="dashboard_LogoutButton" mnemonicParsing="false" text="Logout">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
             </Button>
-         </children>
-      </HBox>
-      <HBox id="footer" layoutX="-1.0" layoutY="525.0" prefHeight="75.0" prefWidth="1026.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
+
+            <Region prefWidth="200.0" HBox.hgrow="ALWAYS" />
+
+            <Text id="title" fill="black" text="Discover" textAlignment="CENTER">
+                <font>
+                    <Font size="25.0" />
+                </font>
+            </Text>
+
+            <Region prefWidth="200.0" HBox.hgrow="ALWAYS" />
+
+            <Button id="logoutButton" fx:id="dashboard_LogoutButton" mnemonicParsing="false" text="Logout">
+                <HBox.margin>
+                    <Insets left="10.0" />
+                </HBox.margin>
+            </Button>
+        </children>
+    </HBox>
+
+    <!-- Add Space Between Header and User Cards -->
+    <Region prefHeight="100.0" />
+
+    <!-- Main Content Section (User Cards) -->
+    <AnchorPane layoutX="108.0" layoutY="112.0" prefHeight="376.0" prefWidth="853.0" AnchorPane.bottomAnchor="112.0" AnchorPane.topAnchor="112.0">
+        <children>
+            <HBox alignment="CENTER" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                    <AnchorPane prefHeight="160.0" prefWidth="400.0" style="-fx-background-color: #f4f4f4; -fx-border-radius: 10;">
+                        <fx:include fx:id="user1" source="userCard.fxml" />
+                    </AnchorPane>
+      
+                    <AnchorPane prefHeight="160.0" prefWidth="400.0" style="-fx-background-color: #f4f4f4; -fx-border-radius: 10;">
+                        <fx:include fx:id="user2" source="userCard.fxml" />
+                    </AnchorPane>
+                </children>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="180.0">
+                <children>
+                    <AnchorPane prefHeight="160.0" prefWidth="400.0" style="-fx-background-color: #f4f4f4; -fx-border-radius: 10;">
+                        <fx:include fx:id="user3" source="userCard.fxml" />
+                    </AnchorPane>
+
+                    <AnchorPane prefHeight="160.0" prefWidth="400.0" style="-fx-background-color: #f4f4f4; -fx-border-radius: 10;">
+                        <fx:include fx:id="user4" source="userCard.fxml" />
+                    </AnchorPane>
+                </children>
+            </HBox>
+        </children>
+    </AnchorPane>
+
+    <!-- Footer Section -->
+    <HBox id="footer" prefHeight="75.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <children>
             <Button fx:id="dashboard_ConnectionsButton" mnemonicParsing="false" text="Connections" />
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+
+            <Region prefWidth="200.0" HBox.hgrow="ALWAYS" />
+
             <Button fx:id="refreshMatches" mnemonicParsing="false" text="Refresh Matches" />
-         </children>
-      </HBox>
-      <AnchorPane layoutX="50.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
-         <children>
-            <Pane layoutX="90.0" layoutY="25.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.leftAnchor="90.0">
-                <children>
-                    <fx:include source="userCard.fxml" fx:id="user1"/>
-                </children>
-            </Pane>
-            <Pane layoutX="523.0" layoutY="25.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.rightAnchor="90.0">
-                <children>
-                    <fx:include source="userCard.fxml" fx:id="user2" />
-                </children>
-            </Pane>
-            <Pane layoutX="523.0" layoutY="236.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.rightAnchor="90.0">
-                <children>
-                    <fx:include source="userCard.fxml" fx:id="user3"/>
-                </children>
-            </Pane>
-            <Pane layoutX="91.0" layoutY="236.0" prefHeight="200.0" prefWidth="403.0" AnchorPane.leftAnchor="90.0">
-               <children>
-                  <fx:include source="userCard.fxml" fx:id="user4"/>
-               </children>
-            </Pane>
-         </children>
-      </AnchorPane>
-   </children>
+        </children>
+    </HBox>
+
 </AnchorPane>

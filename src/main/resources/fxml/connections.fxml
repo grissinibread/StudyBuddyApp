@@ -7,25 +7,41 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.connectionsController">
-   <children>
-      <!-- Title -->
-      <Text layoutX="381.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connections">
-         <font>
-            <Font size="41.0" />
-         </font>
-      </Text>
+<AnchorPane prefHeight="600.0" prefWidth="1024.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.studybuddy.controllers.connectionsController">
 
-      <!-- Dashboard Button -->
-      <Button fx:id="connections_dashboardButton" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" text="Dashboard" AnchorPane.leftAnchor="10.0" />
+    <children>
+        <!-- Title -->
+        <Text text="Connections" layoutX="400.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Text>
 
-      <!-- Scrollable Container for Connections -->
-      <ScrollPane fitToWidth="true" AnchorPane.topAnchor="75.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <content>
-            <VBox fx:id="connectionsListContainer" spacing="15.0" padding="20.0">
-               <!-- Connection entries will be added here programmatically -->
-            </VBox>
-         </content>
-      </ScrollPane>
-   </children>
+        <!-- Dashboard Button -->
+        <Button fx:id="connections_dashboardButton"
+                layoutX="20.0" layoutY="15.0"
+                mnemonicParsing="false"
+                text="Dashboard" />
+
+        <!-- Scrollable Container for User Connections -->
+        <ScrollPane fx:id="connectionsScrollPane"
+                    fitToWidth="true"
+                    prefHeight="480.0" prefWidth="984.0"
+                    AnchorPane.topAnchor="90.0"
+                    AnchorPane.bottomAnchor="10.0"
+                    AnchorPane.leftAnchor="20.0"
+                    AnchorPane.rightAnchor="20.0">
+            <content>
+                <VBox fx:id="connectionsListContainer"
+                      spacing="15.0"
+                      fillWidth="true"
+                      style="-fx-padding: 10;">
+                    <!-- User connection cards will be loaded here -->
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
 </AnchorPane>

@@ -1,18 +1,18 @@
 /* MAIN BACKGROUND */
 #body {
     -fx-background-color: linear-gradient(to top, #f7f7f7, white);
+    -fx-font-family: 'Segoe UI', sans-serif;
 }
 
-
+/* Header Styling */
 #header {
-    -fx-background-color: linear-gradient(to right, #87CEFA, white);
+    -fx-background-color: linear-gradient(to right, #87CEFA, #b3e0ff);
     -fx-alignment: center;
     -fx-padding: 1.5em;
     -fx-spacing: 2em;
     -fx-border-color: #e0e0e0;
     -fx-border-width: 0 0 1px 0;
 }
-
 
 #title {
     -fx-font-family: 'Segoe UI', sans-serif;
@@ -22,17 +22,22 @@
     -fx-text-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 2, 0.5, 0, 1);
 }
 
-#profileButton {
+/* Buttons in Header */
+#profileButton, #logoutButton {
     -fx-background-color: transparent;
-    -fx-text-fill: #234959;
     -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-border-radius: 5px;
-    -fx-border-color: #39728d;
     -fx-border-width: 2px;
     -fx-cursor: hand;
     -fx-padding: 0.5em 1em;
-    -fx-transition: background-color 0.3s ease;
+    -fx-transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Profile Button */
+#profileButton {
+    -fx-text-fill: #234959;
+    -fx-border-color: #39728d;
 }
 
 #profileButton:hover {
@@ -41,18 +46,10 @@
     -fx-border-color: #39728d;
 }
 
-
+/* Logout Button */
 #logoutButton {
-    -fx-background-color: transparent;
     -fx-text-fill: #333;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-border-radius: 5px;
     -fx-border-color: #333333;
-    -fx-border-width: 2px;
-    -fx-cursor: hand;
-    -fx-padding: 0.5em 1em;
-    -fx-transition: background-color 0.3s ease;
 }
 
 #logoutButton:hover {
@@ -61,7 +58,7 @@
     -fx-border-color: #6bb8e0;
 }
 
-/* Footer */
+/* Footer Styling */
 #footer {
     -fx-background-color: #f5f5f5;
     -fx-alignment: center;
@@ -93,12 +90,11 @@
 }
 
 /* User Cards */
-
 Pane {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 6, 0.4, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 6, 0.4, 0, 2);
     -fx-border-radius: 10px;
     -fx-background-color: white;
-    -fx-padding: 0.75em;
+    -fx-padding: 1em;
     -fx-border-color: #dcdcdc;
     -fx-border-width: 1px;
     -fx-min-width: 240px;
@@ -108,7 +104,19 @@ Pane {
     -fx-cursor: hand;
     -fx-alignment: center;
     -fx-spacing: 0.5em;
-    -fx-margin: 0 8px 8px 0; 
+    -fx-margin: 0 8px 8px 0;
+    -fx-background-insets: 0, 0;
 }
 
+/* User Card Hover Effect */
+Pane:hover {
+    -fx-background-color: #f0f8ff;
+    -fx-border-color: #b0e0e6;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0.4, 0, 3);
+}
 
+/* Footer Button Styling */
+#footer Button:hover {
+    -fx-background-color: #87CEFA;
+    -fx-text-fill: white;
+}

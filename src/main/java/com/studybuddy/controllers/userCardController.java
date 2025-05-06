@@ -1,24 +1,24 @@
 package com.studybuddy.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.text.Text;
+import javafx.scene.control.Label;
 
 public class userCardController {
     @FXML
-    public Text userName;
+    public Label userName;
 
     @FXML
-   public Text gradYear;
+   public Label gradYear;
 
     @FXML
-    public Text major;
+    public Label major;
 
     @FXML
-    public Text interest1;
+    public Label interest1;
 
     @FXML
-    public Text interest2;
+    public Label interest2;
 
     @FXML
-    public Text interest3;
+    public Label interest3;
 }

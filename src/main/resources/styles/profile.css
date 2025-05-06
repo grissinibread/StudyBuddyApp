@@ -1,11 +1,6 @@
+/* General Styling */
 .titleText {
     -fx-font-size: 30px;
-    -fx-font-weight: bold;
-    -fx-text-fill: black;
-}
-
-.profileText {
-    -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
 }
@@ -24,37 +19,73 @@
 .sectionHeader {
     -fx-font-size: 22px;
     -fx-font-weight: bold;
+    -fx-text-fill: #234959;
+    -fx-padding: 5px 0;
 }
 
 #header {
-    -fx-background-color: linear-gradient(to right, #87CEFA, white);
+    -fx-background-color: #ffffff;
     -fx-alignment: center;
-    -fx-padding: 1.5em;
+    -fx-padding: 10px 20px;
     -fx-spacing: 20px;
     -fx-border-color: #e0e0e0;
     -fx-border-width: 0 0 1px 0;
+    -fx-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 #header Button {
     -fx-padding: 5px 10px;
     -fx-font-size: 14px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px;
 }
 
+#header Button:hover {
+    -fx-background-color: #45a049;
+}
 
 AnchorPane {
-    -fx-background-color: linear-gradient(to right, #87CEFA, white);
+    -fx-background-color: #f4f4f9;
     -fx-alignment: center;
     -fx-padding: 1.5em;
     -fx-spacing: 20px;
-    -fx-border-color: #e0e0e0;
-    -fx-border-width: 0 0 1px 0;
 }
-/* For each textbox */
+
+/* VBox Styling for Sections */
 VBox {
     -fx-background-color: transparent;
     -fx-alignment: center;
-    -fx-padding: 1.5em;
+    -fx-padding: 20px;
     -fx-spacing: 20px;
-    -fx-border-color: #e0e0e0;
-    -fx-border-width: 0 0 1px 0;
+}
+
+/* Border for Profile Sections */
+VBox {
+    -fx-background-color: transparent;
+    -fx-border-radius: 8px;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+}
+
+/* Profile Picture Section */
+VBox#profilePicVBox {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+}
+
+ImageView {
+    -fx-border-radius: 50%;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 2px;
+}
+
+TextFlow {
+    -fx-padding: 10px;
+    -fx-background-color: white;
+    -fx-border-radius: 8px;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1px;
 }

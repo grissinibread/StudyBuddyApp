@@ -43,6 +43,9 @@ public class viewFactory {
         loadScene("/fxml/connections.fxml");
     }
 
+    // shows edit profile page
+    public void showEditProfile() { loadScene("/fxml/editProfile.fxml"); }
+
     // loads the fxml onto the Scene
     private void loadScene(String name) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(name));

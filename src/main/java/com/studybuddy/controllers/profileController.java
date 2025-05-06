@@ -24,7 +24,6 @@ public class profileController implements Initializable {
     public Text profile_interests1;
     public Text profile_interests2;
     public Text profile_interests3;
-    public Text profile_interests4;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,7 +60,7 @@ public class profileController implements Initializable {
             });
             profile_editProfButton.setOnAction(actionEvent -> {
                 System.out.println("Edit Profile button pressed!");
-                // TODO: Implement edit profile functionality
+                Model.getInstance().getViewFactory().showEditProfile();
             });
             profile_SaveButton.setOnAction(actionEvent -> {
                 System.out.println("Save button pressed!");

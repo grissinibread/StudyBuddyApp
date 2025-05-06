@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
+import javafx.scene.control.Label;  // Ensure you're importing Label
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,17 +17,19 @@ import static com.studybuddy.services.ApiClient.retreiveAllUsers;
 
 public class dashboardController implements Initializable {
 
-     @FXML
+    @FXML
     public Button dashboard_LogoutButton;
 
-     @FXML
-     public Button dashboard_profileButton;
+    @FXML
+    public Button dashboard_profileButton;
 
-     @FXML
-     public Button refreshMatches;
+    @FXML
+    public Button refreshMatches;
 
-     @FXML
+    @FXML
     public Button dashboard_ConnectionsButton;
+
+    // AnchorPane for user cards
     public AnchorPane user1;
     public AnchorPane user2;
     public AnchorPane user3;
@@ -73,18 +75,17 @@ public class dashboardController implements Initializable {
                 Random random = new Random();
                 int randomIndex = random.nextInt(users.size());
 
-                // Set user information
+                // Set user information using Labels
                 controller.userName.setText(users.get(randomIndex).getFirstName() + " " + users.get(randomIndex).getLastName());
                 controller.major.setText(users.get(randomIndex).getMajor());
                 controller.gradYear.setText(users.get(randomIndex).getGradYear().toString());
 
-                // interests
+                // Set interests using Labels
                 if (users.get(randomIndex).getInterests() != null && !users.get(randomIndex).getInterests().isEmpty()) {
                     String[] interests = users.get(randomIndex).getInterests().toArray(new String[0]);
                     if (interests.length > 0) controller.interest1.setText(interests[0]);
                     if (interests.length > 1) controller.interest2.setText(interests[1]);
                     if (interests.length > 2) controller.interest3.setText(interests[2]);
-
                 } else {
                     controller.interest1.setText("");
                     controller.interest2.setText("");
