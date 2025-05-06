@@ -16,6 +16,9 @@ public class dashboardController implements Initializable {
      @FXML
      public Button dashboard_profileButton;
 
+     @FXML
+    public Button dashboard_ConnectionsButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Dashboard controller initialized!");
@@ -29,6 +32,11 @@ public class dashboardController implements Initializable {
         dashboard_profileButton.setOnAction(actionEvent -> {
             System.out.println("profile button pressed");
             Model.getInstance().getViewFactory().showProfile();
+        });
+
+        dashboard_ConnectionsButton.setOnAction(actionEvent -> {
+            System.out.println("connections button pressed");
+            Model.getInstance().getViewFactory().showConnections();
         });
     }
 }
