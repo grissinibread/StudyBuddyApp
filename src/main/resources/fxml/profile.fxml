@@ -25,7 +25,7 @@
             <!-- Profile Section  -->
             <HBox spacing="30" alignment="TOP_LEFT" prefWidth="1024.0">
                 <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350">
-                    <Text id="UnameTxt" text="Fname Lname" styleClass="nameText" />
+                    <Text id="UnameTxt" text="firstName lastName" styleClass="nameText" />
                     <Text id="UmajorYrTxt" text="Major and class of GradYr" />
                     <Text id="UemailTxt" text="email@example.com" />
                     <Text id="UageTxt" text="Age: 20" />

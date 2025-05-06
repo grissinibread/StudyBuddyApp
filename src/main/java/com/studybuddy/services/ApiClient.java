@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ApiClient {
-    public static void signUp_User(String fname, String lname, String email, String password) {
+    public static void signUp_User(String firstName, String lastName, String email, String password) {
         try {
             URL url = new URL("http://localhost:8080/users");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -16,8 +16,8 @@ public class ApiClient {
 
             // Create JSON object for user data
             String jsonInputString = String.format(
-                    "{\"fname\": \"%s\", \"lname\": \"%s\", \"email\": \"%s\", \"password\": \"%s\"}",
-                    fname, lname, email, password
+                    "{\"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"password\": \"%s\"}",
+                    firstName, lastName, email, password
             );
 
             // Write JSON data to request body

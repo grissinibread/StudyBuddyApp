@@ -25,7 +25,7 @@
          </font>
       </Text>
       <Button fx:id="profile_dashboardButton" layoutX="31.0" layoutY="28.0" mnemonicParsing="false" text="Dashboard" />
-      <Text id="UnameTxt" fill="#8bd1ff" layoutX="631.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fname Lname">
+      <Text id="UnameTxt" fill="#8bd1ff" layoutX="631.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="firstName lastName">
          <font>
             <Font name="Franklin Gothic Book" size="40.0" />
          </font>

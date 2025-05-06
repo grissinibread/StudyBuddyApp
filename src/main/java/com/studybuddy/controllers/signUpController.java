@@ -22,14 +22,14 @@ public class signUpController implements Initializable {
     @FXML
     public Button signUp_LoginButton;
 
-    @FXML private TextField fullNameTxt;
+    @FXML private TextField fullastNameTxt;
     @FXML private TextField emailTxt;
     @FXML private TextField passwordTxt;
     @FXML private TextField repeatPasswordTxt;
 
-    private String fullName; // holds full name from text box
-    private String fname; // holds first name from full name
-    private String lname; // holds last name from full name
+    private String fullastName; // holds full name from text box
+    private String firstName; // holds first name from full name
+    private String lastName; // holds last name from full name
     private String email; // holds email from text box
     private String password; // holds pass
     private String repeatPassword; // holds pass
@@ -41,16 +41,16 @@ public class signUpController implements Initializable {
          signUp_signUpButton.setOnAction(actionEvent -> {
            System.out.println("Sign Up Button pressed!");
 
-           fullName = fullNameTxt.getText();
+           fullastName = fullastNameTxt.getText();
            email = emailTxt.getText();
            password = passwordTxt.getText();
            repeatPassword = repeatPasswordTxt.getText();
-           Full_toFLName(fullName);
+           Full_toFlastName(fullastName);
 
           if(isValidEmail(email) && isValidPassword(password) && repeatPassword.equals(password)) { //all valid open dashboard
               Model.getInstance().getViewFactory().showDashboard();
-              System.out.println("Passing to API: fName=" + fname + ", lName=" + lname + ", email=" + email + ", password=" + password);
-              signUp_User(fname, lname, email, password);
+              System.out.println("Passing to API: firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password);
+              signUp_User(firstName, lastName, email, password);
           }
           else { //pop-ups if not valid
               System.out.println("Invalid email or password!");
@@ -77,25 +77,25 @@ public class signUpController implements Initializable {
         return email.matches(regex);
     }
 
-private void Full_toFLName(String fullName) {
-    if (fullName == null || fullName.trim().isEmpty()) {
-        this.fname = "";
-        this.lname = "";
+private void Full_toFlastName(String fullastName) {
+    if (fullastName == null || fullastName.trim().isEmpty()) {
+        this.firstName = "";
+        this.lastName = "";
         System.out.println("Full name is empty or null.");
         return;
     }
 
-    fullName = fullName.trim();
-    int firstSpace = fullName.indexOf(' ');
+    fullastName = fullastName.trim();
+    int firstSpace = fullastName.indexOf(' ');
     if (firstSpace < 0) {
-        this.fname = fullName;
-        this.lname = "";
+        this.firstName = fullastName;
+        this.lastName = "";
     } else {
-        this.fname = fullName.substring(0, firstSpace);
-        this.lname = fullName.substring(firstSpace + 1).trim();
+        this.firstName = fullastName.substring(0, firstSpace);
+        this.lastName = fullastName.substring(firstSpace + 1).trim();
     }
 
-    System.out.println("First Name: " + this.fname + ", Last Name: " + this.lname);
+    System.out.println("First Name: " + this.firstName + ", Last Name: " + this.lastName);
 }
     private boolean isValidPassword(String password){
         int length = password.length();
