@@ -1,7 +1,7 @@
 module com.studybuddy {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.desktop;
+    requires com.fasterxml.jackson.databind;
 
 
     opens com.studybuddy to javafx.fxml;

@@ -1,10 +1,18 @@
 package com.studybuddy.services;
 
+import com.studybuddy.models.CurrentUser;
+import com.studybuddy.models.Model;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 
 public class ApiClient {
 
@@ -64,6 +72,28 @@ public class ApiClient {
             // Check response code
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Parse the response to extract the user ID
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String inputLine;
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode responseJson = mapper.readTree(response.toString());
+                String userId = responseJson.get("id").asText();
+
+                // Fetch user data using the extracted user ID
+                fetchUserData(userId);
+                // Set the email in the CurrentUser instance
+                CurrentUser currentUser = Model.getInstance().getCurrentUser();
+                if (currentUser != null) {
+                    currentUser.setEmail(email);
+                }
+
                 System.out.println("User logged in successfully.");
                 return true;
             } else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
@@ -78,5 +108,41 @@ public class ApiClient {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static void fetchUserData(String userId) {
+        try {
+            URL url = new URL("http://localhost:8080/users/" + userId + "/myInfo");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+
+            // Check response code
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Parse the response to populate CurrentUser
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String inputLine;
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                ObjectMapper mapper = new ObjectMapper();
+                CurrentUser currentUser = mapper.readValue(response.toString(), CurrentUser.class);
+
+                // Save the populated CurrentUser instance
+                Model.getInstance().setCurrentUser(currentUser);
+
+                System.out.println("User data retrieved and set successfully.");
+            } else {
+                System.out.println("Failed to fetch user data. Response code: " + responseCode);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

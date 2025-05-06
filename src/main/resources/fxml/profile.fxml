@@ -1,68 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.profileController" stylesheets="@../styles/profile.css">
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" stylesheets="@../styles/profile.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studybuddy.controllers.profileController">
     <children>
-        <VBox spacing="20" alignment="TOP_LEFT" prefWidth="1024.0">
+        <VBox alignment="TOP_LEFT" prefWidth="1024.0" spacing="20">
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
-
-            <!-- Header -->
-            <HBox id="header" prefWidth="1024.0" spacing="20">
-                <Button fx:id="profile_dashboardButton" text="Dashboard" HBox.hgrow="NEVER"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Text text="Profile Page" styleClass="titleText" HBox.hgrow="ALWAYS" />
-                <Region HBox.hgrow="ALWAYS"/>
-                <Button fx:id="profile_SaveButton" text="Save" HBox.hgrow="NEVER"/>
-            </HBox>
-
-            <!-- Profile Section  -->
-            <HBox spacing="30" alignment="TOP_LEFT" prefWidth="1024.0">
-                <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350">
-                    <Text id="UnameTxt" text="firstName lastName" styleClass="nameText" />
-                    <Text id="UmajorYrTxt" text="Major and class of GradYr" />
-                    <Text id="UemailTxt" text="email@example.com" />
-                    <Text id="UageTxt" text="Age: 20" />
-                    <Button fx:id="profile_editProfButton" text="Edit Profile" />
-                </VBox>
-
-                <!-- Interests -->
-                <VBox spacing="12" alignment="TOP_LEFT" prefWidth="350">
-                    <Text text="Interests:" styleClass="sectionHeader" />
-
-                    <Text id="Uint1" text="Interest1" />
-                    <Text id="Uint2" text="Interest2" />
-                    <Text id="Uint3" text="Interest3" />
-                    <Text id="Uint4" text="Interest4" />
-                </VBox>
-
-                <!-- Spacer -->
-                <Region HBox.hgrow="ALWAYS"/>
-
-                <!-- Profile Picture -->
-                <VBox spacing="12" alignment="CENTER" prefWidth="200">
-                    <ImageView fx:id="profilePic" fitWidth="150" fitHeight="150" preserveRatio="true" />
-                    <Text text="Profile Picture" styleClass="sectionHeader" />
-                </VBox>
-            </HBox>
-
-            <!-- About Me -->
-            <VBox spacing="12" alignment="TOP_LEFT">
-                <Text text="About Me:" styleClass="sectionHeader" />
-                <TextFlow id="UbioTxt" prefWidth="800.0">
-                    <Text text="This is your bio text. Tell us about yourself." wrappingWidth="780.0">
-                        <font>
-                            <Font size="16" />
-                        </font>
-                    </Text>
-                </TextFlow>
-            </VBox>
+           <children>
+   
+               <!-- Header -->
+               <HBox id="header" prefWidth="1024.0" spacing="20">
+      <children>
+                      <Button fx:id="profile_dashboardButton" text="Dashboard" HBox.hgrow="NEVER" />
+                      <Region HBox.hgrow="ALWAYS" />
+                      <Text styleClass="titleText" text="Profile Page" HBox.hgrow="ALWAYS" />
+                      <Region HBox.hgrow="ALWAYS" />
+                      <Button fx:id="profile_SaveButton" text="Save" HBox.hgrow="NEVER" />
+      </children>
+               </HBox>
+   
+               <!-- Profile Section  -->
+               <HBox alignment="TOP_LEFT" prefWidth="1024.0" spacing="30">
+      <children>
+                      <VBox alignment="TOP_LEFT" prefWidth="350" spacing="12">
+                         <children>
+                             <Text id="UnameTxt" fx:id="profile_name" styleClass="nameText" text="firstName lastName" />
+                             <Text id="UmajorYrTxt" fx:id="profile_majorYr" text="Major and class of GradYr" />
+                             <Text id="UemailTxt" fx:id="profile_email" text="email@example.com" />
+                             <Text id="UageTxt" fx:id="profile_age" text="Age: 20" />
+                             <Button fx:id="profile_editProfButton" text="Edit Profile" />
+                         </children>
+                      </VBox>
+      
+                      <!-- Interests -->
+                      <VBox alignment="TOP_LEFT" prefWidth="350" spacing="12">
+         <children>
+                             <Text styleClass="sectionHeader" text="Interests:" />
+         
+                             <Text id="Uint1" fx:id="profile_interests1" text="Interest1" />
+                             <Text id="Uint2" fx:id="profile_interests2" text="Interest2" />
+                             <Text id="Uint3" fx:id="profile_interests3" text="Interest3" />
+                             <Text id="Uint4" fx:id="profile_interests4" text="Interest4" />
+         </children>
+                      </VBox>
+      
+                      <!-- Spacer -->
+                      <Region HBox.hgrow="ALWAYS" />
+      
+                      <!-- Profile Picture -->
+                      <VBox alignment="CENTER" prefWidth="200" spacing="12">
+         <children>
+                             <ImageView fx:id="profilePic" fitHeight="150" fitWidth="150" preserveRatio="true" />
+                             <Text styleClass="sectionHeader" text="Profile Picture" />
+         </children>
+                      </VBox>
+      </children>
+               </HBox>
+   
+               <!-- About Me -->
+               <VBox alignment="TOP_LEFT" spacing="12">
+      <children>
+                      <Text styleClass="sectionHeader" text="About Me:" />
+                      <TextFlow id="UbioTxt" prefWidth="800.0">
+                         <children>
+                             <Text fx:id="profile_bio" text="This is your bio text. Tell us about yourself." wrappingWidth="780.0">
+                                 <font>
+                                     <Font size="16" />
+                                 </font>
+                             </Text>
+                         </children>
+                      </TextFlow>
+      </children>
+               </VBox>
+           </children>
         </VBox>
     </children>
 </AnchorPane>

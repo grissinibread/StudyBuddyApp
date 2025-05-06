@@ -34,6 +34,7 @@ public class loginController implements Initializable {
             System.out.println("Email: " + email + " Password: " + password);
 
             if (loginSuccessful) {
+
                 System.out.println("Login successful! Redirecting to dashboard...");
                 Model.getInstance().getViewFactory().showDashboard();
             } else {

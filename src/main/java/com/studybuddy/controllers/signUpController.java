@@ -1,5 +1,4 @@
 package com.studybuddy.controllers;
-import javax.swing.*;
 import java.util.Set;
 
 import com.studybuddy.models.Model;
