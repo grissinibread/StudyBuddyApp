@@ -47,12 +47,12 @@ public class profileController implements Initializable {
                 if (interests.length > 0) profile_interests1.setText(interests[0]);
                 if (interests.length > 1) profile_interests2.setText(interests[1]);
                 if (interests.length > 2) profile_interests3.setText(interests[2]);
-                if (interests.length > 3) profile_interests4.setText(interests[3]);
+
             } else {
                 profile_interests1.setText("");
                 profile_interests2.setText("");
                 profile_interests3.setText("");
-                profile_interests4.setText("");
+
             }
 
             profile_dashboardButton.setOnAction(actionEvent -> {
