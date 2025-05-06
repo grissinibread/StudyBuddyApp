@@ -38,7 +38,7 @@
          <children>
             <Button fx:id="dashboard_ConnectionsButton" mnemonicParsing="false" text="Connections" />
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Refresh Matches" />
+            <Button fx:id="refreshMatches" mnemonicParsing="false" text="Refresh Matches" />
          </children>
       </HBox>
       <AnchorPane layoutX="50.0" layoutY="129.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">

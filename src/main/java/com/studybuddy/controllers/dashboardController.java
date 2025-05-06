@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import static com.studybuddy.services.ApiClient.retreiveAllUsers;
@@ -23,6 +24,9 @@ public class dashboardController implements Initializable {
      public Button dashboard_profileButton;
 
      @FXML
+     public Button refreshMatches;
+
+     @FXML
     public Button dashboard_ConnectionsButton;
     public AnchorPane user1;
     public AnchorPane user2;
@@ -33,41 +37,7 @@ public class dashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Dashboard controller initialized!");
 
-var users = retreiveAllUsers();
-AnchorPane[] userCards = {user1, user2, user3, user4};
-
-for (int i = 0; i < users.size() && i < userCards.length; i++) {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userCard.fxml"));
-        AnchorPane userCard = loader.load();
-        userCardController controller = loader.getController();
-
-        // Set user information
-        controller.userName.setText(users.get(i).getFirstName() + " " + users.get(i).getLastName());
-        controller.major.setText(users.get(i).getMajor());
-        controller.gradYear.setText(users.get(i).getGradYear().toString());
-
-        // interests
-        if (users.get(i).getInterests() != null && !users.get(i).getInterests().isEmpty()) {
-            String[] interests = users.get(i).getInterests().toArray(new String[0]);
-            if (interests.length > 0) controller.interest1.setText(interests[0]);
-            if (interests.length > 1) controller.interest2.setText(interests[1]);
-            if (interests.length > 2) controller.interest3.setText(interests[2]);
-
-        } else {
-            controller.interest1.setText("");
-            controller.interest2.setText("");
-            controller.interest3.setText("");
-
-        }
-
-
-        // Add the user card to the corresponding AnchorPane
-        userCards[i].getChildren().setAll(userCard);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
+        populateUserCards();
 
         // Revert to Login page
         dashboard_LogoutButton.setOnAction(event -> {
@@ -84,5 +54,48 @@ for (int i = 0; i < users.size() && i < userCards.length; i++) {
             System.out.println("connections button pressed");
             Model.getInstance().getViewFactory().showConnections();
         });
+
+        refreshMatches.setOnAction(actionEvent -> {
+            populateUserCards();
+        });
+    }
+
+    private void populateUserCards() {
+        var users = retreiveAllUsers();
+        AnchorPane[] userCards = {user1, user2, user3, user4};
+
+        for (int i = 0; i < users.size() && i < userCards.length; i++) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userCard.fxml"));
+                AnchorPane userCard = loader.load();
+                userCardController controller = loader.getController();
+
+                Random random = new Random();
+                int randomIndex = random.nextInt(users.size());
+
+                // Set user information
+                controller.userName.setText(users.get(randomIndex).getFirstName() + " " + users.get(randomIndex).getLastName());
+                controller.major.setText(users.get(randomIndex).getMajor());
+                controller.gradYear.setText(users.get(randomIndex).getGradYear().toString());
+
+                // interests
+                if (users.get(randomIndex).getInterests() != null && !users.get(randomIndex).getInterests().isEmpty()) {
+                    String[] interests = users.get(randomIndex).getInterests().toArray(new String[0]);
+                    if (interests.length > 0) controller.interest1.setText(interests[0]);
+                    if (interests.length > 1) controller.interest2.setText(interests[1]);
+                    if (interests.length > 2) controller.interest3.setText(interests[2]);
+
+                } else {
+                    controller.interest1.setText("");
+                    controller.interest2.setText("");
+                    controller.interest3.setText("");
+                }
+
+                // Add the user card to the corresponding AnchorPane
+                userCards[i].getChildren().setAll(userCard);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
