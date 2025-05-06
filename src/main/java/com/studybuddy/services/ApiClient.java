@@ -40,9 +40,10 @@ public class ApiClient {
             e.printStackTrace();
         }
     }
+
     public static boolean logIn_User(String email, String password) {
         try {
-            URL url = new URL("http://localhost:8080/login");
+            URL url = new URL("http://localhost:8080/users/login");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
@@ -64,6 +65,7 @@ public class ApiClient {
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 System.out.println("User logged in successfully.");
+                return true;
             } else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
                 System.out.println("User does not exist.");
             } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
