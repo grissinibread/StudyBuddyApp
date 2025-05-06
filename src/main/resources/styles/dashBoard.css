@@ -1,34 +1,114 @@
+/* MAIN BACKGROUND */
 #body {
-    -fx-background-color: white;
+    -fx-background-color: linear-gradient(to top, #f7f7f7, white);
 }
 
 
-/* all header content*/
-
 #header {
+    -fx-background-color: linear-gradient(to right, #87CEFA, white);
     -fx-alignment: center;
-    -fx-padding: 1em;
-    -fx-spacing: 1em;
+    -fx-padding: 1.5em;
+    -fx-spacing: 2em;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1px 0;
+}
+
+
+#title {
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 32px;
+    -fx-text-fill: #234959;
+    -fx-text-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 2, 0.5, 0, 1);
 }
 
 #profileButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #234959;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-border-color: #39728d;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-padding: 0.5em 1em;
+    -fx-transition: background-color 0.3s ease;
 }
 
-#title {
-    -fx-font-family: 'NeueRegular', sans-serif;
-    -fx-font-weight: bold;
-    -fx-font-size: 30px;
+#profileButton:hover {
+    -fx-background-color: #f0f8ff;
+    -fx-text-fill: #87CEFA;
+    -fx-border-color: #39728d;
 }
+
 
 #logoutButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-border-color: #333333;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-padding: 0.5em 1em;
+    -fx-transition: background-color 0.3s ease;
 }
 
-/* end of all header content*/
+#logoutButton:hover {
+    -fx-background-color: #f0f8ff;
+    -fx-text-fill: #87CEFA;
+    -fx-border-color: #6bb8e0;
+}
 
-
-/* all footer content */
+/* Footer */
 #footer {
+    -fx-background-color: #f5f5f5;
     -fx-alignment: center;
-    -fx-padding: 1em;
+    -fx-padding: 1.5em;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px 0 0 0;
 }
-/* end of all footer content */
+
+#footer Button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 0.75em 1.5em;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+#footer Button:hover {
+    -fx-background-color: #87CEFA;
+    -fx-text-fill: white;
+}
+
+#footer Text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #888888;
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+/* User Cards */
+
+Pane {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 6, 0.4, 0, 2);
+    -fx-border-radius: 10px;
+    -fx-background-color: white;
+    -fx-padding: 0.75em;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-min-width: 240px;
+    -fx-max-width: 250px;
+    -fx-min-height: 160px;
+    -fx-max-height: 170px;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+    -fx-spacing: 0.5em;
+    -fx-margin: 0 8px 8px 0; 
+}
+
+

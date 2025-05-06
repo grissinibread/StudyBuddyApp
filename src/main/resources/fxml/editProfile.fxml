@@ -32,7 +32,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Text>
-                        <TextField id="UfnameTxtF" promptText="ex: John">
+                        <TextField id="UfirstNameTxtF" promptText="ex: John">
                            <VBox.margin>
                               <Insets right="400.0" />
                            </VBox.margin>
@@ -42,7 +42,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Text>
-                        <TextField id="UlnameTxtF" layoutX="10.0" layoutY="29.0" promptText="ex: John">
+                        <TextField id="UlastNameTxtF" layoutX="10.0" layoutY="29.0" promptText="ex: John">
                            <VBox.margin>
                               <Insets right="400.0" />
                            </VBox.margin>

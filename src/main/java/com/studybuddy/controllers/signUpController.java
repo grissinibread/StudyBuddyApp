@@ -14,16 +14,22 @@ import javafx.scene.control.TextField; // to pull text from boxes
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.studybuddy.services.ApiClient.signUp_User;
+
 public class signUpController implements Initializable {
     @FXML
     public Button signUp_signUpButton;
     @FXML
     public Button signUp_LoginButton;
 
+    @FXML private TextField fullastNameTxt;
     @FXML private TextField emailTxt;
     @FXML private TextField passwordTxt;
     @FXML private TextField repeatPasswordTxt;
 
+    private String fullastName; // holds full name from text box
+    private String firstName; // holds first name from full name
+    private String lastName; // holds last name from full name
     private String email; // holds email from text box
     private String password; // holds pass
     private String repeatPassword; // holds pass
@@ -35,12 +41,16 @@ public class signUpController implements Initializable {
          signUp_signUpButton.setOnAction(actionEvent -> {
            System.out.println("Sign Up Button pressed!");
 
+           fullastName = fullastNameTxt.getText();
            email = emailTxt.getText();
            password = passwordTxt.getText();
            repeatPassword = repeatPasswordTxt.getText();
+           Full_toFlastName(fullastName);
+
           if(isValidEmail(email) && isValidPassword(password) && repeatPassword.equals(password)) { //all valid open dashboard
               Model.getInstance().getViewFactory().showDashboard();
-              // TODO: STORE IN DATABASE
+              System.out.println("Passing to API: firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password);
+              signUp_User(firstName, lastName, email, password);
           }
           else { //pop-ups if not valid
               System.out.println("Invalid email or password!");
@@ -67,6 +77,26 @@ public class signUpController implements Initializable {
         return email.matches(regex);
     }
 
+private void Full_toFlastName(String fullastName) {
+    if (fullastName == null || fullastName.trim().isEmpty()) {
+        this.firstName = "";
+        this.lastName = "";
+        System.out.println("Full name is empty or null.");
+        return;
+    }
+
+    fullastName = fullastName.trim();
+    int firstSpace = fullastName.indexOf(' ');
+    if (firstSpace < 0) {
+        this.firstName = fullastName;
+        this.lastName = "";
+    } else {
+        this.firstName = fullastName.substring(0, firstSpace);
+        this.lastName = fullastName.substring(firstSpace + 1).trim();
+    }
+
+    System.out.println("First Name: " + this.firstName + ", Last Name: " + this.lastName);
+}
     private boolean isValidPassword(String password){
         int length = password.length();
         int uppers = 0, lowers = 0, numbers = 0, characters = 0; // ensures it has one of each
