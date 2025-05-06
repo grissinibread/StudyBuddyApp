@@ -10,9 +10,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.studybuddy.models.User;
 
 public class ApiClient {
 
@@ -144,5 +147,55 @@ public class ApiClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public static List<User> retreiveAllUsers() {
+        var users = new ArrayList<User>();
+
+        try {
+            URL url = new URL("http://localhost:8080/users");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+
+            // Check response code
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Parse the response to populate CurrentUser
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String inputLine;
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                ObjectMapper mapper = new ObjectMapper();
+for (JsonNode userNode : mapper.readTree(response.toString())) {
+    User user = mapper.treeToValue(userNode, User.class);
+    users.add(user);
+
+    System.out.printf("ID: %s, Name: %s %s, Email: %s, Age: %d, Major: %s, Grad Year: %d, Interests: %s, Bio: %s%n",
+        user.getId(),
+        user.getFirstName(),
+        user.getLastName(),
+        user.getEmail(),
+        user.getAge(),
+        user.getMajor(),
+        user.getGradYear(),
+        user.getInterests(),
+        user.getBio()
+    );
+}
+
+                System.out.println("User data retrieved and set successfully.");
+            } else {
+                System.out.println("Failed to fetch user data. Response code: " + responseCode);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 }

@@ -18,12 +18,12 @@
                     <children>
                         <VBox layoutX="5.0" layoutY="5.0" prefHeight="110.0" prefWidth="170.0" spacing="2.0">
                             <children>
-                                <Text id="OUnameTxt" fill="#5b42cc" text="Name (Placeholder)">
+                                <Text fx:id="userName" id="OUnameTxt" fill="#5b42cc" text="Name (Placeholder)">
                                     <font>
                                         <Font size="13.0" />
                                     </font>
                                 </Text>
-                                <Text id="OUmajorClassTxt" fx:id="userCard_Major1" text="Major &amp; Class">
+                                <Text id="OUmajorClassTxt" fx:id="userCard_Major" text="Major &amp; Class">
                                     <font>
                                         <Font size="10.0" />
                                     </font>
@@ -35,24 +35,24 @@
                                 </Text>
                                 <HBox spacing="4.0">
                                     <children>
-                                        <Text id="OUint1Txt" text="Interest1">
+                                        <Text fx:id="userInterest1" id="OUint1Txt" text="Interest1">
                                             <font>
                                                 <Font size="9.0" />
                                             </font>
                                         </Text>
-                                        <Text id="OUint2Txt" text="Interest2">
+                                        <Text fx:id="userInterest2" id="OUint2Txt" text="Interest2">
                                             <font>
                                                 <Font size="9.0" />
                                             </font>
                                         </Text>
-                                        <Text id="OUint3Txt" text="Interest3">
+                                        <Text fx:id="userInterest3" id="OUint3Txt" text="Interest3">
                                             <font>
                                                 <Font size="9.0" />
                                             </font>
                                         </Text>
                                     </children>
                                 </HBox>
-                                <Text fx:id="userCard_GraduationYear1">
+                                <Text fx:id="userCard_GraduationYear">
                                     <font>
                                         <Font size="9.0" />
                                     </font>
