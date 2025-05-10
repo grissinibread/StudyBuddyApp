@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import static com.studybuddy.services.ApiClient.retreiveAllMatches;
 import static com.studybuddy.services.ApiClient.retreiveAllUsers;
 
 public class dashboardController implements Initializable {
@@ -34,6 +35,7 @@ public class dashboardController implements Initializable {
     public AnchorPane user2;
     public AnchorPane user3;
     public AnchorPane user4;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -63,7 +65,12 @@ public class dashboardController implements Initializable {
     }
 
     private void populateUserCards() {
+        var currentUser = Model.getInstance().getCurrentUser();
+        System.out.println("Current user in discover: " + currentUser.getFirstName() + " " + currentUser.getId());
         var users = retreiveAllUsers();
+        for (var user : users) {
+            System.out.println(user.getFirstName() + " " + user.getLastName());
+        }
         AnchorPane[] userCards = {user1, user2, user3, user4};
 
         for (int i = 0; i < users.size() && i < userCards.length; i++) {

@@ -1,6 +1,7 @@
 package com.studybuddy.services;
 
 import com.studybuddy.models.CurrentUser;
+import com.studybuddy.models.Match;
 import com.studybuddy.models.Model;
 
 import java.io.BufferedReader;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -18,7 +20,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.studybuddy.models.User;
 
 public class ApiClient {
-
     public static void signUp_User(String firstName, String lastName, String email, String password) {
         try {
             URL url = new URL("http://localhost:8080/users");
@@ -148,6 +149,7 @@ public class ApiClient {
             e.printStackTrace();
         }
     }
+
     public static List<User> retreiveAllUsers() {
         var users = new ArrayList<User>();
 
@@ -171,22 +173,22 @@ public class ApiClient {
                 in.close();
 
                 ObjectMapper mapper = new ObjectMapper();
-for (JsonNode userNode : mapper.readTree(response.toString())) {
-    User user = mapper.treeToValue(userNode, User.class);
-    users.add(user);
+                for (JsonNode userNode : mapper.readTree(response.toString())) {
+                    User user = mapper.treeToValue(userNode, User.class);
+                    users.add(user);
 
-    System.out.printf("ID: %s, Name: %s %s, Email: %s, Age: %d, Major: %s, Grad Year: %d, Interests: %s, Bio: %s%n",
-        user.getId(),
-        user.getFirstName(),
-        user.getLastName(),
-        user.getEmail(),
-        user.getAge(),
-        user.getMajor(),
-        user.getGradYear(),
-        user.getInterests(),
-        user.getBio()
-    );
-}
+                    System.out.printf("ID: %s, Name: %s %s, Email: %s, Age: %d, Major: %s, Grad Year: %d, Interests: %s, Bio: %s%n",
+                            user.getId(),
+                            user.getFirstName(),
+                            user.getLastName(),
+                            user.getEmail(),
+                            user.getAge(),
+                            user.getMajor(),
+                            user.getGradYear(),
+                            user.getInterests(),
+                            user.getBio()
+                    );
+                }
 
                 System.out.println("User data retrieved and set successfully.");
             } else {
@@ -197,5 +199,40 @@ for (JsonNode userNode : mapper.readTree(response.toString())) {
             e.printStackTrace();
         }
         return users;
+    }
+
+    public static List<Match> retreiveAllMatches() {
+        var matches = new ArrayList<Match>();
+        String currentUserId = Model.getInstance().getCurrentUser().getId();
+        System.out.println("Current user ID in API call: " + currentUserId);
+        try {
+            URL url = new URL("http://localhost:8080/users/matches/" + currentUserId);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String inputLine;
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                ObjectMapper mapper = new ObjectMapper();
+                for (JsonNode node : mapper.readTree(response.toString())) {
+                    Match match = mapper.treeToValue(node, Match.class);
+                    matches.add(match);
+                }
+            } else {
+                System.out.println("Failed to get matches. Response code: " + responseCode);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return matches;
     }
 }
