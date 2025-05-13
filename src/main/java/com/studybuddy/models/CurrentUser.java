@@ -1,11 +1,8 @@
 package com.studybuddy.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class CurrentUser {
-    //@JsonProperty("_id")
     private String id;
     private String email;
     private String password;
