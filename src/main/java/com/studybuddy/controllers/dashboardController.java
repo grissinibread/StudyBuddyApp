@@ -66,10 +66,11 @@ public class dashboardController implements Initializable {
 
     private void populateUserCards() {
         var currentUser = Model.getInstance().getCurrentUser();
-        System.out.println("Current user in discover: " + currentUser.getFirstName() + " " + currentUser.getId());
-        var users = retreiveAllUsers();
+        System.out.println("Current user in discover: " + currentUser.getFirstName() + " " + currentUser.getEmail());
+        var users = retreiveAllMatches();
         for (var user : users) {
-            System.out.println(user.getFirstName() + " " + user.getLastName());
+            //System.out.println(user.getFirstName() + " " + user.getLastName());
+            System.out.println(user.getFirstName());
         }
         AnchorPane[] userCards = {user1, user2, user3, user4};
 
@@ -83,7 +84,8 @@ public class dashboardController implements Initializable {
                 int randomIndex = random.nextInt(users.size());
 
                 // Set user information using Labels
-                controller.userName.setText(users.get(randomIndex).getFirstName() + " " + users.get(randomIndex).getLastName());
+                controller.userName.setText(users.get(randomIndex).getFirstName());
+                //controller.userName.setText(users.get(randomIndex).getFirstName() + " " + users.get(randomIndex).getLastName());
                 controller.major.setText(users.get(randomIndex).getMajor());
                 controller.gradYear.setText(users.get(randomIndex).getGradYear().toString());
 

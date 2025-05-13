@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -203,10 +202,10 @@ public class ApiClient {
 
     public static List<Match> retreiveAllMatches() {
         var matches = new ArrayList<Match>();
-        String currentUserId = Model.getInstance().getCurrentUser().getId();
-        System.out.println("Current user ID in API call: " + currentUserId);
+        String currentUserIdentifier = Model.getInstance().getCurrentUser().getEmail();
+        System.out.println("Current user ID in API call: " + currentUserIdentifier);
         try {
-            URL url = new URL("http://localhost:8080/users/matches/" + currentUserId);
+            URL url = new URL("http://localhost:8080/matches/" + currentUserIdentifier);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
