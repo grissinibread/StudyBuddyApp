@@ -13,11 +13,10 @@ public class MatchIterator {
         this.matches.addAll(matches);
     }
 
-    public List<Match> getBatch(int batchSize) {
+    public List<Match> getNextGroup(int batchSize) {
         List<Match> batch = new ArrayList<>();
         for (int i = 0; i < batchSize; i++) {
-            if (index >= matches.size()) {
-                // no more matches
+            if (index >= matches.size()) {   // no more matches
                 batch.add(null);
             } else {
                 batch.add(matches.get(index));

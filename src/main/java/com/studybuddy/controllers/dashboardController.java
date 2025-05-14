@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 import static com.studybuddy.services.ApiClient.retreiveAllMatches;
 
 public class dashboardController implements Initializable {
-    private int startingIndex = 0; //index to track starting point for outputted matches
     private MatchIterator iterator;
     @FXML
     public Button dashboard_LogoutButton;
@@ -42,7 +41,7 @@ public class dashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Dashboard controller initialized!");
         iterator = new MatchIterator(retreiveAllMatches());
-        populateUserCards(iterator.getBatch(4));
+        populateUserCards(iterator.getNextGroup(4));
         //startingIndex += 4;
 
         // Revert to Login page
@@ -62,7 +61,7 @@ public class dashboardController implements Initializable {
         });
 
         refreshMatches.setOnAction(actionEvent -> {
-            populateUserCards(iterator.getBatch(4));
+            populateUserCards(iterator.getNextGroup(4));
         });
     }
 

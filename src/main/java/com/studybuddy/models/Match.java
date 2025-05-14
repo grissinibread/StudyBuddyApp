@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Match {
     private String id;
     private String firstName;
-    //private String lastName;
     private Integer age;
     private String major;
     private Integer gradYear;
@@ -29,14 +28,6 @@ public class Match {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-//    public String getLastName() {
-//        return lastName;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastName = lastName;
-//    }
 
     public Integer getAge() {
         return age;
