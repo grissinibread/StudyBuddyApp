@@ -26,6 +26,8 @@ public class Model {
         this.currentUser = currentUser; // Set the current user
     }
     public CurrentUser getCurrentUser() {
+        if (currentUser == null)
+            currentUser = new CurrentUser();
         return currentUser; // Retrieve the current user
     }
 }

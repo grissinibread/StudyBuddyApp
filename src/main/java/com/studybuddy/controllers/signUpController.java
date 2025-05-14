@@ -1,6 +1,7 @@
 package com.studybuddy.controllers;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.studybuddy.models.Model;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -46,10 +47,15 @@ public class signUpController implements Initializable {
            repeatPassword = repeatPasswordTxt.getText();
            Full_toFlastName(fullastName);
 
+           Model.getInstance().getCurrentUser().setFirstName(fullastName);
+           Model.getInstance().getCurrentUser().setLastName(fullastName);
+           Model.getInstance().getCurrentUser().setEmail(email);
+           Model.getInstance().getCurrentUser().setPassword(password);
+
           if(isValidEmail(email) && isValidPassword(password) && repeatPassword.equals(password)) { //all valid open dashboard
-              Model.getInstance().getViewFactory().showDashboard();
               System.out.println("Passing to API: firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password);
               signUp_User(firstName, lastName, email, password);
+              Model.getInstance().getViewFactory().showDashboard();
           }
           else { //pop-ups if not valid
               System.out.println("Invalid email or password!");
